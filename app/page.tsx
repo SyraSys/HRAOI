@@ -44,19 +44,19 @@ export default function Home() {
             </div>
 
             <div className="mt-8 bg-[#242171] text-white p-4 rounded-xl text-xs leading-relaxed italic text-center">
-              ** Dear all Members of HRAI, the renewal process is stated please contact your District President for any information Please contact Delhi Office, or you can drop us a mail at hrai_dli@yahoo.com**
+              ** Dear all Members of HRAOI, the renewal process is stated please contact your District President for any information Please contact Delhi Office, or you can drop us a mail at www.hraoi.in@gmail.com**
             </div>
           </div>
 
           {/* Announcements */}
           <div className="bg-[#f8f7ff] p-8 rounded-2xl shadow-sm border border-purple-100">
-            <h2 className="text-2xl font-bold mb-6">HRAI Announcements</h2>
+            <h2 className="text-2xl font-bold mb-6">HRAOI Announcements</h2>
             <ul className="space-y-4">
               <li className="flex gap-3 border-b border-gray-100 pb-4">
                 <span className="text-[#242171] font-bold">•</span>
                 <div>
                   <h3 className="font-bold text-sm">Website Information</h3>
-                  <p className="text-sm text-gray-600">****** All the Members of HRAI, Website New look **** *********</p>
+                  <p className="text-sm text-gray-600">****** All the Members of HRAOI, Website New look **** *********</p>
                 </div>
               </li>
               <li className="text-sm text-gray-600 leading-relaxed italic">
@@ -67,29 +67,135 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Founder Section */}
-      <section className="py-16 bg-white overflow-hidden border-b">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row-reverse items-center gap-12">
-          <div className="md:w-1/2">
-            <h2 className="text-3xl font-bold mb-6">The Founder</h2>
-            <p className="text-gray-600 mb-6 leading-relaxed">
-              All human beings are born equal and free. The only permissible discrimination among the people of the world is for the purpose of geographical identification. This organization was founded on the bedrock of these principles.
-            </p>
-            <div className="flex gap-4">
-              <div className="bg-[#242171] h-1 w-12 rounded mt-3"></div>
-              <div className="text-lg font-bold text-[#242171]">Late Shri Jai Prakash Chandel</div>
-            </div>
+      {/* HRAOI at a Glance Section */}
+      <section className="py-20 bg-[#f5f3ff]">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 text-[#1e1b4b]">HRAOI at a Glance</h2>
+            <p className="text-gray-500 text-lg">Trusted by thousands across India</p>
           </div>
 
-          <div className="md:w-1/2 relative flex justify-center">
-            <div className="w-80 h-80 bg-gray-100 relative clip-hex shadow-2xl flex items-center justify-center border-4 border-[#242171]/10">
-              <span className="text-gray-400">Founder Image</span>
-              <div className="absolute -top-4 -left-4 w-4 h-4 bg-[#d93025] rounded-full" />
-              <div className="absolute -bottom-4 -right-4 w-4 h-4 bg-[#d93025] rounded-full" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+            {/* Active Members */}
+            <div className="flex flex-col items-center group">
+              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#dcd7f5] to-[#c7c0eb] shadow-[0_15px_30px_-5px_rgba(0,0,0,0.15)] flex items-center justify-center mb-8 transform group-hover:scale-110 transition-all duration-300 relative overflow-hidden">
+                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <svg className="w-14 h-14 text-white drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <div className="text-3xl font-bold text-[#1e1b4b] mb-1">50,000+</div>
+              <div className="text-gray-600 font-medium">Active Members</div>
+            </div>
+
+            {/* States Covered */}
+            <div className="flex flex-col items-center group">
+              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#dcd7f5] to-[#c7c0eb] shadow-[0_15px_30px_-5px_rgba(0,0,0,0.15)] flex items-center justify-center mb-8 transform group-hover:scale-110 transition-all duration-300">
+                <svg className="w-14 h-14 text-white drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 012.5 2.5V17m-5 1h3a5 5 0 004.546-2.916A5.986 5.986 0 0110 10a5.986 5.986 0 01-4.546-2.916A5 5 0 003 13h3a5 5 0 005 5z" />
+                </svg>
+              </div>
+              <div className="text-3xl font-bold text-[#1e1b4b] mb-1">28+</div>
+              <div className="text-gray-600 font-medium">States Covered</div>
+            </div>
+
+            {/* Districts */}
+            <div className="flex flex-col items-center group">
+              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#dcd7f5] to-[#c7c0eb] shadow-[0_15px_30px_-5px_rgba(0,0,0,0.15)] flex items-center justify-center mb-8 transform group-hover:scale-110 transition-all duration-300">
+                <svg className="w-14 h-14 text-white drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-7.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div className="text-3xl font-bold text-[#1e1b4b] mb-1">500+</div>
+              <div className="text-gray-600 font-medium">Districts</div>
+            </div>
+
+            {/* Years of Service */}
+            <div className="flex flex-col items-center group">
+              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#dcd7f5] to-[#c7c0eb] shadow-[0_15px_30px_-5px_rgba(0,0,0,0.15)] flex items-center justify-center mb-8 transform group-hover:scale-110 transition-all duration-300">
+                <svg className="w-14 h-14 text-white drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </div>
+              <div className="text-3xl font-bold text-[#1e1b4b] mb-1">15+</div>
+              <div className="text-gray-600 font-medium">Years of Service</div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* National President Section */}
+      <section className="py-24 bg-white overflow-hidden">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
+          <div className="md:w-1/2 relative flex justify-center">
+            {/* Styled Image Container */}
+            <div className="relative group p-4">
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+              <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-[2.5rem] p-1 bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 shadow-2xl overflow-hidden">
+                <div className="w-full h-full bg-white rounded-[2.3rem] overflow-hidden">
+                  <img src="/images/sudhir.jpeg" alt="Mr. Sudhir Kumar" className="w-full h-full object-cover" />
+                </div>
+              </div>
+              {/* Decorative dots/shapes matching screenshot */}
+              <div className="absolute top-0 left-0 w-4 h-4 bg-blue-400 rounded-full -translate-x-1/2 -translate-y-1/2 blur-[2px]"></div>
+            </div>
+          </div>
+
+          <div className="md:w-1/2 text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-gray-900">Mr. Sudhir Kumar</h2>
+            <h3 className="text-xl font-semibold text-blue-600 mb-6">National President</h3>
+            <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+              Mr. Sudhir Kumar is a senior human rights activist with over 30 years of dedicated experience in human rights protection and social justice. Under his visionary leadership, HRAOI has strengthened its mission to promote justice, equality, dignity, and humanitarian values.
+            </p>
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-blue-200 transition-all active:scale-95">
+              Read more
+            </button>
+          </div>
+        </div>
+      </section>
+
+
+      {/* National Vice President Section */}
+      <section className="py-24 bg-gray-50 overflow-hidden">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row-reverse items-center gap-16">
+          <div className="md:w-1/2 relative flex justify-center">
+            <div className="relative group p-4">
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+              <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-[2.5rem] p-1 bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 shadow-2xl overflow-hidden">
+                <div className="w-full h-full bg-white rounded-[2.3rem] overflow-hidden">
+                  <img src="/images/surajKumar.jpeg" alt="Mr. Suraj Kumar" className="w-full h-full object-cover" />
+                </div>
+              </div>
+              <div className="absolute top-0 left-0 w-4 h-4 bg-blue-400 rounded-full -translate-x-1/2 -translate-y-1/2 blur-[2px]"></div>
+            </div>
+          </div>
+
+          <div className="md:w-1/2 text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-gray-900">Mr. Suraj Kumar</h2>
+            <h3 className="text-xl font-semibold text-blue-600 mb-6">National Vice President</h3>
+            <p className="text-gray-600 mb-8 text-lg leading-relaxed">
+              Mr. Suraj Kumar is a committed human rights leader with years of experience in organizational leadership and grassroots engagement, playing a vital role in strengthening human rights awareness and justice advocacy across the country.
+            </p>
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-blue-200 transition-all active:scale-95">
+              Read more
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Mini Gallery */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-center gap-4">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <div key={i} className="w-48 h-32 bg-gray-200 rounded-lg border-2 border-[#242171]/20 flex items-center justify-center text-xs text-gray-400 grayscale hover:grayscale-0 transition-all cursor-pointer">
+                Event {i}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* Donate Section */}
       <section className="py-12 bg-white">
@@ -119,50 +225,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Chairman Message */}
-      <section className="py-16 bg-gray-50 overflow-hidden">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
-          <div className="md:w-1/2">
-            <h2 className="text-3xl font-bold mb-6">Chairman's Message</h2>
-            <p className="text-gray-600 mb-6 leading-relaxed">
-              We, with the help of a large team of office bearers, delegates & members, are day by day achieving our goal through effective efforts, still, expert knowledge, guidance, and updated techniques are required from pioneer offices like yours in the field of Human Rights Protection.
-            </p>
-            <button className="bg-[#242171] text-white px-6 py-2 rounded text-sm font-semibold italic shadow-md hover:bg-[#1a1a5e] transition-colors">
-              Read more
-            </button>
-          </div>
-
-          <div className="md:w-1/2 relative flex justify-center">
-            <div className="w-80 h-80 bg-gray-200 relative clip-hex shadow-2xl flex items-center justify-center overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#242171]/20 to-transparent"></div>
-              <span className="text-gray-400">Chairman Image</span>
-              <div className="absolute -top-4 -right-4 w-4 h-4 bg-[#242171] rounded-full" />
-              <div className="absolute -bottom-4 -left-4 w-4 h-4 bg-[#242171] rounded-full" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mini Gallery */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-4">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="w-48 h-32 bg-gray-200 rounded-lg border-2 border-[#242171]/20 flex items-center justify-center text-xs text-gray-400 grayscale hover:grayscale-0 transition-all cursor-pointer">
-                Event {i}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Mission Section */}
       <section className="relative py-24 text-white overflow-hidden bg-[#242171]/90">
         <div className="absolute inset-0 bg-black/10 z-0"></div>
         <div className="container mx-auto px-4 relative z-20 text-center">
-          <h2 className="text-4xl font-bold mb-8">Humanrights Association of India</h2>
+          <h2 className="text-4xl font-bold mb-8">Human Rights Association of India</h2>
           <p className="max-w-4xl mx-auto text-lg leading-relaxed italic">
-            HRAI is based on the philosophy of HUMAN RIGHTS. "Vasudhav Kutumbakum" (The whole world is family) All human beings are born equal and free. The only permissible discrimination amongst the people of the world is for the purpose of geographical identification. Human rights are properly understood and interpreted all over the world. They are foreign to no culture and native to all nations. It is the universality of Human rights that gives them their strength and endorses them with the power to cross any border, climb any wall, defy any force.
+            HRAOI is based on the philosophy of HUMAN RIGHTS. "Vasudhav Kutumbakum" (The whole world is family) All human beings are born equal and free. The only permissible discrimination amongst the people of the world is for the purpose of geographical identification. Human rights are properly understood and interpreted all over the world. They are foreign to no culture and native to all nations. It is the universality of Human rights that gives them their strength and endorses them with the power to cross any border, climb any wall, defy any force.
           </p>
         </div>
       </section>

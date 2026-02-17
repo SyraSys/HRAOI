@@ -74,7 +74,7 @@ export default function Orders() {
                             {/* Blue Banner Box */}
                             <div className="bg-[#242171] text-white p-6 rounded-xl text-center shadow-md">
                                 <p className="text-xs leading-relaxed italic">
-                                    ** Dear all Members of HRAI, the renewal process is stated please contact your District President for any information Please contact Delhi Office, or you can drop us a mail at hrai_dli@yahoo.com**
+                                    ** Dear all Members of HRAOI, the renewal process is stated please contact your District President for any information Please contact Delhi Office, or you can drop us a mail at www.hraoi.in@gmail.com**
                                 </p>
                             </div>
                         </aside>
@@ -113,7 +113,7 @@ export default function Orders() {
                                     <div className="w-16 h-16 bg-gray-100 rounded-lg"></div>
                                     <div className="text-center flex-1 mx-4">
                                         <div className="text-[#1a1a5e] font-bold text-xl uppercase">Human Rights Association of India</div>
-                                        <div className="text-[10px] text-gray-500">Regn No: S-47264-03 | www.hrai.co.in</div>
+                                        <div className="text-[10px] text-gray-500">Regn No: S-47264-03 | www.hraoi.in</div>
                                     </div>
                                     <div className="w-16 h-16 bg-gray-100 rounded-full"></div>
                                 </div>

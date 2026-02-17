@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #242171;
+  --color-primary-dark: #1a1a5e;
+  --color-secondary: #d93025;
+  --color-background-light-blue: #f0f9ff;
+  --color-background-light-purple: #f8f7ff;
+  --color-background-light-violet: #f5f3ff;
+  --color-background-blue-muted: #e0f2fe;
+  --color-brand-cyan: #22d3ee;
+}
+
 @layer components {
   .clip-hex {
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);

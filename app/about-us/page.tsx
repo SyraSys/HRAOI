@@ -3,33 +3,28 @@ export default function AboutUs() {
         <div className="bg-white min-h-screen">
             <div className="container mx-auto px-4 py-8">
                 {/* Page Title */}
-                <div className="mb-12">
-                    <h2 className="text-2xl font-bold text-[#1a1a5e] inline-block relative px-1">
-                        From Chairman's Desk
-                        <div className="absolute left-0 -bottom-1 w-1/2 h-1 bg-[#d93025]"></div>
-                    </h2>
-                </div>
+
 
                 <div className="flex flex-col lg:flex-row gap-12">
                     {/* Sidebar */}
                     <aside className="lg:w-1/3 space-y-8">
                         {/* Member Search */}
-                        <div className="bg-[#f0f9ff] p-6 rounded-xl border border-blue-100">
-                            <h3 className="text-lg font-bold mb-4">Member Search</h3>
-                            <p className="text-xs text-gray-500 mb-2">Member NO.</p>
+                        <div className="bg-background-light-blue p-6 rounded-xl border border-blue-100">
+                            <h3 className="text-lg font-bold mb-4 uppercase tracking-tighter text-indigo-950">Member Search</h3>
+                            <p className="text-xs text-gray-500 mb-2 font-semibold">Member NO.</p>
                             <div className="flex gap-2 mb-4">
                                 <input
                                     type="text"
                                     placeholder="Only Numeric no."
-                                    className="flex-1 px-3 py-2 text-sm rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#242171]"
+                                    className="flex-1 px-3 py-2 text-sm rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-primary"
                                 />
-                                <button className="bg-[#242171] text-white px-4 py-2 rounded text-xs font-semibold">Search</button>
+                                <button className="bg-primary text-white px-4 py-2 rounded text-xs font-semibold hover:bg-primary-dark transition-colors">Search</button>
                             </div>
                         </div>
 
                         {/* Manav Adhikar Garima */}
-                        <div className="bg-[#f8f7ff] p-6 rounded-xl border border-purple-100">
-                            <h3 className="text-lg font-bold mb-4">Manav Adhikar Garima</h3>
+                        <div className="bg-background-light-purple p-6 rounded-xl border border-purple-100">
+                            <h3 className="text-lg font-bold mb-4 uppercase tracking-tighter text-indigo-950">Manav Adhikar Garima</h3>
                             <div className="space-y-4">
                                 {/* Hindi Text Mockup */}
                                 <p className="text-xs text-gray-600 leading-relaxed italic">
@@ -42,48 +37,123 @@ export default function AboutUs() {
                         </div>
 
                         {/* Blue Banner Box */}
-                        <div className="bg-[#242171] text-white p-6 rounded-xl text-center">
+                        <div className="bg-primary text-white p-6 rounded-xl text-center shadow-lg shadow-primary/20">
                             <p className="text-xs leading-relaxed italic">
-                                ** Dear all Members of HRAI, the renewal process is stated please contact your District President for any information Please contact Delhi Office, or you can drop us a mail at hrai_dli@yahoo.com**
+                                ** Dear all Members of HRAOI, the renewal process is stated please contact your District President for any information Please contact Delhi Office, or you can drop us a mail at www.hraoi.in@gmail.com**
                             </p>
                         </div>
 
-                        {/* Torch/HRAI Symbol */}
+                        {/* Torch/HRAOI Symbol */}
                         <div className="flex flex-col items-center py-4">
-                            <div className="w-16 h-32 bg-gray-100 rounded-full flex items-center justify-center text-gray-400 text-[10px] text-center mb-4">
-                                Torch Logo
+                            <div className="w-24 h-48 flex items-center justify-center mb-4">
+                                <img src="/images/torch.gif" alt="HRAOI Torch" className="w-full h-full object-contain" />
                             </div>
-                            <div className="text-center font-bold text-[#1a1a5e] text-sm space-y-1">
-                                <div className="text-red-600">अपनी हिम्मत को सराहो</div>
-                                <div>मेरे हमराह बनो !</div>
-                                <div>हमने एक शमां जलाई है</div>
-                                <div>हजारों के खिलाफ !</div>
-                            </div>
+
                         </div>
                     </aside>
 
                     {/* Main Content */}
                     <main className="lg:w-2/3">
-                        {/* Hexagon Profile Photo Area */}
-                        <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-12">
-                            <div className="relative group">
-                                <div className="w-64 h-64 bg-gray-200 clip-hex shadow-xl flex items-center justify-center border-4 border-[#242171]/10">
-                                    <div className="text-gray-400 font-bold uppercase tracking-widest text-xs">Chairman Photo</div>
-                                </div>
-                                {/* Decorative points from image */}
-                                <div className="absolute top-1/2 -left-3 w-3 h-3 bg-[#242171] rounded-full"></div>
-                                <div className="absolute -bottom-3 left-1/2 w-3 h-3 bg-[#242171] rounded-full"></div>
-                            </div>
+                        <div className="mb-14">
+                            <h2 className="text-3xl font-extrabold text-primary-dark mb-4 tracking-tight">About Us</h2>
+                            <p className="text-xl text-gray-700 leading-relaxed font-semibold">
+                                HRAOI is based on the philosophy of <span className="text-primary italic">HUMAN RIGHTS</span>.
+                                <span className="block mt-2 text-primary-dark">"Vasudhav Kutumbakum" (The whole world is family)</span>
+                                <span className="block text-gray-600 font-medium">All human beings are born equal and free.</span>
+                            </p>
+                        </div>
 
-                            <div className="text-right md:pt-40 flex-1">
-                                <div className="text-sm font-bold text-[#1a1a5e] italic">Thanks,</div>
-                                <div className="text-lg font-bold text-[#1a1a5e] uppercase tracking-tight">Anurag Chandravanshi,</div>
-                                <div className="text-sm font-bold text-[#1a1a5e]">Chairman</div>
+                        <div className="mb-14">
+                            <h2 className="text-2xl font-bold text-primary-dark inline-block relative px-1 mb-8 uppercase tracking-tight">
+                                What We Do
+                                <div className="absolute left-0 -bottom-1 w-full h-1 bg-secondary/80"></div>
+                            </h2>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                                {[
+                                    "Advocacy for human rights protection",
+                                    "Legal aid and assistance",
+                                    "Awareness campaigns and education",
+                                    "Investigation of rights violations",
+                                    "Community development programs",
+                                    "Policy recommendations to government",
+                                ].map((text, i) => (
+                                    <div key={i} className="flex items-start gap-4">
+                                        <div className="mt-1.5 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></div>
+                                        <span className="text-gray-700 font-medium text-base tracking-tight">{text}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Mission, Vision, Values Section */}
+                        <div className="mb-14 grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {[
+                                {
+                                    title: "Our Mission",
+                                    text: "To protect and promote human rights for all citizens of India regardless of caste, creed, religion, or economic status.",
+                                    borderColor: "border-primary"
+                                },
+                                {
+                                    title: "Our Vision",
+                                    text: "A society where every individual enjoys their fundamental rights and lives with dignity and respect.",
+                                    borderColor: "border-purple-600"
+                                },
+                                {
+                                    title: "Our Values",
+                                    text: "Justice, Equality, Integrity, Compassion, and Dedication to serving humanity.",
+                                    borderColor: "border-secondary"
+                                }
+                            ].map((item, i) => (
+                                <div key={i} className={`bg-gray-50/50 p-6 rounded-xl border-t-4 ${item.borderColor} shadow-sm transition-all hover:shadow-md`}>
+                                    <h3 className="text-lg font-bold text-primary-dark mb-4 uppercase tracking-wider">{item.title}</h3>
+                                    <p className="text-gray-600 text-sm leading-relaxed font-medium">
+                                        {item.text}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Our Leadership Section */}
+                        <div className="mb-14">
+                            <h2 className="text-2xl font-bold text-primary-dark inline-block relative px-1 mb-10 uppercase tracking-tight">
+                                Our Leadership
+                                <div className="absolute left-0 -bottom-1 w-full h-1 bg-secondary/80"></div>
+                            </h2>
+
+                            <div className="space-y-12">
+                                {/* President */}
+                                <div className="flex flex-col md:flex-row items-center md:items-start gap-8 bg-gray-50/30 p-8 rounded-2xl border border-gray-100">
+                                    <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-lg border-2 border-primary/20 flex-shrink-0">
+                                        <img src="/images/sudhir.jpeg" alt="Mr. Sudhir Kumar" className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="text-center md:text-left">
+                                        <h3 className="text-2xl font-bold text-gray-900 mb-1">Mr. Sudhir Kumar</h3>
+                                        <p className="text-primary font-bold mb-4 uppercase tracking-wider text-sm">National President</p>
+                                        <p className="text-gray-600 leading-relaxed italic">
+                                            Mr. Sudhir Kumar is a senior human rights activist with over 30 years of dedicated experience in human rights protection and social justice. Under his visionary leadership, HRAOI has strengthened its mission to promote justice, equality, dignity, and humanitarian values.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Vice President */}
+                                <div className="flex flex-col md:flex-row-reverse items-center md:items-start gap-8 bg-gray-50/30 p-8 rounded-2xl border border-gray-100">
+                                    <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-lg border-2 border-secondary/20 flex-shrink-0">
+                                        <img src="/images/surajKumar.jpeg" alt="Mr. Suraj Kumar" className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="text-center md:text-right">
+                                        <h3 className="text-2xl font-bold text-gray-900 mb-1">Mr. Suraj Kumar</h3>
+                                        <p className="text-secondary font-bold mb-4 uppercase tracking-wider text-sm">National Vice President</p>
+                                        <p className="text-gray-600 leading-relaxed italic">
+                                            Mr. Suraj Kumar is a committed human rights leader with years of experience in organizational leadership and grassroots engagement, playing a vital role in strengthening human rights awareness and justice advocacy across the country.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         {/* Text Blocks */}
-                        <div className="space-y-8 text-gray-700 leading-relaxed text-sm">
+                        {/* <div className="space-y-8 text-gray-700 leading-relaxed text-sm border-b pb-12">
                             <p>
                                 <span className="font-bold">A National level Human Rights Organization (NGO)</span> has been set up on <span className="font-bold">10th March 1999</span>, with the object to create mass awareness of Human Rights & Protection from atrocities & torture to Common People under the title <span className="italic">"Bhartiya Manavadhikar Association"</span> (Human Rights Association of India) duly registered under Indian Societies Act 1860 bearing Registration No. <span className="font-bold">S-47264-03</span>. Needless to mention that the concept of Human Rights is very new to the public due to the late enactment of the "Protection of Human Rights Act 1993" by the Government of India. i.e. after a gap of 46 years of its independence. Obviously, it requires deep concern and massive efforts in the matter of the increasing and alarming situation of torture in the country.
                             </p>
@@ -91,6 +161,43 @@ export default function AboutUs() {
                             <p>
                                 We, however with the help of a large team of office bearers, delegates & members, are day by day achieving our goal through effective efforts, still, expert knowledge, guidance, and updated techniques are required from the pioneer offices like that of yours in the field of Human Rights Protection.
                             </p>
+                        </div> */}
+
+                        {/* Our History Section */}
+                        <div className="mt-12 space-y-8">
+                            <div>
+                                <h2 className="text-2xl font-bold text-primary-dark inline-block relative px-1 mb-8">
+                                    Our History
+                                    <div className="absolute left-0 -bottom-1 w-1/2 h-1 bg-secondary"></div>
+                                </h2>
+
+                                <div className="space-y-6 text-gray-700 leading-relaxed text-sm">
+                                    <p>
+                                        The Human Rights Association of India (HRAOI) was founded with a singular purpose: to be the voice of the voiceless and the defender of the defenseless. Over the years, we have grown into one of India's most respected human rights organizations.
+                                    </p>
+
+                                    <p>
+                                        Our journey began with a small group of dedicated activists who believed in the power of collective action. Today, we have expanded our reach across all 28 states and 8 union territories, with thousands of active members working at the grassroots level.
+                                    </p>
+
+                                    <div className="bg-background-blue-muted p-8 rounded-2xl border-l-4 border-primary">
+                                        <p className="italic">
+                                            Registered under NITI Aayog, HRAOI operates with complete transparency and accountability. We are recognized for our work in addressing human rights violations, providing legal aid, and conducting awareness programs across communities.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Join Our Mission CTA */}
+                        <div className="mt-20 bg-background-light-blue p-10 rounded-3xl border border-blue-100 text-center shadow-sm">
+                            <h2 className="text-3xl font-bold text-primary-dark mb-4 tracking-tight">Join Our Mission</h2>
+                            <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+                                Become a member and be part of the movement to protect human rights.
+                            </p>
+                            <button className="bg-secondary text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-secondary/90 transition-all shadow-lg shadow-secondary/20 hover:scale-105 active:scale-95">
+                                Become a member
+                            </button>
                         </div>
                     </main>
                 </div>

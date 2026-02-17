@@ -108,13 +108,13 @@ export default function Enquiry() {
                                     </p>
                                     <ul className="space-y-1">
                                         <li className="flex gap-2 text-blue-600 hover:text-[#242171] cursor-pointer">
-                                            <span>✉️</span> president@hrai.co.in
+                                            <span>✉️</span> www.hraoi.in@gmail.com
                                         </li>
                                         <li className="flex gap-2 text-blue-600 hover:text-[#242171] cursor-pointer">
-                                            <span>✉️</span> info@hrai.co.in
+                                            <span>✉️</span> www.hraoi.in@gmail.com
                                         </li>
                                         <li className="flex gap-2 text-blue-600 hover:text-[#242171] cursor-pointer">
-                                            <span>✉️</span> hrai_dli@yahoo.com
+                                            <span>✉️</span> www.hraoi.in@gmail.com
                                         </li>
                                     </ul>
                                 </div>

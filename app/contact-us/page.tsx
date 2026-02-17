@@ -6,9 +6,9 @@ export default function ContactUs() {
             <div className="container mx-auto px-4 py-8">
                 {/* Page Title */}
                 <div className="mb-12">
-                    <h2 className="text-2xl font-bold text-[#1a1a5e] inline-block relative px-1">
+                    <h2 className="text-2xl font-bold text-primary-dark inline-block relative px-1">
                         Contact Us
-                        <div className="absolute left-0 -bottom-1 w-1/2 h-1 bg-[#d93025]"></div>
+                        <div className="absolute left-0 -bottom-1 w-1/2 h-1 bg-secondary border-b"></div>
                     </h2>
                 </div>
 
@@ -43,9 +43,9 @@ export default function ContactUs() {
                         </div>
 
                         {/* Blue Banner Box */}
-                        <div className="bg-[#242171] text-white p-6 rounded-xl text-center shadow-md">
+                        <div className="bg-primary text-white p-6 rounded-xl text-center shadow-md">
                             <p className="text-xs leading-relaxed italic">
-                                ** Dear all Members of HRAI, the renewal process is stated please contact your District President for any information Please contact Delhi Office, or you can drop us a mail at hrai_dli@yahoo.com**
+                                ** Dear all Members of HRAOI, the renewal process is stated please contact your District President for any information Please contact Delhi Office, or you can drop us a mail at hraoi.in@gmail.com**
                             </p>
                         </div>
                     </aside>
@@ -56,24 +56,22 @@ export default function ContactUs() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                             {/* Head Office */}
                             <div className="space-y-4">
-                                <h3 className="text-lg font-black text-[#1a1a5e] uppercase tracking-tight border-l-4 border-[#d93025] pl-3">Head Office:</h3>
+                                <h3 className="text-lg font-black text-primary-dark uppercase tracking-tight border-l-4 border-secondary pl-3">Head Office:</h3>
                                 <div className="text-sm text-gray-700 space-y-2 font-semibold">
-                                    <p>Address: 45 D, Amar Plaza, Hasanpur Main Road, I.P. Extention, Delhi - 92</p>
-                                    <p>Phone: 011- 32405800</p>
-                                    <p>Mobile: 09871640670</p>
-                                    <p>Email: <span className="text-blue-600 cursor-pointer">president@hrai.co.in</span></p>
-                                    <p>Email: <span className="text-blue-600 cursor-pointer">info@hrai.co.in</span></p>
+                                    <p>Address: Road, I.P. Extention, Delhi - 92</p>
+                                    <p>Phone: 9330977118, 9334246098</p>
+                                    <p>Mobile: 6207394301</p>
+                                    <p>Email: <span className="text-blue-600 cursor-pointer">hraoi.in@gmail.com</span></p>
                                 </div>
                             </div>
 
                             {/* Chairman Camp Office */}
                             <div className="space-y-4">
-                                <h3 className="text-lg font-black text-[#1a1a5e] uppercase tracking-tight border-l-4 border-[#d93025] pl-3">Chairman Camp Office:</h3>
+                                <h3 className="text-lg font-black text-primary-dark uppercase tracking-tight border-l-4 border-secondary pl-3">Chairman Camp Office:</h3>
                                 <div className="text-sm text-gray-700 space-y-2 font-semibold">
-                                    <p>Address: Jai Mahal, 127/U/350, Nirala Nagar, Kanpur, UP</p>
-                                    <p>Phone: 0512-2641995</p>
-                                    <p>Mobile: 9415511774</p>
-                                    <p>E-Mail: <span className="text-blue-600 cursor-pointer">hrai_dli@yahoo.com</span></p>
+                                    <p>Address: Road, I.P. Extention, Delhi - 92</p>
+                                    <p>Phone: 9330977118, 9334246098, 6207394301</p>
+                                    <p>E-Mail: <span className="text-blue-600 cursor-pointer">hraoi.in@gmail.com</span></p>
                                 </div>
                             </div>
                         </div>

@@ -1,3 +1,5 @@
+import MemberSearch from "@/components/MemberSearch";
+
 export default function AboutUs() {
     return (
         <div className="bg-white min-h-screen">
@@ -7,20 +9,9 @@ export default function AboutUs() {
 
                 <div className="flex flex-col lg:flex-row gap-12">
                     {/* Sidebar */}
-                    <aside className="lg:w-1/3 space-y-8">
+                    <aside className="lg:w-1/4 space-y-8">
                         {/* Member Search */}
-                        <div className="bg-background-light-blue p-6 rounded-xl border border-blue-100">
-                            <h3 className="text-lg font-bold mb-4 uppercase tracking-tighter text-indigo-950">Member Search</h3>
-                            <p className="text-xs text-gray-500 mb-2 font-semibold">Member NO.</p>
-                            <div className="flex gap-2 mb-4">
-                                <input
-                                    type="text"
-                                    placeholder="Only Numeric no."
-                                    className="flex-1 px-3 py-2 text-sm rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-primary"
-                                />
-                                <button className="bg-primary text-white px-4 py-2 rounded text-xs font-semibold hover:bg-primary-dark transition-colors">Search</button>
-                            </div>
-                        </div>
+                        <MemberSearch />
 
                         {/* Manav Adhikar Garima */}
                         <div className="bg-background-light-purple p-6 rounded-xl border border-purple-100">
@@ -56,20 +47,19 @@ export default function AboutUs() {
                     <main className="lg:w-2/3">
                         <div className="mb-14">
                             <h2 className="text-3xl font-extrabold text-primary-dark mb-4 tracking-tight">About Us</h2>
-                            <p className="text-xl text-gray-700 leading-relaxed font-semibold">
+                            <p className=" text-gray-700 leading-relaxed font-semibold">
                                 HRAOI is based on the philosophy of <span className="text-primary italic">HUMAN RIGHTS</span>.
                                 <span className="block mt-2 text-primary-dark">"Vasudhav Kutumbakum" (The whole world is family)</span>
                                 <span className="block text-gray-600 font-medium">All human beings are born equal and free.</span>
                             </p>
                         </div>
 
-                        <div className="mb-14">
+                        <div className="mb-14 p-10 bg-blue-100 rounded-xl">
                             <h2 className="text-2xl font-bold text-primary-dark inline-block relative px-1 mb-8 uppercase tracking-tight">
                                 What We Do
-                                <div className="absolute left-0 -bottom-1 w-full h-1 bg-secondary/80"></div>
                             </h2>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-3">
                                 {[
                                     "Advocacy for human rights protection",
                                     "Legal aid and assistance",
@@ -90,24 +80,49 @@ export default function AboutUs() {
                         <div className="mb-14 grid grid-cols-1 md:grid-cols-3 gap-8">
                             {[
                                 {
-                                    title: "Our Mission",
-                                    text: "To protect and promote human rights for all citizens of India regardless of caste, creed, religion, or economic status.",
-                                    borderColor: "border-primary"
+                                    title: "MISSION",
+                                    text: "Protect and promote human rights for all citizens of India regardless of caste, creed, religion, or economic status.",
+                                    icon: (
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8A24D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4z"/>
+                                            <path d="M9 12l2 2 4-4"/>
+                                        </svg>
+                                    ),
+                                    bgColor: "bg-[#F8F5EC]"
                                 },
                                 {
-                                    title: "Our Vision",
+                                    title: "OUR VISION",
                                     text: "A society where every individual enjoys their fundamental rights and lives with dignity and respect.",
-                                    borderColor: "border-purple-600"
+                                    icon: (
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8A24D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
+                                            <circle cx="12" cy="12" r="3"/>
+                                        </svg>
+                                    ),
+                                    bgColor: "bg-[#F8F5EC]"
                                 },
                                 {
-                                    title: "Our Values",
+                                    title: "OUR VALUES",
                                     text: "Justice, Equality, Integrity, Compassion, and Dedication to serving humanity.",
-                                    borderColor: "border-secondary"
+                                    icon: (
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8A24D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M12 3v18"/>
+                                            <path d="M3 7h18"/>
+                                            <path d="M7 7l-3 5a3 3 0 0 0 6 0l-3-5z"/>
+                                            <path d="M17 7l-3 5a3 3 0 0 0 6 0l-3-5z"/>
+                                        </svg>
+                                    ),
+                                    bgColor: "bg-[#F8F5EC]"
                                 }
                             ].map((item, i) => (
-                                <div key={i} className={`bg-gray-50/50 p-6 rounded-xl border-t-4 ${item.borderColor} shadow-sm transition-all hover:shadow-md`}>
-                                    <h3 className="text-lg font-bold text-primary-dark mb-4 uppercase tracking-wider">{item.title}</h3>
-                                    <p className="text-gray-600 text-sm leading-relaxed font-medium">
+                                <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-lg transition-all duration-300">
+                                    <div className="flex items-center justify-center gap-3 mb-6">
+                                        <div className={`w-10 h-10 ${item.bgColor || 'bg-gray-50'} rounded-[10px] flex items-center justify-center`}>
+                                            {item.icon}
+                                        </div>
+                                        <h3 className="text-lg font-bold text-gray-800 tracking-wide">{item.title}</h3>
+                                    </div>
+                                    <p className="text-gray-600 leading-relaxed">
                                         {item.text}
                                     </p>
                                 </div>
@@ -125,7 +140,7 @@ export default function AboutUs() {
                                 {/* President */}
                                 <div className="flex flex-col md:flex-row items-center md:items-start gap-8 bg-gray-50/30 p-8 rounded-2xl border border-gray-100">
                                     <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-lg border-2 border-primary/20 flex-shrink-0">
-                                        <img src="/images/sudhir.jpeg" alt="Mr. Sudhir Kumar" className="w-full h-full object-cover" />
+                                        <img src="/images/sudhir.png" alt="Mr. Sudhir Kumar" className="w-full h-full object-cover" />
                                     </div>
                                     <div className="text-center md:text-left">
                                         <h3 className="text-2xl font-bold text-gray-900 mb-1">Mr. Sudhir Kumar</h3>
@@ -138,8 +153,8 @@ export default function AboutUs() {
 
                                 {/* Vice President */}
                                 <div className="flex flex-col md:flex-row-reverse items-center md:items-start gap-8 bg-gray-50/30 p-8 rounded-2xl border border-gray-100">
-                                    <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-lg border-2 border-secondary/20 flex-shrink-0">
-                                        <img src="/images/surajKumar.jpeg" alt="Mr. Suraj Kumar" className="w-full h-full object-cover" />
+                                    <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-lg border-2 border-primary/20 flex-shrink-0">
+                                        <img src="/images/surajkuman.png" alt="Mr. Suraj Kumar" className="w-full h-full object-cover" />
                                     </div>
                                     <div className="text-center md:text-right">
                                         <h3 className="text-2xl font-bold text-gray-900 mb-1">Mr. Suraj Kumar</h3>
@@ -190,12 +205,12 @@ export default function AboutUs() {
                         </div>
 
                         {/* Join Our Mission CTA */}
-                        <div className="mt-20 bg-background-light-blue p-10 rounded-3xl border border-blue-100 text-center shadow-sm">
-                            <h2 className="text-3xl font-bold text-primary-dark mb-4 tracking-tight">Join Our Mission</h2>
-                            <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+                        <div className="mt-10 bg-background-light-blue p-4 rounded-3xl border border-blue-100 text-center shadow-sm">
+                            <h3 className="text-2xl font-bold text-primary-dark mb-4 tracking-tight">Join Our Mission</h3>
+                            <p className="text-x text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
                                 Become a member and be part of the movement to protect human rights.
                             </p>
-                            <button className="bg-secondary text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-secondary/90 transition-all shadow-lg shadow-secondary/20 hover:scale-105 active:scale-95">
+                            <button className="bg-secondary text-white px-5 py-3 rounded-full font-bold text-xs hover:bg-secondary/90 transition-all shadow-lg shadow-secondary/20 hover:scale-105 active:scale-95">
                                 Become a member
                             </button>
                         </div>

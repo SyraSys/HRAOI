@@ -1,17 +1,142 @@
+"use client";
+
+import Announcements from "@/components/Announcements";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+
+type Photo = {
+  id: string;
+  title: string;
+  event: string;
+  imageUrl: string;
+};
+
 export default function Home() {
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
+
+  useEffect(() => {
+    fetch("/api/gallery")
+      .then((r) => r.json())
+      .then((data) => setPhotos(data));
+  }, []);
+
+  // Auto-advance slider
+  useEffect(() => {
+    if (photos.length > 0 && !isDragging) {
+      const timer = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % photos.length);
+      }, 4000); // Change slide every 4 seconds
+
+      return () => clearInterval(timer);
+    }
+  }, [photos.length, isDragging]);
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  // Mouse drag handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setDragStart(e.clientX);
+    setDragOffset(0);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    
+    const diff = e.clientX - dragStart;
+    setDragOffset(diff);
+  };
+
+  const handleMouseUp = () => {
+    if (!isDragging) return;
+    
+    setIsDragging(false);
+    
+    // Threshold for slide change (1/3 of image width)
+    const threshold = 380 / 3;
+    
+    if (dragOffset > threshold && currentSlide > 0) {
+      // Dragged right, go to previous slide
+      setCurrentSlide(prev => prev - 1);
+    } else if (dragOffset < -threshold && currentSlide < photos.length - 1) {
+      // Dragged left, go to next slide
+      setCurrentSlide(prev => prev + 1);
+    }
+    
+    setDragOffset(0);
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      setIsDragging(false);
+      setDragOffset(0);
+    }
+  };
+
   return (
     <div className="bg-white text-gray-800 font-sans">
       {/* Hero Slider Area */}
-      <section className="relative h-[300px] md:h-[450px] bg-gray-300 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center text-gray-500 font-bold text-xl uppercase tracking-widest bg-gradient-to-r from-gray-200 to-gray-400">
-          Hero Slider Images (Placeholder)
-        </div>
-        {/* Pagination Dots */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-          {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div key={i} className={`w-3 h-3 rounded-full ${i === 1 ? 'bg-white' : 'bg-white/50'}`} />
-          ))}
-        </div>
+      <section className="relative h-[260px] bg-gray-900 overflow-hidden">
+        {photos.length > 0 ? (
+          <>
+            {/* Slider Container */}
+            <div className="relative w-full h-full flex items-center">
+              <div 
+                className="flex transition-transform duration-300 ease-out cursor-grab active:cursor-grabbing"
+                style={{
+                  transform: `translateX(-${currentSlide * 380 - dragOffset}px)`,
+                  transitionDuration: isDragging ? '0ms' : '300ms'
+                }}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseLeave}
+                draggable={false}
+              >
+                {/* Triple the images for seamless looping */}
+                {[...photos, ...photos, ...photos].map((photo, index) => (
+                  <div
+                    key={`${photo.id}-${index}`}
+                    className="w-[380px] h-[260px] flex-shrink-0 select-none"
+                  >
+                    <img
+                      src={photo.imageUrl}
+                      alt={photo.title}
+                      className="w-full h-full object-cover border-r border-gray-800 pointer-events-none"
+                      draggable={false}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Dots Navigation */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {photos.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentSlide ? 'bg-white' : 'bg-white/50'
+                  } hover:bg-white/80`}
+                />
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-100">
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+              <p className="font-semibold tracking-wide">Loading Gallery...</p>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Search & Announcements Section */}
@@ -44,21 +169,7 @@ export default function Home() {
           </div>
 
           {/* Announcements */}
-          <div className="bg-background-light-purple p-8 rounded-2xl shadow-sm border border-purple-100">
-            <h2 className="text-2xl font-bold mb-6">HRAOI Announcements</h2>
-            <ul className="space-y-4">
-              <li className="flex gap-3 border-b border-gray-100 pb-4">
-                <span className="text-primary font-bold">•</span>
-                <div>
-                  <h3 className="font-bold text-sm">Website Information</h3>
-                  <p className="text-sm text-gray-600">****** All the Members of HRAOI, Website New look **** *********</p>
-                </div>
-              </li>
-              <li className="text-sm text-gray-600 leading-relaxed italic">
-                All presidents should ensure through icards distribution program in their subordinate state/division/districts
-              </li>
-            </ul>
-          </div>
+          <Announcements />
         </div>
       </section>
 
@@ -99,14 +210,10 @@ export default function Home() {
           <div className="md:w-1/2 relative flex justify-center">
             {/* Styled Image Container */}
             <div className="relative group p-4">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-[2.5rem] p-1 bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 shadow-2xl overflow-hidden">
-                <div className="w-full h-full bg-white rounded-[2.3rem] overflow-hidden">
-                  <img src="/images/sudhir.jpeg" alt="Mr. Sudhir Kumar" className="w-full h-full object-cover" />
-                </div>
+              <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-[2.5rem] shadow-2xl overflow-hidden">
+                <img src="/images/sudhir.png" alt="Mr. Sudhir Kumar" className="w-full h-full object-cover" />
               </div>
               {/* Decorative dots/shapes matching screenshot */}
-              <div className="absolute top-0 left-0 w-4 h-4 bg-blue-400 rounded-full -translate-x-1/2 -translate-y-1/2 blur-[2px]"></div>
             </div>
           </div>
 
@@ -126,13 +233,9 @@ export default function Home() {
         <div className="container mx-auto px-4 flex flex-col md:flex-row-reverse items-center gap-16">
           <div className="md:w-1/2 relative flex justify-center">
             <div className="relative group p-4">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-[2.5rem] p-1 bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 shadow-2xl overflow-hidden">
-                <div className="w-full h-full bg-white rounded-[2.3rem] overflow-hidden">
-                  <img src="/images/surajKumar.jpeg" alt="Mr. Suraj Kumar" className="w-full h-full object-cover" />
-                </div>
+              <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-[2.5rem] shadow-2xl overflow-hidden">
+                <img src="/images/surajkuman.png" alt="Mr. Suraj Kumar" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute top-0 left-0 w-4 h-4 bg-blue-400 rounded-full -translate-x-1/2 -translate-y-1/2 blur-[2px]"></div>
             </div>
           </div>
 
@@ -151,13 +254,9 @@ export default function Home() {
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
           <div className="md:w-1/2 relative flex justify-center">
             <div className="relative group p-4">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-[2.5rem] p-1 bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 shadow-2xl overflow-hidden">
-                <div className="w-full h-full bg-white rounded-[2.3rem] overflow-hidden">
-                  <img src="/images/Founder1.jpeg" alt="Mr. Ajay Kumar Das" className="w-full h-full object-cover" />
-                </div>
+              <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-[2.5rem] shadow-2xl overflow-hidden">
+                <img src="/images/AjarKumar.png" alt="Mr. Ajay Kumar Das" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute top-0 left-0 w-4 h-4 bg-blue-400 rounded-full -translate-x-1/2 -translate-y-1/2 blur-[2px]"></div>
             </div>
           </div>
 
@@ -176,13 +275,9 @@ export default function Home() {
         <div className="container mx-auto px-4 flex flex-col md:flex-row-reverse items-center gap-16">
           <div className="md:w-1/2 relative flex justify-center">
             <div className="relative group p-4">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-[2.5rem] p-1 bg-gradient-to-tr from-blue-400 via-purple-400 to-pink-400 shadow-2xl overflow-hidden">
-                <div className="w-full h-full bg-white rounded-[2.3rem] overflow-hidden">
-                  <img src="/images/founder2.jpeg" alt="Mr. Md. Hasrat Shah" className="w-full h-full object-cover" />
-                </div>
+              <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-[2.5rem] shadow-2xl overflow-hidden">
+                <img src="/images/hasrat.png" alt="Mr. Md. Hasrat Shah" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute top-0 left-0 w-4 h-4 bg-blue-400 rounded-full -translate-x-1/2 -translate-y-1/2 blur-[2px]"></div>
             </div>
           </div>
 
@@ -197,7 +292,7 @@ export default function Home() {
       </section>
 
       {/* Mini Gallery */}
-      <section className="py-12 bg-white">
+      {/* <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-4">
             {[1, 2, 3, 4, 5].map((i) => (
@@ -207,31 +302,25 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
 
       {/* Donate Section */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-white overflow-visible">
         <div className="container mx-auto px-4">
-          <div className="bg-primary rounded-3xl p-8 md:p-12 relative overflow-hidden group">
-            <div className="absolute left-8 bottom-0 w-48 h-64 bg-white/10 rounded-t-full hidden md:flex items-center justify-center text-white/20 select-none">
-              Person
+          <div className="bg-primary rounded-3xl p-8 md:p-12 relative overflow-visible group">
+            <div className="absolute -left--40 bottom-0 w-80 h-80 hidden md:flex items-end justify-start overflow-visible">
+              <img src="/images/donate.png" alt="Person with donation box" className="w-full h-auto object-contain" />
             </div>
 
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8 relative z-10 text-center md:text-left">
+            <div className="flex flex-col items-center justify-center gap-8 relative z-10 text-center">
               <div className="md:ml-56">
                 <h3 className="text-2xl md:text-3xl font-normal text-white mb-2">Be part of the change, and donate to a good cause.</h3>
               </div>
               <div className="relative">
-                <div className="bg-white p-6 rounded-xl shadow-xl flex flex-col items-center gap-2 group-hover:scale-110 transition-transform">
-                  <div className="w-12 h-12 border-2 border-brand-cyan rounded flex items-center justify-center">
-                    <div className="w-4 h-4 bg-brand-cyan rounded-sm"></div>
-                  </div>
-                  <div className="text-[10px] font-bold text-primary tracking-tighter uppercase">Donate</div>
-                  <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-black/10 rounded-full flex items-center justify-center">
-                    🖐️
-                  </div>
-                </div>
+                <Link href="/donate">
+                  <img src="/images/donate.gif" alt="Donate button" className="w-28 h-auto hover:scale-110 transition-transform cursor-pointer" />
+                </Link>
               </div>
             </div>
           </div>

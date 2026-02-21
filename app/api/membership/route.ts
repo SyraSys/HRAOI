@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import cloudinary from "@/lib/cloudinary";
+import { uploadFile } from "@/lib/supabase-storage";
 
 export async function POST(req: NextRequest) {
   try {
@@ -32,17 +32,10 @@ export async function POST(req: NextRequest) {
       const bytes = await photoFile.arrayBuffer();
       const buffer = Buffer.from(bytes);
 
-      const uploadResult = await new Promise<{ secure_url: string }>((resolve, reject) => {
-        cloudinary.uploader.upload_stream(
-          { folder: "hraoi/membership", resource_type: "image" },
-          (error, result) => {
-            if (error || !result) reject(error);
-            else resolve(result as { secure_url: string });
-          }
-        ).end(buffer);
-      });
+      const path = `membership/${Date.now()}-${photoFile.name}`;
+      const uploadResult = await uploadFile(buffer, path, photoFile.type);
 
-      photoUrl = uploadResult.secure_url;
+      photoUrl = uploadResult.url;
     }
 
     const membership = await prisma.membership.create({

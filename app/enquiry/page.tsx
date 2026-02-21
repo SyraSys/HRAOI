@@ -1,8 +1,34 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 
 export default function Enquiry() {
+    const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus("loading");
+
+        const res = await fetch("/api/enquiry", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(form),
+        });
+
+        if (res.ok) {
+            setStatus("success");
+            setForm({ name: "", email: "", subject: "", message: "" });
+        } else {
+            setStatus("error");
+        }
+    };
+
     return (
         <div className="bg-white min-h-screen">
             <div className="container mx-auto px-4 py-8">
@@ -17,63 +43,75 @@ export default function Enquiry() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                     {/* Left Side: Form */}
                     <div className="space-y-6">
-                        <form className="space-y-8">
-                            <div className="space-y-2">
+                        {status === "success" && (
+                            <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm font-medium">
+                                ✓ Your enquiry has been submitted successfully! We will get back to you soon.
+                            </div>
+                        )}
+                        {status === "error" && (
+                            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm font-medium">
+                                Something went wrong. Please try again.
+                            </div>
+                        )}
+
+                        <form className="space-y-4" onSubmit={handleSubmit}>
+                            <div className="space-y-1">
                                 <label className="block text-sm font-bold text-[#1a1a5e]">Your name<span className="text-[#d93025]">*</span></label>
                                 <input
                                     type="text"
+                                    name="name"
+                                    value={form.name}
+                                    onChange={handleChange}
                                     placeholder="Enter your name..."
-                                    className="w-full px-4 py-3 border border-gray-200 rounded focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
+                                    required
+                                    className="w-full px-4 py-2 border border-gray-200 rounded focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
                                 />
                             </div>
 
-                            <div className="space-y-2">
+                            <div className="space-y-1">
                                 <label className="block text-sm font-bold text-[#1a1a5e]">Your email<span className="text-[#d93025]">*</span></label>
                                 <input
                                     type="email"
+                                    name="email"
+                                    value={form.email}
+                                    onChange={handleChange}
                                     placeholder="Enter your email..."
-                                    className="w-full px-4 py-3 border border-gray-200 rounded focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
+                                    required
+                                    className="w-full px-4 py-2 border border-gray-200 rounded focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
                                 />
                             </div>
 
-                            <div className="space-y-2">
+                            <div className="space-y-1">
                                 <label className="block text-sm font-bold text-[#1a1a5e]">Subject<span className="text-[#d93025]">*</span></label>
                                 <input
                                     type="text"
+                                    name="subject"
+                                    value={form.subject}
+                                    onChange={handleChange}
                                     placeholder="Your subject..."
-                                    className="w-full px-4 py-3 border border-gray-200 rounded focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
+                                    required
+                                    className="w-full px-4 py-2 border border-gray-200 rounded focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
                                 />
                             </div>
 
-                            <div className="space-y-2">
+                            <div className="space-y-1">
                                 <label className="block text-sm font-bold text-[#1a1a5e]">Your message (optional)</label>
                                 <textarea
                                     rows={6}
+                                    name="message"
+                                    value={form.message}
+                                    onChange={handleChange}
                                     placeholder="Your message..."
-                                    className="w-full px-4 py-3 border border-gray-200 rounded focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all resize-none placeholder:text-gray-300"
+                                    className="w-full px-4 py-2 border border-gray-200 rounded focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all resize-none placeholder:text-gray-300"
                                 ></textarea>
-                            </div>
-
-                            {/* reCAPTCHA Mockup */}
-                            <div className="bg-[#f9f9f9] border border-[#d3d3d3] rounded-sm p-3 w-fit flex items-center gap-4">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-6 h-6 border-2 border-gray-300 bg-white rounded-sm cursor-pointer"></div>
-                                    <span className="text-sm text-[#333]">I'm not a robot</span>
-                                </div>
-                                <div className="flex flex-col items-center ml-4">
-                                    <div className="w-8 h-8 relative opacity-70">
-                                        <div className="absolute inset-0 border-2 border-blue-500 rounded-full border-t-transparent animate-spin hidden"></div>
-                                        <span className="text-[10px] font-bold text-blue-500">reCAP</span>
-                                    </div>
-                                    <span className="text-[8px] text-gray-400">Privacy - Terms</span>
-                                </div>
                             </div>
 
                             <button
                                 type="submit"
-                                className="bg-[#242171] text-white px-12 py-3 rounded font-bold hover:bg-[#1a1a5e] transition-all uppercase tracking-widest text-sm shadow-md"
+                                disabled={status === "loading"}
+                                className="bg-[#242171] text-white px-12 py-2 rounded font-bold hover:bg-[#1a1a5e] transition-all uppercase tracking-widest text-sm shadow-md disabled:opacity-60"
                             >
-                                Send
+                                {status === "loading" ? "Sending..." : "Send"}
                             </button>
                         </form>
                     </div>
@@ -83,15 +121,17 @@ export default function Enquiry() {
                         <h3 className="text-xl font-bold text-[#1a1a5e]">We Are Here</h3>
 
                         <div className="relative group">
-                            {/* Map Placeholder */}
+                            {/* Google Map */}
                             <div className="w-full aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-sm relative border border-gray-200">
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="text-gray-300 font-bold italic text-lg uppercase tracking-tighter opacity-50">Google Maps View: Amar Plaza, Delhi</div>
-                                </div>
-                                {/* Decorative Map Pins Style */}
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                    <div className="w-8 h-8 text-red-600">📍</div>
-                                </div>
+                                <iframe
+                                    width="100%"
+                                    height="100%"
+                                    style={{ border: 0 }}
+                                    src="https://maps.google.com/maps?q=45%20D%2C%20Amar%20Plaza%2C%20Hasanpur%20Main%20Road%2C%20I.P.%20Extension%2C%20Delhi%20-%2092&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                ></iframe>
                             </div>
 
                             {/* Overlay Info Box */}
@@ -107,12 +147,6 @@ export default function Enquiry() {
                                         Phone: 011- 32405800
                                     </p>
                                     <ul className="space-y-1">
-                                        <li className="flex gap-2 text-blue-600 hover:text-[#242171] cursor-pointer">
-                                            <span>✉️</span> www.hraoi.in@gmail.com
-                                        </li>
-                                        <li className="flex gap-2 text-blue-600 hover:text-[#242171] cursor-pointer">
-                                            <span>✉️</span> www.hraoi.in@gmail.com
-                                        </li>
                                         <li className="flex gap-2 text-blue-600 hover:text-[#242171] cursor-pointer">
                                             <span>✉️</span> www.hraoi.in@gmail.com
                                         </li>

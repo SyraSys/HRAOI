@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import cloudinary from "@/lib/cloudinary";
+import { uploadFile, deleteFile } from "@/lib/supabase-storage";
 
 export async function GET() {
   const session = await auth();
@@ -30,24 +30,15 @@ export async function POST(req: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const uploadResult = await new Promise<{ secure_url: string; public_id: string }>(
-      (resolve, reject) => {
-        cloudinary.uploader.upload_stream(
-          { folder: "hraoi/gallery", resource_type: "image" },
-          (error, result) => {
-            if (error || !result) reject(error);
-            else resolve(result as { secure_url: string; public_id: string });
-          }
-        ).end(buffer);
-      }
-    );
+    const path = `gallery/${Date.now()}-${file.name}`;
+    const uploadResult = await uploadFile(buffer, path, file.type);
 
     const photo = await prisma.photoGallery.create({
       data: {
         title,
         event,
-        imageUrl: uploadResult.secure_url,
-        publicId: uploadResult.public_id,
+        imageUrl: uploadResult.url,
+        publicId: uploadResult.path,
       },
     });
 
@@ -67,7 +58,7 @@ export async function DELETE(req: NextRequest) {
     const photo = await prisma.photoGallery.findUnique({ where: { id } });
     if (!photo) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-    await cloudinary.uploader.destroy(photo.publicId);
+    await deleteFile(photo.publicId);
     await prisma.photoGallery.delete({ where: { id } });
 
     return NextResponse.json({ success: true });

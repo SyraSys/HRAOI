@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model PhotoGallery {
+  id         String   @id @default(cuid())
+  title      String
+  imageUrl   String
+  publicId   String
+  uploadedAt DateTime @default(now())
+  event      String
+}
+
+model Circular {
+  id         String   @id @default(cuid())
+  title      String
+  fileUrl    String
+  publicId   String
+  date       DateTime @default(now())
+  uploadedAt DateTime @default(now())
+}
+
+model Order {
+  id         String   @id @default(cuid())
+  title      String
+  fileUrl    String
+  publicId   String
+  date       DateTime @default(now())
+  uploadedAt DateTime @default(now())
+}
+
+model Enquiry {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String?
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+}
+
+model Membership {
+  id               String   @id @default(cuid())
+  name             String
+  fatherName       String
+  address1         String
+  address2         String?
+  city             String
+  state            String
+  district         String
+  pincode          String
+  phone            String
+  dob              String
+  doj              String
+  proposedPost     String
+  area             String?
+  recommendationId String?
+  photoUrl         String?
+  status           String   @default("pending")
+  createdAt        DateTime @default(now())
+}
+
+model Announcement {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  date        DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

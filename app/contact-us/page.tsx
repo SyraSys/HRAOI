@@ -1,5 +1,7 @@
 "use client";
 
+import MemberSearch from "@/components/MemberSearch";
+
 export default function ContactUs() {
     return (
         <div className="bg-white min-h-screen">
@@ -16,18 +18,7 @@ export default function ContactUs() {
                     {/* Sidebar */}
                     <aside className="lg:w-1/4 space-y-8">
                         {/* Member Search */}
-                        <div className="bg-[#f0f9ff] p-6 rounded-xl border border-blue-100 shadow-sm">
-                            <h3 className="text-lg font-bold mb-4">Member Search</h3>
-                            <p className="text-xs text-gray-500 mb-2">Member NO.</p>
-                            <div className="flex gap-2">
-                                <input
-                                    type="text"
-                                    placeholder="Only Numeric no."
-                                    className="flex-1 px-3 py-2 text-sm rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#242171]"
-                                />
-                                <button className="bg-[#242171] text-white px-4 py-2 rounded text-xs font-semibold">Search</button>
-                            </div>
-                        </div>
+                        <MemberSearch />
 
                         {/* Manav Adhikar Garima */}
                         <div className="bg-[#f8f7ff] p-6 rounded-xl border border-purple-100 shadow-sm">
@@ -80,16 +71,15 @@ export default function ContactUs() {
                         <div className="space-y-6">
                             <h3 className="text-xl font-bold text-[#1a1a5e] uppercase tracking-tighter">We Are Here</h3>
                             <div className="w-full aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow-inner relative border border-gray-200">
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="text-gray-300 font-bold italic text-xl uppercase tracking-tighter opacity-50">Google Maps View: Amar Plaza, Delhi</div>
-                                </div>
-                                {/* Map Pin Mockup */}
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                    <div className="relative">
-                                        <div className="text-red-600 text-3xl">📍</div>
-                                        <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-white px-2 py-1 rounded shadow-sm text-[10px] font-bold whitespace-nowrap border">Amar Plaza</div>
-                                    </div>
-                                </div>
+                                <iframe
+                                    width="100%"
+                                    height="100%"
+                                    style={{ border: 0 }}
+                                    src="https://maps.google.com/maps?q=45%20D%2C%20Amar%20Plaza%2C%20Hasanpur%20Main%20Road%2C%20I.P.%20Extension%2C%20Delhi%20-%2092&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                ></iframe>
                             </div>
                         </div>
                     </main>

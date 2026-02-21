@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import cloudinary from "@/lib/cloudinary";
+import { uploadFile, deleteFile } from "@/lib/supabase-storage";
 
 export async function GET() {
   const session = await auth();
@@ -30,23 +30,14 @@ export async function POST(req: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const uploadResult = await new Promise<{ secure_url: string; public_id: string }>(
-      (resolve, reject) => {
-        cloudinary.uploader.upload_stream(
-          { folder: "hraoi/orders", resource_type: "auto" },
-          (error, result) => {
-            if (error || !result) reject(error);
-            else resolve(result as { secure_url: string; public_id: string });
-          }
-        ).end(buffer);
-      }
-    );
+    const path = `orders/${Date.now()}-${file.name}`;
+    const uploadResult = await uploadFile(buffer, path, file.type);
 
     const order = await prisma.order.create({
       data: {
         title,
-        fileUrl: uploadResult.secure_url,
-        publicId: uploadResult.public_id,
+        fileUrl: uploadResult.url,
+        publicId: uploadResult.path,
         date: date ? new Date(date) : new Date(),
       },
     });
@@ -67,7 +58,7 @@ export async function DELETE(req: NextRequest) {
     const order = await prisma.order.findUnique({ where: { id } });
     if (!order) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-    await cloudinary.uploader.destroy(order.publicId, { resource_type: "raw" });
+    await deleteFile(order.publicId);
     await prisma.order.delete({ where: { id } });
 
     return NextResponse.json({ success: true });

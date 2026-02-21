@@ -14,8 +14,7 @@ const geistMono = Geist_Mono({
 
 
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import ConditionalLayout from "@/components/ConditionalLayout";
 
 export default function RootLayout({
   children,
@@ -25,13 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-[#d93025] selection:text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-secondary selection:text-white`}
       >
-        <Header />
-        <main>
+        <ConditionalLayout>
           {children}
-        </main>
-        <Footer />
+        </ConditionalLayout>
       </body>
     </html>
   );

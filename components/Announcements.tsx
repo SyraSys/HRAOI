@@ -59,9 +59,6 @@ export default function Announcements() {
                             </div>
                         </li>
                     ))}
-                    <li className="text-sm text-gray-600 leading-relaxed italic pt-4">
-                        All presidents should ensure through icards distribution program in their subordinate state/division/districts
-                    </li>
                 </ul>
             )}
 
@@ -69,7 +66,7 @@ export default function Announcements() {
             {selected && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
                     <div className="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl transform transition-all animate-in fade-in zoom-in duration-300">
-                        <div className="bg-[#1a1a5e] p-6 text-white flex justify-between items-start">
+                        <div className="bg-primary-dark p-2 pl-5 text-white flex justify-between items-start">
                             <div>
                                 <div className="text-[10px] font-bold uppercase tracking-widest text-blue-300 mb-1">
                                     {new Date(selected.date).toLocaleDateString("en-IN", { day: "2-digit", month: "long", year: "numeric" })}
@@ -92,7 +89,7 @@ export default function Announcements() {
                             <div className="mt-10 flex justify-end">
                                 <button
                                     onClick={() => setSelected(null)}
-                                    className="bg-primary text-white px-8 py-2.5 rounded-xl font-bold hover:bg-primary-dark transition-all shadow-lg shadow-primary/20"
+                                    className="bg-primary text-white px-3 py-2 rounded-xl font-semibold hover:bg-primary-dark transition-all shadow-lg shadow-primary/20"
                                 >
                                     Close
                                 </button>

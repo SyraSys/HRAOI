@@ -48,19 +48,19 @@ export default function Home() {
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
-    
+
     const diff = e.clientX - dragStart;
     setDragOffset(diff);
   };
 
   const handleMouseUp = () => {
     if (!isDragging) return;
-    
+
     setIsDragging(false);
-    
+
     // Threshold for slide change (1/3 of image width)
     const threshold = 380 / 3;
-    
+
     if (dragOffset > threshold && currentSlide > 0) {
       // Dragged right, go to previous slide
       setCurrentSlide(prev => prev - 1);
@@ -68,7 +68,7 @@ export default function Home() {
       // Dragged left, go to next slide
       setCurrentSlide(prev => prev + 1);
     }
-    
+
     setDragOffset(0);
   };
 
@@ -87,7 +87,7 @@ export default function Home() {
           <>
             {/* Slider Container */}
             <div className="relative w-full h-full flex items-center">
-              <div 
+              <div
                 className="flex transition-transform duration-300 ease-out cursor-grab active:cursor-grabbing"
                 style={{
                   transform: `translateX(-${currentSlide * 380 - dragOffset}px)`,
@@ -115,16 +115,15 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            
+
             {/* Dots Navigation */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
               {photos.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentSlide ? 'bg-white' : 'bg-white/50'
-                  } hover:bg-white/80`}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-white' : 'bg-white/50'
+                    } hover:bg-white/80`}
                 />
               ))}
             </div>
@@ -150,7 +149,7 @@ export default function Home() {
               <input
                 type="text"
                 placeholder="Only Numeric no."
-                className="flex-1 px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="flex-1 px-4 py-2 rounded border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <button className="bg-primary text-white px-6 py-2 rounded font-semibold hover:bg-primary-dark">
                 Search
@@ -158,9 +157,11 @@ export default function Home() {
             </div>
 
             <div className="mt-8 flex justify-center">
-              <button className="bg-secondary text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-secondary/20 hover:scale-105 transition-transform active:scale-95">
-                Become a member
-              </button>
+              <Link href="/membership">
+                <button className="bg-secondary text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-secondary/20 hover:scale-105 transition-transform active:scale-95">
+                  Become a member
+                </button>
+              </Link>
             </div>
 
             <div className="mt-8 bg-background-blue-muted text-primary p-4 rounded-xl text-xs leading-relaxed italic text-center border border-primary/20">
@@ -206,7 +207,7 @@ export default function Home() {
 
       {/* National President Section */}
       <section className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
+        <div className="container mx-auto px-8 md:px-20 flex flex-col md:flex-row items-center gap-16">
           <div className="md:w-1/2 relative flex justify-center">
             {/* Styled Image Container */}
             <div className="relative group p-4">
@@ -230,7 +231,7 @@ export default function Home() {
 
       {/* National Vice President Section */}
       <section className="py-24 bg-gray-50 overflow-hidden">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row-reverse items-center gap-16">
+        <div className="container mx-auto px-8 md:px-20 flex flex-col md:flex-row-reverse items-center gap-16">
           <div className="md:w-1/2 relative flex justify-center">
             <div className="relative group p-4">
               <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-[2.5rem] shadow-2xl overflow-hidden">
@@ -251,7 +252,7 @@ export default function Home() {
 
       {/* National Vice General Secretary Section */}
       <section className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
+        <div className="container mx-auto px-8 md:px-20 flex flex-col md:flex-row items-center gap-16">
           <div className="md:w-1/2 relative flex justify-center">
             <div className="relative group p-4">
               <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-[2.5rem] shadow-2xl overflow-hidden">
@@ -272,7 +273,7 @@ export default function Home() {
 
       {/* National General Secretary Section */}
       <section className="py-24 bg-gray-50 overflow-hidden">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row-reverse items-center gap-16">
+        <div className="container mx-auto px-8 md:px-20 flex flex-col md:flex-row-reverse items-center gap-16">
           <div className="md:w-1/2 relative flex justify-center">
             <div className="relative group p-4">
               <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-[2.5rem] shadow-2xl overflow-hidden">
@@ -285,7 +286,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold mb-2 text-gray-900">Mr. Md. Hasrat Shah</h2>
             <h3 className="text-xl font-semibold text-primary mb-6">National General Secretary</h3>
             <p className="text-gray-600 mb-8 text-lg leading-relaxed italic">
-              "Committed to justice, dignity, and human rights for all."
+              "Human rights are not a privilege granted by power; they are a dignity inherent to every human life"
             </p>
           </div>
         </div>
@@ -329,8 +330,8 @@ export default function Home() {
 
 
       {/* Mission Section */}
-      <section className="relative py-24 text-white overflow-hidden bg-primary/90">
-        <div className="absolute inset-0 bg-black/10 z-0"></div>
+      <section className="relative py-24 text-white overflow-hidden bg-[url('/images/back.jpg')] bg-cover bg-center bg-no-repeat">
+        <div className="absolute inset-0 bg-black/50 z-0"></div>
         <div className="container mx-auto px-4 relative z-20 text-center">
           <h2 className="text-4xl font-bold mb-8">Human Rights Association of India</h2>
           <p className="max-w-4xl mx-auto text-lg leading-relaxed italic">

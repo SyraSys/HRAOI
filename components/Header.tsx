@@ -35,10 +35,12 @@ export default function Header() {
                     </div>
 
                     <div className="hidden lg:flex items-center gap-4">
-                        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-[10px] text-gray-400">Award 1</div>
-                        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-[10px] text-gray-400">Award 2</div>
-                        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-[10px] text-gray-400">Award 3</div>
-                        <div className="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">Official Image</div>
+                        <div className="w-30 h-30 overflow-hidden flex items-center justify-center bg-white">
+                            <img src="/icons/niti-ayog.png" alt="Niti Aayog" className="w-full h-full object-contain p-1" />
+                        </div>
+                        <div className="w-24 h-24  overflow-hidden flex items-center justify-center">
+                            <img src="/images/headerbg.png" alt="Official" className="w-full h-full object-cover" />
+                        </div>
                     </div>
                 </div>
             </header>

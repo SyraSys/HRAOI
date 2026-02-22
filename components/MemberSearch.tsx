@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 interface MemberSearchProps {
   variant?: 'main' | 'sidebar';
@@ -9,9 +10,9 @@ interface MemberSearchProps {
   className?: string;
 }
 
-export default function MemberSearch({ 
-  variant = 'sidebar', 
-  showBecomeMemberButton = false, 
+export default function MemberSearch({
+  variant = 'sidebar',
+  showBecomeMemberButton = false,
   showNotice = false,
   className = ''
 }: MemberSearchProps) {
@@ -31,14 +32,14 @@ export default function MemberSearch({
   const isMainVariant = variant === 'main';
 
   return (
-    <div className={`bg-background-light-blue p-${isMainVariant ? '8' : '6'} rounded-${isMainVariant ? '2xl' : 'xl'} shadow-sm border border-blue-100 ${className}`}>
+    <div className={`bg-white p-${isMainVariant ? '8' : '6'} rounded-${isMainVariant ? '2xl' : 'xl'} shadow-sm border border-blue-100 ${className}`}>
       <h2 className={`font-bold mb-${isMainVariant ? '2' : '4'} ${isMainVariant ? 'text-2xl' : 'text-lg uppercase tracking-tighter text-indigo-950'}`}>
         Member Search
       </h2>
       <p className={`text-gray-${isMainVariant ? '600' : '500'} mb-${isMainVariant ? '6' : '2'} ${isMainVariant ? 'text-sm' : 'text-xs font-semibold'}`}>
         Member NO.
       </p>
-      
+
       <div className={`flex gap-2 ${!isMainVariant ? 'mb-4' : ''}`}>
         <input
           type="text"
@@ -46,9 +47,9 @@ export default function MemberSearch({
           value={memberNo}
           onChange={(e) => setMemberNo(e.target.value.replace(/[^0-9]/g, ''))}
           onKeyPress={handleKeyPress}
-          className={`flex-1 px-${isMainVariant ? '4' : '3'} py-2 ${isMainVariant ? '' : 'text-sm'} rounded border border-gray-300 focus:outline-none focus:ring-${isMainVariant ? '2' : '1'} focus:ring-primary`}
+          className={`flex-1 bg-white px-${isMainVariant ? '4' : '3'} py-2 ${isMainVariant ? '' : 'text-sm'} rounded border border-gray-300 focus:outline-none focus:ring-${isMainVariant ? '2' : '1'} focus:ring-primary`}
         />
-        <button 
+        <button
           onClick={handleSearch}
           className={`bg-primary text-white px-${isMainVariant ? '6' : '4'} py-2 rounded ${isMainVariant ? '' : 'text-xs'} font-semibold hover:bg-primary-dark transition-colors`}
         >
@@ -58,9 +59,11 @@ export default function MemberSearch({
 
       {showBecomeMemberButton && (
         <div className="mt-8 flex justify-center">
-          <button className="bg-secondary text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-secondary/20 hover:scale-105 transition-transform active:scale-95">
-            Become a member
-          </button>
+          <Link href="/membership">
+            <button className="bg-secondary text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-secondary/20 hover:scale-105 transition-transform active:scale-95">
+              Become a member
+            </button>
+          </Link>
         </div>
       )}
 

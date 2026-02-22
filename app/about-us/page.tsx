@@ -1,3 +1,4 @@
+import Link from "next/link";
 import MemberSearch from "@/components/MemberSearch";
 
 export default function AboutUs() {
@@ -84,8 +85,8 @@ export default function AboutUs() {
                                     text: "Protect and promote human rights for all citizens of India regardless of caste, creed, religion, or economic status.",
                                     icon: (
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8A24D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4z"/>
-                                            <path d="M9 12l2 2 4-4"/>
+                                            <path d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4z" />
+                                            <path d="M9 12l2 2 4-4" />
                                         </svg>
                                     ),
                                     bgColor: "bg-[#F8F5EC]"
@@ -95,8 +96,8 @@ export default function AboutUs() {
                                     text: "A society where every individual enjoys their fundamental rights and lives with dignity and respect.",
                                     icon: (
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8A24D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
-                                            <circle cx="12" cy="12" r="3"/>
+                                            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
+                                            <circle cx="12" cy="12" r="3" />
                                         </svg>
                                     ),
                                     bgColor: "bg-[#F8F5EC]"
@@ -106,10 +107,10 @@ export default function AboutUs() {
                                     text: "Justice, Equality, Integrity, Compassion, and Dedication to serving humanity.",
                                     icon: (
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C8A24D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M12 3v18"/>
-                                            <path d="M3 7h18"/>
-                                            <path d="M7 7l-3 5a3 3 0 0 0 6 0l-3-5z"/>
-                                            <path d="M17 7l-3 5a3 3 0 0 0 6 0l-3-5z"/>
+                                            <path d="M12 3v18" />
+                                            <path d="M3 7h18" />
+                                            <path d="M7 7l-3 5a3 3 0 0 0 6 0l-3-5z" />
+                                            <path d="M17 7l-3 5a3 3 0 0 0 6 0l-3-5z" />
                                         </svg>
                                     ),
                                     bgColor: "bg-[#F8F5EC]"
@@ -210,9 +211,11 @@ export default function AboutUs() {
                             <p className="text-x text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
                                 Become a member and be part of the movement to protect human rights.
                             </p>
-                            <button className="bg-secondary text-white px-5 py-3 rounded-full font-bold text-xs hover:bg-secondary/90 transition-all shadow-lg shadow-secondary/20 hover:scale-105 active:scale-95">
-                                Become a member
-                            </button>
+                            <Link href="/membership">
+                                <button className="bg-secondary text-white px-5 py-3 rounded-full font-bold text-xs hover:bg-secondary/90 transition-all shadow-lg shadow-secondary/20 hover:scale-105 active:scale-95">
+                                    Become a member
+                                </button>
+                            </Link>
                         </div>
                     </main>
                 </div>

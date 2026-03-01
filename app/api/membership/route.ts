@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { uploadFile } from "@/lib/supabase-storage";
+import { uploadFile } from "@/lib/cloudinary";
 
 export async function POST(req: NextRequest) {
   try {
@@ -32,8 +32,7 @@ export async function POST(req: NextRequest) {
       const bytes = await photoFile.arrayBuffer();
       const buffer = Buffer.from(bytes);
 
-      const path = `membership/${Date.now()}-${photoFile.name}`;
-      const uploadResult = await uploadFile(buffer, path, photoFile.type);
+      const uploadResult = await uploadFile(buffer, "membership", "image");
 
       photoUrl = uploadResult.url;
     }

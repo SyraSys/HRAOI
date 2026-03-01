@@ -1,5 +1,7 @@
 import Link from "next/link";
 import MemberSearch from "@/components/MemberSearch";
+import { FadeIn, Stagger, StaggerItem, Pressable } from "@/components/Motion";
+import { motion } from "framer-motion";
 
 export default function AboutUs() {
     return (
@@ -14,9 +16,9 @@ export default function AboutUs() {
                         {/* Member Search */}
                         <MemberSearch />
 
-                        {/* Manav Adhikar Garima */}
+                        {/* Human Rights Association of India */}
                         <div className="bg-background-light-purple p-6 rounded-xl border border-purple-100">
-                            <h3 className="text-lg font-bold mb-4 uppercase tracking-tighter text-indigo-950">Manav Adhikar Garima</h3>
+                            <h3 className="text-lg font-bold mb-4 uppercase tracking-tighter text-indigo-950">Human Rights Association of India</h3>
                             <div className="space-y-4">
                                 {/* Hindi Text Mockup */}
                                 <p className="text-xs text-gray-600 leading-relaxed italic">
@@ -55,27 +57,33 @@ export default function AboutUs() {
                             </p>
                         </div>
 
-                        <div className="mb-14 p-10 bg-blue-100 rounded-xl">
-                            <h2 className="text-2xl font-bold text-primary-dark inline-block relative px-1 mb-8 uppercase tracking-tight">
-                                What We Do
-                            </h2>
+                        <FadeIn>
+                            <div className="mb-14 p-10 bg-blue-100 rounded-2xl shadow-inner">
+                                <h2 className="text-2xl font-bold text-primary-dark inline-block relative px-1 mb-8 uppercase tracking-tight">
+                                    What We Do
+                                </h2>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-3">
-                                {[
-                                    "Advocacy for human rights protection",
-                                    "Legal aid and assistance",
-                                    "Awareness campaigns and education",
-                                    "Investigation of rights violations",
-                                    "Community development programs",
-                                    "Policy recommendations to government",
-                                ].map((text, i) => (
-                                    <div key={i} className="flex items-start gap-4">
-                                        <div className="mt-1.5 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></div>
-                                        <span className="text-gray-700 font-medium text-base tracking-tight">{text}</span>
+                                <Stagger interval={0.08}>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-3">
+                                        {[
+                                            "Advocacy for human rights protection",
+                                            "Legal aid and assistance",
+                                            "Awareness campaigns and education",
+                                            "Investigation of rights violations",
+                                            "Community development programs",
+                                            "Policy recommendations to government",
+                                        ].map((text, i) => (
+                                            <StaggerItem key={i}>
+                                                <div className="flex items-start gap-4 group">
+                                                    <div className="mt-1.5 w-2 h-2 rounded-full bg-secondary flex-shrink-0 group-hover:scale-150 transition-transform"></div>
+                                                    <span className="text-gray-700 font-medium text-base tracking-tight">{text}</span>
+                                                </div>
+                                            </StaggerItem>
+                                        ))}
                                     </div>
-                                ))}
+                                </Stagger>
                             </div>
-                        </div>
+                        </FadeIn>
 
                         {/* Mission, Vision, Values Section */}
                         <div className="mb-14 grid grid-cols-1 md:grid-cols-3 gap-8">

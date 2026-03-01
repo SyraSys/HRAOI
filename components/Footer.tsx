@@ -47,7 +47,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="container mx-auto mt-3  pt-3 border-t border-white/10 text-center text-[14px] text-gray-400">
-                Copyright © 2026 HRAOI.IN All Rights Reserved. Powered by <span className="text-secondary font-bold">Mr Javed.</span>
+                Copyright © 2015 HRAOI.IN All Rights Reserved. Powered by <span className="text-secondary font-bold">Mr Javed.</span>
             </div>
         </footer>
     );

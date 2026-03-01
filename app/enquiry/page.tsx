@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { FadeIn, Pressable, Stagger, StaggerItem } from "@/components/Motion";
 
 export default function Enquiry() {
     const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -55,64 +57,93 @@ export default function Enquiry() {
                         )}
 
                         <form className="space-y-4" onSubmit={handleSubmit}>
-                            <div className="space-y-1">
-                                <label className="block text-sm font-bold text-[#1a1a5e]">Your name<span className="text-[#d93025]">*</span></label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value={form.name}
-                                    onChange={handleChange}
-                                    placeholder="Enter your name..."
-                                    required
-                                    className="w-full px-4 py-2 border border-gray-200 rounded focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
-                                />
-                            </div>
+                            <Stagger delay={0.2}>
+                                <StaggerItem>
+                                    <div className="space-y-1">
+                                        <label className="block text-sm font-bold text-[#1a1a5e]">Your name<span className="text-[#d93025]">*</span></label>
+                                        <motion.input
+                                            whileFocus={{ scale: 1.01, boxShadow: "0 0 0 2px rgba(36, 33, 113, 0.1)" }}
+                                            type="text"
+                                            name="name"
+                                            value={form.name}
+                                            onChange={handleChange}
+                                            placeholder="Enter your name..."
+                                            required
+                                            className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
+                                        />
+                                    </div>
+                                </StaggerItem>
 
-                            <div className="space-y-1">
-                                <label className="block text-sm font-bold text-[#1a1a5e]">Your email<span className="text-[#d93025]">*</span></label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={form.email}
-                                    onChange={handleChange}
-                                    placeholder="Enter your email..."
-                                    required
-                                    className="w-full px-4 py-2 border border-gray-200 rounded focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
-                                />
-                            </div>
+                                <StaggerItem>
+                                    <div className="space-y-1 mt-4">
+                                        <label className="block text-sm font-bold text-[#1a1a5e]">Your email<span className="text-[#d93025]">*</span></label>
+                                        <motion.input
+                                            whileFocus={{ scale: 1.01, boxShadow: "0 0 0 2px rgba(36, 33, 113, 0.1)" }}
+                                            type="email"
+                                            name="email"
+                                            value={form.email}
+                                            onChange={handleChange}
+                                            placeholder="Enter your email..."
+                                            required
+                                            className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
+                                        />
+                                    </div>
+                                </StaggerItem>
 
-                            <div className="space-y-1">
-                                <label className="block text-sm font-bold text-[#1a1a5e]">Subject<span className="text-[#d93025]">*</span></label>
-                                <input
-                                    type="text"
-                                    name="subject"
-                                    value={form.subject}
-                                    onChange={handleChange}
-                                    placeholder="Your subject..."
-                                    required
-                                    className="w-full px-4 py-2 border border-gray-200 rounded focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
-                                />
-                            </div>
+                                <StaggerItem>
+                                    <div className="space-y-1 mt-4">
+                                        <label className="block text-sm font-bold text-[#1a1a5e]">Subject<span className="text-[#d93025]">*</span></label>
+                                        <motion.input
+                                            whileFocus={{ scale: 1.01, boxShadow: "0 0 0 2px rgba(36, 33, 113, 0.1)" }}
+                                            type="text"
+                                            name="subject"
+                                            value={form.subject}
+                                            onChange={handleChange}
+                                            placeholder="Your subject..."
+                                            required
+                                            className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
+                                        />
+                                    </div>
+                                </StaggerItem>
 
-                            <div className="space-y-1">
-                                <label className="block text-sm font-bold text-[#1a1a5e]">Your message (optional)</label>
-                                <textarea
-                                    rows={6}
-                                    name="message"
-                                    value={form.message}
-                                    onChange={handleChange}
-                                    placeholder="Your message..."
-                                    className="w-full px-4 py-2 border border-gray-200 rounded focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all resize-none placeholder:text-gray-300"
-                                ></textarea>
-                            </div>
+                                <StaggerItem>
+                                    <div className="space-y-1 mt-4">
+                                        <label className="block text-sm font-bold text-[#1a1a5e]">Your message (optional)</label>
+                                        <motion.textarea
+                                            whileFocus={{ scale: 1.01, boxShadow: "0 0 0 2px rgba(36, 33, 113, 0.1)" }}
+                                            rows={6}
+                                            name="message"
+                                            value={form.message}
+                                            onChange={handleChange}
+                                            placeholder="Your message..."
+                                            className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all resize-none placeholder:text-gray-300"
+                                        ></motion.textarea>
+                                    </div>
+                                </StaggerItem>
 
-                            <button
-                                type="submit"
-                                disabled={status === "loading"}
-                                className="bg-[#242171] text-white px-12 py-2 rounded font-bold hover:bg-[#1a1a5e] transition-all uppercase tracking-widest text-sm shadow-md disabled:opacity-60"
-                            >
-                                {status === "loading" ? "Sending..." : "Send"}
-                            </button>
+                                <StaggerItem>
+                                    <div className="mt-6">
+                                        <Pressable>
+                                            <button
+                                                type="submit"
+                                                disabled={status === "loading"}
+                                                className="bg-[#242171] text-white px-12 py-2 rounded-lg font-bold hover:bg-[#1a1a5e] transition-all uppercase tracking-widest text-sm shadow-md disabled:opacity-60"
+                                            >
+                                                {status === "loading" ? (
+                                                    <motion.div
+                                                        animate={{ rotate: 360 }}
+                                                        transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                                                        className="flex items-center gap-2"
+                                                    >
+                                                        <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full"></div>
+                                                        Sending...
+                                                    </motion.div>
+                                                ) : "Send"}
+                                            </button>
+                                        </Pressable>
+                                    </div>
+                                </StaggerItem>
+                            </Stagger>
                         </form>
                     </div>
 

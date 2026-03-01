@@ -41,7 +41,7 @@ export default function Orders() {
                     <aside className="lg:w-1/4 space-y-8">
                         <MemberSearch />
                         <div className="bg-[#f8f7ff] p-6 rounded-xl border border-purple-100 shadow-sm">
-                            <h3 className="text-lg font-bold mb-4">Manav Adhikar Garima</h3>
+                            <h3 className="text-lg font-bold mb-4">Human Rights Association of India</h3>
                             <p className="text-xs text-gray-600 leading-relaxed italic">सभी अध्यक्ष अपने अधीनस्थ राज्य/संभाग/जिला में आईकार्ड वितरण कार्यक्रम के माध्यम से सूचित करें।</p>
                             <p className="text-[10px] text-gray-500 italic mt-2">All presidents should ensure through icards distribution program in their subordinate state/division/districts</p>
                         </div>

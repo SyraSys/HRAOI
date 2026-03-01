@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import MemberSearch from "@/components/MemberSearch";
+import { motion } from "framer-motion";
+import { FadeIn, Stagger, StaggerItem, Pressable } from "@/components/Motion";
 
 export default function Membership() {
     const [form, setForm] = useState({
@@ -53,7 +55,7 @@ export default function Membership() {
                         <MemberSearch />
 
                         <div className="bg-[#f8f7ff] p-6 rounded-xl border border-purple-100 shadow-sm">
-                            <h3 className="text-lg font-bold mb-4">Manav Adhikar Garima</h3>
+                            <h3 className="text-lg font-bold mb-4">Human Rights Association of India</h3>
                             <div className="space-y-4">
                                 <p className="text-xs text-gray-600 leading-relaxed italic">
                                     सभी अध्यक्ष अपने अधीनस्थ राज्य/संभाग/जिला में आईकार्ड वितरण कार्यक्रम के माध्यम से सूचित करें।
@@ -124,13 +126,24 @@ export default function Membership() {
 
                             {/* Submit Button */}
                             <div className="pt-6">
-                                <button
-                                    type="submit"
-                                    disabled={status === "loading"}
-                                    className="bg-[#242171] text-white px-20 py-3 rounded font-bold hover:bg-[#1a1a5e] transition-all uppercase tracking-widest text-sm shadow-lg w-full md:w-fit disabled:opacity-60"
-                                >
-                                    {status === "loading" ? "Submitting..." : "SUBMIT"}
-                                </button>
+                                <Pressable>
+                                    <button
+                                        type="submit"
+                                        disabled={status === "loading"}
+                                        className="bg-[#242171] text-white px-20 py-3 rounded-lg font-bold hover:bg-[#1a1a5e] transition-all uppercase tracking-widest text-sm shadow-lg w-full md:w-fit disabled:opacity-60"
+                                    >
+                                        {status === "loading" ? (
+                                            <motion.div
+                                                animate={{ rotate: 360 }}
+                                                transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                                                className="flex items-center justify-center gap-2"
+                                            >
+                                                <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full"></div>
+                                                Submitting...
+                                            </motion.div>
+                                        ) : "SUBMIT"}
+                                    </button>
+                                </Pressable>
                             </div>
                         </form>
                     </main>

@@ -39,8 +39,8 @@ export default function AboutUs() {
 
                         {/* Torch/HRAOI Symbol */}
                         <div className="flex flex-col items-center py-4">
-                            <div className="w-24 h-48 flex items-center justify-center mb-4">
-                                <img src="/images/torch.gif" alt="HRAOI Torch" className="w-full h-full object-contain" />
+                            <div className="w-32 h-64 flex items-center justify-center mb-4">
+                                <img src="/images/torch.jpeg" alt="HRAOI Torch" className="w-full h-full object-contain" />
                             </div>
 
                         </div>

@@ -103,6 +103,7 @@ export default function AdminDashboard() {
                         { label: "Add Order", href: "/admin/orders", icon: "📋" },
                         { label: "View Enquiries", href: "/admin/enquiries", icon: "✉️" },
                         { label: "Review Members", href: "/admin/membership", icon: "👥" },
+                        { label: "Manage Donation", href: "/admin/donation", icon: "💰" },
                     ].map((action) => (
                         <a
                             key={action.label}

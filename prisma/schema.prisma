@@ -28,7 +28,6 @@ model Circular {
   title      String
   fileUrl    String
   publicId   String
-  date       DateTime @default(now())
   uploadedAt DateTime @default(now())
 }
 
@@ -37,7 +36,6 @@ model Order {
   title      String
   fileUrl    String
   publicId   String
-  date       DateTime @default(now())
   uploadedAt DateTime @default(now())
 }
 
@@ -52,24 +50,23 @@ model Enquiry {
 }
 
 model Membership {
-  id               String   @id @default(cuid())
-  name             String
-  fatherName       String
-  address1         String
-  address2         String?
-  city             String
-  state            String
-  district         String
-  pincode          String
-  phone            String
-  dob              String
-  doj              String
-  proposedPost     String
-  area             String?
-  recommendationId String?
-  photoUrl         String?
-  status           String   @default("pending")
-  createdAt        DateTime @default(now())
+  id                     String   @id @default(cuid())
+  name                   String
+  fatherName             String
+  parentsAddress         String
+  permanentAddress       String
+  aadharNumber           String
+  vehicleNumber          String?
+  educationQualification String
+  dob                    String
+  bloodGroup             String
+  phone                  String
+  profession             String
+  familyDetails          String
+  introducedBy           String?
+  photoUrl               String?
+  status                 String   @default("pending")
+  createdAt              DateTime @default(now())
 }
 
 model Announcement {
@@ -86,7 +83,21 @@ model Certificate {
   certificateNumber String   @unique
   fileUrl           String
   publicId          String
+  idCardUrl         String?
+  idCardPublicId    String?
   createdAt         DateTime @default(now())
 
   @@index([certificateNumber])
+}
+
+model DonationDetails {
+  id            String   @id @default(cuid())
+  upiId         String
+  qrCodeUrl     String
+  qrCodePublicId String
+  accountName   String
+  accountNumber String
+  bankName      String
+  ifscCode      String
+  updatedAt     DateTime @updatedAt
 }

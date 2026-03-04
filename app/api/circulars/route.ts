@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 export async function GET() {
   try {
     const circulars = await prisma.circular.findMany({
-      orderBy: { date: "desc" },
+      orderBy: { uploadedAt: "desc" },
     });
     return NextResponse.json(circulars);
   } catch (error) {

@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { Upload, Trash2, FileText } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface Certificate {
   id: string;
   certificateNumber: string;
   fileUrl: string;
+  idCardUrl?: string;
   createdAt: string;
 }
 
@@ -18,6 +20,7 @@ export default function AdminCertificatesPage() {
   // Form state
   const [certificateNumber, setCertificateNumber] = useState("");
   const [file, setFile] = useState<File | null>(null);
+  const [idCard, setIdCard] = useState<File | null>(null);
 
   useEffect(() => {
     fetchCertificates();
@@ -45,6 +48,9 @@ export default function AdminCertificatesPage() {
     const formDataToSend = new FormData();
     formDataToSend.append("certificateNumber", certificateNumber);
     formDataToSend.append("file", file);
+    if (idCard) {
+      formDataToSend.append("idCard", idCard);
+    }
 
     try {
       const response = await fetch("/api/admin/certificates", {
@@ -53,16 +59,17 @@ export default function AdminCertificatesPage() {
       });
 
       if (response.ok) {
-        alert("Certificate uploaded successfully!");
+        alert("Certificate and documents uploaded successfully!");
         setCertificateNumber("");
         setFile(null);
+        setIdCard(null);
         fetchCertificates();
       } else {
         const error = await response.json();
-        alert(error.error || "Failed to upload certificate");
+        alert(error.error || "Failed to upload");
       }
     } catch (error) {
-      alert("Failed to upload certificate");
+      alert("Failed to upload");
     } finally {
       setUploading(false);
     }
@@ -123,13 +130,37 @@ export default function AdminCertificatesPage() {
               className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
+          <div>
+            <label className="block text-sm font-medium mb-2">
+              ID Card File (Optional)
+            </label>
+            <input
+              type="file"
+              accept=".pdf, image/*"
+              onChange={(e) => setIdCard(e.target.files?.[0] || null)}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
           <button
             type="submit"
             disabled={uploading}
-            className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 disabled:bg-gray-400 flex items-center gap-2"
+            className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 disabled:bg-gray-400 flex items-center justify-center gap-2 transition-all"
           >
-            <Upload className="w-5 h-5" />
-            {uploading ? "Uploading..." : "Upload Certificate"}
+            {uploading ? (
+              <>
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                  className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full"
+                ></motion.div>
+                Uploading...
+              </>
+            ) : (
+              <>
+                <Upload className="w-5 h-5" />
+                Upload Certificate & Documents
+              </>
+            )}
           </button>
         </form>
       </div>
@@ -159,18 +190,30 @@ export default function AdminCertificatesPage() {
                     </p>
                   </div>
                 </div>
-                <div className="flex gap-2">
-                  <a
-                    href={cert.fileUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline"
-                  >
-                    View
-                  </a>
+                <div className="flex gap-4 items-center">
+                  <div className="flex flex-col gap-1 items-end">
+                    <a
+                      href={cert.fileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline text-sm font-medium"
+                    >
+                      View Certificate
+                    </a>
+                    {cert.idCardUrl && (
+                      <a
+                        href={cert.idCardUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-indigo-600 hover:underline text-xs"
+                      >
+                        View ID Card
+                      </a>
+                    )}
+                  </div>
                   <button
                     onClick={() => handleDelete(cert.id)}
-                    className="text-red-600 hover:text-red-800 p-2"
+                    className="text-red-600 hover:text-red-800 p-2 border border-red-100 rounded-md hover:bg-red-50 transition-colors"
                   >
                     <Trash2 className="w-5 h-5" />
                   </button>

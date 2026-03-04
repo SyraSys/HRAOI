@@ -5,11 +5,13 @@ import { useSearchParams } from "next/navigation";
 import { Search, Download, FileText, User } from "lucide-react";
 import MemberSearch from "@/components/MemberSearch";
 
+import { getNormalizedFileUrl, isImageUrl } from "@/lib/utils";
 
 interface Certificate {
   id: string;
   certificateNumber: string;
   fileUrl: string;
+  idCardUrl?: string;
   createdAt: string;
 }
 
@@ -57,43 +59,6 @@ function SearchContent() {
     }
   }
 
-  // Helper to normalize file URLs for preview (handles both images and PDFs)
-  function getFileUrl(url: string) {
-    if (!url) return "";
-
-    const isPdf = url.toLowerCase().includes(".pdf") || url.includes("/raw/upload/");
-
-    // If it's a Cloudinary URL
-    if (url.includes("cloudinary.com")) {
-      // Handle PDF specifically
-      if (isPdf) {
-        if (url.includes("/raw/upload/")) {
-          let newUrl = url.replace("/raw/upload/", "/image/upload/");
-          if (!newUrl.toLowerCase().endsWith(".pdf")) {
-            newUrl += ".pdf";
-          }
-          return newUrl;
-        }
-        if (url.includes("/image/upload/") && !url.toLowerCase().endsWith(".pdf")) {
-          return url + ".pdf";
-        }
-      }
-      // For images, Cloudinary handles them well, but we ensure it's secure
-      return url.replace("http://", "https://");
-    }
-
-    return url;
-  }
-
-  const isImage = (url: string) => {
-    const lowerUrl = url.toLowerCase();
-    return lowerUrl.endsWith('.jpg') ||
-      lowerUrl.endsWith('.jpeg') ||
-      lowerUrl.endsWith('.png') ||
-      lowerUrl.endsWith('.webp') ||
-      lowerUrl.endsWith('.gif') ||
-      (!lowerUrl.includes('.pdf') && !url.includes('/raw/upload/')); // Assume image if not PDF
-  };
 
   const handleDownload = async (fileUrl: string, fileName: string) => {
     try {
@@ -186,11 +151,11 @@ function SearchContent() {
                     </span>
                     {selectedCert && (
                       <button
-                        onClick={() => handleDownload(selectedCert.fileUrl, `certificate-${selectedCert.certificateNumber}${isImage(selectedCert.fileUrl) ? '.jpg' : '.pdf'}`)}
+                        onClick={() => handleDownload(selectedCert.fileUrl, `certificate-${selectedCert.certificateNumber}${isImageUrl(selectedCert.fileUrl) ? '.jpg' : '.pdf'}`)}
                         className="flex items-center gap-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-all text-xs font-bold cursor-pointer"
                       >
                         <Download className="w-4 h-4" />
-                        Download {isImage(selectedCert.fileUrl) ? 'Image' : 'PDF'}
+                        Download {isImageUrl(selectedCert.fileUrl) ? 'Image' : 'PDF'}
                       </button>
                     )}
                   </div>
@@ -238,45 +203,98 @@ function SearchContent() {
               )}
 
               {selectedCert && !loading && (
-                <div className="flex-1 flex flex-col">
-                  <div className="flex-1 bg-gray-100 rounded-xl overflow-hidden border border-gray-200 relative group flex items-center justify-center min-h-[600px]">
-                    {isImage(selectedCert.fileUrl) ? (
-                      <img
-                        src={getFileUrl(selectedCert.fileUrl)}
-                        alt="Certificate"
-                        className="max-w-full max-h-[800px] object-contain shadow-2xl"
-                      />
-                    ) : (
-                      <iframe
-                        src={`${getFileUrl(selectedCert.fileUrl)}#toolbar=0&navpanes=0&scrollbar=0`}
-                        className="w-full h-full"
-                        title="PDF Preview"
-                      />
-                    )}
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <a
-                        href={selectedCert.fileUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-white/90 backdrop-blur shadow-sm p-2 rounded-lg hover:bg-white transition-all inline-block"
-                        title="Open in new tab"
-                      >
-                        <Search className="w-5 h-5 text-gray-600" />
-                      </a>
+                <div className="flex-1 flex flex-col space-y-8">
+                  {/* Certificate Section */}
+                  <div className="flex-1 flex flex-col">
+                    <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                      <FileText className="w-5 h-5 text-primary" /> Certificate
+                    </h3>
+                    <div className="flex-1 bg-gray-100 rounded-xl overflow-hidden border border-gray-200 relative group flex items-center justify-center min-h-[500px]">
+                      {isImageUrl(selectedCert.fileUrl) ? (
+                        <img
+                          src={getNormalizedFileUrl(selectedCert.fileUrl)}
+                          alt="Certificate"
+                          className="max-w-full max-h-[800px] object-contain shadow-2xl"
+                        />
+                      ) : (
+                        <iframe
+                          src={`${getNormalizedFileUrl(selectedCert.fileUrl)}#toolbar=0&navpanes=0&scrollbar=0`}
+                          className="w-full h-full"
+                          title="Certificate PDF Preview"
+                        />
+                      )}
+                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <a
+                          href={selectedCert.fileUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-white/90 backdrop-blur shadow-sm p-2 rounded-lg hover:bg-white transition-all inline-block"
+                          title="Open in new tab"
+                        >
+                          <Search className="w-5 h-5 text-gray-600" />
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div className="mt-6 flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100">
+
+                  {/* ID Card Section */}
+                  {selectedCert.idCardUrl && (
+                    <div className="flex-1 flex flex-col pt-8 border-t border-gray-100">
+                      <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                        <User className="w-5 h-5 text-indigo-600" /> ID Card
+                      </h3>
+                      <div className="flex-1 bg-gray-100 rounded-xl overflow-hidden border border-gray-200 relative group flex items-center justify-center min-h-[500px]">
+                        {isImageUrl(selectedCert.idCardUrl) ? (
+                          <img
+                            src={getNormalizedFileUrl(selectedCert.idCardUrl)}
+                            alt="ID Card"
+                            className="max-w-full max-h-[800px] object-contain shadow-2xl"
+                          />
+                        ) : (
+                          <iframe
+                            src={`${getNormalizedFileUrl(selectedCert.idCardUrl)}#toolbar=0&navpanes=0&scrollbar=0`}
+                            className="w-full h-full"
+                            title="ID Card PDF Preview"
+                          />
+                        )}
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <a
+                            href={selectedCert.idCardUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-white/90 backdrop-blur shadow-sm p-2 rounded-lg hover:bg-white transition-all inline-block"
+                            title="Open in new tab"
+                          >
+                            <Search className="w-5 h-5 text-gray-600" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="mt-6 flex flex-wrap items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 gap-4">
                     <div>
                       <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Currently Viewing</p>
                       <h4 className="text-sm font-bold text-indigo-950 mt-1">ID: {selectedCert.certificateNumber}</h4>
                     </div>
-                    <button
-                      onClick={() => handleDownload(selectedCert.fileUrl, `certificate-${selectedCert.certificateNumber}${isImage(selectedCert.fileUrl) ? '.jpg' : '.pdf'}`)}
-                      className="bg-primary text-white px-8 py-3 rounded-xl font-bold text-sm shadow-lg hover:shadow-xl transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
-                    >
-                      <Download className="w-4 h-4" />
-                      Download Document
-                    </button>
+                    <div className="flex gap-3">
+                      <button
+                        onClick={() => handleDownload(selectedCert.fileUrl, `certificate-${selectedCert.certificateNumber}${isImageUrl(selectedCert.fileUrl) ? '.jpg' : '.pdf'}`)}
+                        className="bg-primary text-white px-6 py-3 rounded-xl font-bold text-xs shadow-lg hover:shadow-xl transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
+                      >
+                        <Download className="w-4 h-4" />
+                        Download Certificate
+                      </button>
+                      {selectedCert.idCardUrl && (
+                        <button
+                          onClick={() => handleDownload(selectedCert.idCardUrl!, `idcard-${selectedCert.certificateNumber}${isImageUrl(selectedCert.idCardUrl!) ? '.jpg' : '.pdf'}`)}
+                          className="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold text-xs shadow-lg hover:shadow-xl transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
+                        >
+                          <Download className="w-4 h-4" />
+                          Download ID Card
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}

@@ -13,7 +13,6 @@
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
-    "@next/swc-win32-x64-msvc": "^16.1.6",
     "@prisma/adapter-pg": "^7.4.0",
     "@prisma/client": "^7.4.2",
     "@types/bcryptjs": "^2.4.6",

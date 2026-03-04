@@ -28,7 +28,7 @@ export async function GET(req: NextRequest) {
 
     if (certificates.length === 0) {
       return NextResponse.json(
-        { error: "No membership files found for this ID" },
+        { error: "No member found with this ID" },
         { status: 404 }
       );
     }

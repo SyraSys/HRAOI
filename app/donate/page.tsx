@@ -85,9 +85,8 @@ export default function Donate() {
                                         <Image
                                             src={qrCodeUrl}
                                             alt="UPI QR Code"
-                                            width={256}
-                                            height={256}
-                                            className="rounded-sm"
+                                            fill
+                                            className="rounded-sm object-contain p-2"
                                         />
                                     ) : (
                                         <>

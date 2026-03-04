@@ -7,10 +7,19 @@ import { FadeIn, Stagger, StaggerItem, Pressable } from "@/components/Motion";
 
 export default function Membership() {
     const [form, setForm] = useState({
-        name: "", fatherName: "", address1: "", address2: "",
-        city: "", state: "", district: "", pincode: "",
-        phone: "", dob: "", doj: "", proposedPost: "",
-        area: "", recommendationId: "",
+        name: "",
+        fatherName: "",
+        parentsAddress: "",
+        permanentAddress: "",
+        aadharNumber: "",
+        vehicleNumber: "",
+        educationQualification: "",
+        dob: "",
+        bloodGroup: "",
+        phone: "",
+        profession: "",
+        familyDetails: "",
+        introducedBy: ""
     });
     const [photo, setPhoto] = useState<File | null>(null);
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -31,7 +40,21 @@ export default function Membership() {
 
         if (res.ok) {
             setStatus("success");
-            setForm({ name: "", fatherName: "", address1: "", address2: "", city: "", state: "", district: "", pincode: "", phone: "", dob: "", doj: "", proposedPost: "", area: "", recommendationId: "" });
+            setForm({
+                name: "",
+                fatherName: "",
+                parentsAddress: "",
+                permanentAddress: "",
+                aadharNumber: "",
+                vehicleNumber: "",
+                educationQualification: "",
+                dob: "",
+                bloodGroup: "",
+                phone: "",
+                profession: "",
+                familyDetails: "",
+                introducedBy: ""
+            });
             setPhoto(null);
         } else {
             setStatus("error");
@@ -90,24 +113,62 @@ export default function Membership() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                                 {/* Left Column */}
                                 <div className="space-y-6">
-                                    <input name="name" value={form.name} onChange={handleChange} type="text" placeholder="Name" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
-                                    <input name="address1" value={form.address1} onChange={handleChange} type="text" placeholder="Address 1" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
-                                    <input name="recommendationId" value={form.recommendationId} onChange={handleChange} type="text" placeholder="Recommendation person ID" className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
-                                    <input name="state" value={form.state} onChange={handleChange} type="text" placeholder="State" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
-                                    <input name="pincode" value={form.pincode} onChange={handleChange} type="text" placeholder="PinCode" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
-                                    <input name="dob" value={form.dob} onChange={handleChange} type="text" placeholder="DOB: DD.MM.YYYY" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
-                                    <input name="proposedPost" value={form.proposedPost} onChange={handleChange} type="text" placeholder="Proposed Post" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
+                                    <div>
+                                        <label className="block text-xs font-bold text-[#1a1a5e] uppercase mb-2">Name</label>
+                                        <input name="name" value={form.name} onChange={handleChange} type="text" placeholder="Full Name" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-[#1a1a5e] uppercase mb-2">Father's Name</label>
+                                        <input name="fatherName" value={form.fatherName} onChange={handleChange} type="text" placeholder="Father's Name" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-[#1a1a5e] uppercase mb-2">Parents Address</label>
+                                        <textarea name="parentsAddress" value={form.parentsAddress} onChange={(e: any) => setForm(p => ({ ...p, parentsAddress: e.target.value }))} placeholder="Complete Parents Address" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors min-h-[100px] resize-none" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-[#1a1a5e] uppercase mb-2">Aadhar Number</label>
+                                        <input name="aadharNumber" value={form.aadharNumber} onChange={handleChange} type="text" placeholder="Aadhar Number" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-[#1a1a5e] uppercase mb-2">Education Qualification</label>
+                                        <input name="educationQualification" value={form.educationQualification} onChange={handleChange} type="text" placeholder="High School, Graduate, etc." required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-[#1a1a5e] uppercase mb-2">Blood Group</label>
+                                        <input name="bloodGroup" value={form.bloodGroup} onChange={handleChange} type="text" placeholder="A+, B-, etc." required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-[#1a1a5e] uppercase mb-2">Profession</label>
+                                        <input name="profession" value={form.profession} onChange={handleChange} type="text" placeholder="Your Occupation" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
+                                    </div>
                                 </div>
 
                                 {/* Right Column */}
                                 <div className="space-y-6">
-                                    <input name="fatherName" value={form.fatherName} onChange={handleChange} type="text" placeholder="Father's Name" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
-                                    <input name="address2" value={form.address2} onChange={handleChange} type="text" placeholder="Address 2" className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
-                                    <input name="city" value={form.city} onChange={handleChange} type="text" placeholder="City" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
-                                    <input name="district" value={form.district} onChange={handleChange} type="text" placeholder="District" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
-                                    <input name="phone" value={form.phone} onChange={handleChange} type="text" placeholder="Phone No." required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
-                                    <input name="doj" value={form.doj} onChange={handleChange} type="text" placeholder="DOJ: DD.MM.YY" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
-                                    <input name="area" value={form.area} onChange={handleChange} type="text" placeholder="Area" className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
+                                    <div>
+                                        <label className="block text-xs font-bold text-[#1a1a5e] uppercase mb-2">DOB</label>
+                                        <input name="dob" value={form.dob} onChange={handleChange} type="text" placeholder="DD.MM.YYYY" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-[#1a1a5e] uppercase mb-2">Phone Number</label>
+                                        <input name="phone" value={form.phone} onChange={handleChange} type="text" placeholder="+91 XXXXX XXXXX" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-[#1a1a5e] uppercase mb-2">Permanent Address</label>
+                                        <textarea name="permanentAddress" value={form.permanentAddress} onChange={(e: any) => setForm(p => ({ ...p, permanentAddress: e.target.value }))} placeholder="Complete Permanent Address" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors min-h-[100px] resize-none" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-[#1a1a5e] uppercase mb-2">Vehicle Number</label>
+                                        <input name="vehicleNumber" value={form.vehicleNumber} onChange={handleChange} type="text" placeholder="Optional" className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-[#1a1a5e] uppercase mb-2">Family Details</label>
+                                        <textarea name="familyDetails" value={form.familyDetails} onChange={(e: any) => setForm(p => ({ ...p, familyDetails: e.target.value }))} placeholder="Name, Age, Relation" required className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors min-h-[100px] resize-none" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-[#1a1a5e] uppercase mb-2">Introduced By</label>
+                                        <input name="introducedBy" value={form.introducedBy} onChange={handleChange} type="text" placeholder="Name or Member ID" className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-[#242171] transition-colors" />
+                                    </div>
                                 </div>
                             </div>
 
@@ -133,14 +194,14 @@ export default function Membership() {
                                         className="bg-[#242171] text-white px-20 py-3 rounded-lg font-bold hover:bg-[#1a1a5e] transition-all uppercase tracking-widest text-sm shadow-lg w-full md:w-fit disabled:opacity-60"
                                     >
                                         {status === "loading" ? (
-                                            <motion.div
-                                                animate={{ rotate: 360 }}
-                                                transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-                                                className="flex items-center justify-center gap-2"
-                                            >
-                                                <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full"></div>
+                                            <div className="flex items-center justify-center gap-2">
+                                                <motion.div
+                                                    animate={{ rotate: 360 }}
+                                                    transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                                                    className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full"
+                                                ></motion.div>
                                                 Submitting...
-                                            </motion.div>
+                                            </div>
                                         ) : "SUBMIT"}
                                     </button>
                                 </Pressable>

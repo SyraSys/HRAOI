@@ -149,7 +149,7 @@ export default function AboutUs() {
                                 {/* President */}
                                 <div className="flex flex-col md:flex-row items-center md:items-start gap-8 bg-gray-50/30 p-8 rounded-2xl border border-gray-100">
                                     <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-lg border-2 border-primary/20 flex-shrink-0">
-                                        <img src="/images/sudhir.png" alt="Mr. Sudhir Kumar" className="w-full h-full object-cover" />
+                                        <img src="/images/sudhir.jpeg" alt="Mr. Sudhir Kumar" className="w-full h-full object-cover" />
                                     </div>
                                     <div className="text-center md:text-left">
                                         <h3 className="text-2xl font-bold text-gray-900 mb-1">Mr. Sudhir Kumar</h3>
@@ -163,7 +163,7 @@ export default function AboutUs() {
                                 {/* Vice President */}
                                 <div className="flex flex-col md:flex-row-reverse items-center md:items-start gap-8 bg-gray-50/30 p-8 rounded-2xl border border-gray-100">
                                     <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-lg border-2 border-primary/20 flex-shrink-0">
-                                        <img src="/images/surajkuman.png" alt="Mr. Suraj Kumar" className="w-full h-full object-cover" />
+                                        <img src="/images/surajkumar.jpeg" alt="Mr. Suraj Kumar" className="w-full h-full object-cover" />
                                     </div>
                                     <div className="text-center md:text-right">
                                         <h3 className="text-2xl font-bold text-gray-900 mb-1">Mr. Suraj Kumar</h3>

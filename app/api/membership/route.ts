@@ -5,24 +5,24 @@ import { uploadFile } from "@/lib/cloudinary";
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
+    console.log("Membership FormData keys:", Array.from(formData.keys()));
 
     const name = formData.get("name") as string;
     const fatherName = formData.get("fatherName") as string;
-    const address1 = formData.get("address1") as string;
-    const address2 = formData.get("address2") as string | null;
-    const city = formData.get("city") as string;
-    const state = formData.get("state") as string;
-    const district = formData.get("district") as string;
-    const pincode = formData.get("pincode") as string;
-    const phone = formData.get("phone") as string;
+    const parentsAddress = formData.get("parentsAddress") as string;
+    const permanentAddress = formData.get("permanentAddress") as string;
+    const aadharNumber = formData.get("aadharNumber") as string;
+    const vehicleNumber = formData.get("vehicleNumber") as string | null;
+    const educationQualification = formData.get("educationQualification") as string;
     const dob = formData.get("dob") as string;
-    const doj = formData.get("doj") as string;
-    const proposedPost = formData.get("proposedPost") as string;
-    const area = formData.get("area") as string | null;
-    const recommendationId = formData.get("recommendationId") as string | null;
+    const bloodGroup = formData.get("bloodGroup") as string;
+    const phone = formData.get("phone") as string;
+    const profession = formData.get("profession") as string;
+    const familyDetails = formData.get("familyDetails") as string;
+    const introducedBy = formData.get("introducedBy") as string | null;
     const photoFile = formData.get("photo") as File | null;
 
-    if (!name || !fatherName || !address1 || !city || !state || !district || !pincode || !phone || !dob || !doj || !proposedPost) {
+    if (!name || !fatherName || !parentsAddress || !permanentAddress || !aadharNumber || !educationQualification || !dob || !bloodGroup || !phone || !profession || !familyDetails) {
       return NextResponse.json({ error: "Required fields missing." }, { status: 400 });
     }
 
@@ -39,10 +39,19 @@ export async function POST(req: NextRequest) {
 
     const membership = await prisma.membership.create({
       data: {
-        name, fatherName, address1, address2: address2 || null,
-        city, state, district, pincode, phone, dob, doj,
-        proposedPost, area: area || null,
-        recommendationId: recommendationId || null,
+        name,
+        fatherName,
+        parentsAddress,
+        permanentAddress,
+        aadharNumber,
+        vehicleNumber: vehicleNumber || null,
+        educationQualification,
+        dob,
+        bloodGroup,
+        phone,
+        profession,
+        familyDetails,
+        introducedBy: introducedBy || null,
         photoUrl,
       },
     });

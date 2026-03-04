@@ -51,16 +51,12 @@ export default function DonationAdmin() {
         setLoading(true);
         const data = new FormData();
         data.append("file", file);
-        data.append("upload_preset", "hroi_gallery"); // Assuming this preset exists based on gallery upload
 
         try {
-            const res = await fetch(
-                `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
-                {
-                    method: "POST",
-                    body: data,
-                }
-            );
+            const res = await fetch("/api/admin/donation/upload", {
+                method: "POST",
+                body: data,
+            });
 
             if (res.ok) {
                 const fileData = await res.json();
@@ -71,7 +67,8 @@ export default function DonationAdmin() {
                 }));
                 setMessage({ type: "success", text: "QR Code uploaded successfully!" });
             } else {
-                setMessage({ type: "error", text: "Failed to upload QR Code." });
+                const errorData = await res.json();
+                setMessage({ type: "error", text: errorData.error || "Failed to upload QR Code." });
             }
         } catch (err) {
             console.error(err);
@@ -144,11 +141,9 @@ export default function DonationAdmin() {
                                     onChange={handleFileUpload}
                                     className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                                 />
-                                {formData.qrCodeUrl && (
-                                    <div className="mt-4 p-2 border rounded-lg inline-block">
-                                        <Image src={formData.qrCodeUrl} alt="QR Code" width={150} height={150} className="rounded" />
-                                    </div>
-                                )}
+                                <div className="mt-4 p-2 border rounded-lg inline-block w-40 h-40 relative">
+                                    <Image src={formData.qrCodeUrl} alt="QR Code" fill className="rounded object-contain p-1" />
+                                </div>
                             </div>
                         </div>
 

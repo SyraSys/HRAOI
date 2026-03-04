@@ -107,17 +107,31 @@ export default function AdminEnquiries() {
                                                 </div>
                                             )}
                                         </div>
-                                        <div className="flex gap-2 mt-4">
-                                            <p className="text-xs font-semibold text-gray-500 self-center mr-2">Update Status:</p>
-                                            {["new", "read", "replied"].map((s) => (
-                                                <button
-                                                    key={s}
-                                                    onClick={() => updateStatus(enquiry.id, s)}
-                                                    className={`text-xs px-3 py-1.5 rounded-lg font-semibold transition-colors ${enquiry.status === s ? statusColors[s] + " ring-2 ring-offset-1 ring-current" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
-                                                >
-                                                    {s.charAt(0).toUpperCase() + s.slice(1)}
-                                                </button>
-                                            ))}
+                                        <div className="flex flex-wrap gap-4 mt-6 items-center justify-between border-t border-gray-100 pt-5">
+                                            <button
+                                                onClick={() => {
+                                                    updateStatus(enquiry.id, "replied");
+                                                    const subject = encodeURIComponent(`Regarding: ${enquiry.subject}`);
+                                                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${enquiry.email}&su=${subject}`;
+                                                    window.open(gmailUrl, "_blank");
+                                                }}
+                                                className="bg-[#242171] text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-[#1a1a5e] transition-all flex items-center gap-2 shadow-md"
+                                            >
+                                                <span>✉️</span> Reply via Gmail
+                                            </button>
+
+                                            <div className="flex gap-2 items-center">
+                                                <p className="text-xs font-semibold text-gray-500 mr-2">Update Status:</p>
+                                                {["new", "read", "replied"].map((s) => (
+                                                    <button
+                                                        key={s}
+                                                        onClick={() => updateStatus(enquiry.id, s)}
+                                                        className={`text-xs px-3 py-1.5 rounded-lg font-semibold transition-colors ${enquiry.status === s ? statusColors[s] + " ring-2 ring-offset-1 ring-current" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
+                                                    >
+                                                        {s.charAt(0).toUpperCase() + s.slice(1)}
+                                                    </button>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
                                 )}

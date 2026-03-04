@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 interface Member {
     id: string;
@@ -188,13 +189,19 @@ export default function AdminMembership() {
                                             {member.status.charAt(0).toUpperCase() + member.status.slice(1)}
                                         </span>
                                     </td>
-                                    <td className="px-6 py-4 text-right">
+                                    <td className="px-6 py-4 text-right space-x-4">
                                         <button
                                             onClick={() => setSelected(member)}
-                                            className="text-[#242171] text-sm font-semibold hover:underline"
+                                            className="text-gray-500 text-sm font-semibold hover:underline"
                                         >
-                                            View Details
+                                            Quick View
                                         </button>
+                                        <Link
+                                            href={`/admin/membership/${member.id}`}
+                                            className="text-[#242171] text-sm font-bold hover:underline"
+                                        >
+                                            Open in New Page ↗
+                                        </Link>
                                     </td>
                                 </tr>
                             ))}

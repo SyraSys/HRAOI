@@ -46,12 +46,12 @@ export default function Donate() {
     }
 
     // Default values if no details are set yet
-    const upiId = details?.upiId || "9871640670@PAYTM";
+    const upiId = details?.upiId || "";
     const qrCodeUrl = details?.qrCodeUrl;
-    const accountName = details?.accountName || "Anurag Chandravanshi";
-    const accountNumber = details?.accountNumber || "628101511095";
-    const bankName = details?.bankName || "ICICI Bank, Indirapuram, Ghaziabad";
-    const ifscCode = details?.ifscCode || "ICIC0000718";
+    const accountName = details?.accountName || "";
+    const accountNumber = details?.accountNumber || "";
+    const bankName = details?.bankName || "";
+    const ifscCode = details?.ifscCode || "";
 
     return (
         <div className="bg-white min-h-screen">

@@ -47,9 +47,9 @@ export default function ContactUs() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                             {/* Head Office */}
                             <div className="space-y-4">
-                                <h3 className="text-lg font-black text-primary-dark uppercase tracking-tight border-l-4 border-secondary pl-3">Head Office:</h3>
+                                <h3 className="text-lg font-black text-primary-dark uppercase tracking-tight border-l-4 border-secondary pl-3">Administrative Office:</h3>
                                 <div className="text-sm text-gray-700 space-y-2 font-semibold">
-                                    <p>Address: Road, I.P. Extention, Delhi - 92</p>
+                                    <p>Address: 39B, Arupara, 2nd by Lane, Jagacha, GIP Colony, Howrah-711112</p>
                                     <p>Phone: 9330977118, 9334246098</p>
                                     <p>Mobile: 6207394301</p>
                                     <p>Email: <span className="text-blue-600 cursor-pointer">hraoi.in@gmail.com</span></p>
@@ -58,9 +58,12 @@ export default function ContactUs() {
 
                             {/* Chairman Camp Office */}
                             <div className="space-y-4">
-                                <h3 className="text-lg font-black text-primary-dark uppercase tracking-tight border-l-4 border-secondary pl-3">Chairman Camp Office:</h3>
+                                <h3 className="text-lg font-black text-primary-dark uppercase tracking-tight border-l-4 border-secondary pl-3">President Address:</h3>
                                 <div className="text-sm text-gray-700 space-y-2 font-semibold">
-                                    <p>Address: Road, I.P. Extention, Delhi - 92</p>
+                                    <p>Address: Kutubganj Road, Near Middle School</p>
+                                    <p>Kutubganj, PO: Mirjanhat</p>
+                                    <p>District: Bhagalpur</p>
+                                    <p>Bihar – 812005, India</p>
                                     <p>Phone: 9330977118, 9334246098, 6207394301</p>
                                     <p>E-Mail: <span className="text-blue-600 cursor-pointer">hraoi.in@gmail.com</span></p>
                                 </div>
@@ -75,7 +78,7 @@ export default function ContactUs() {
                                     width="100%"
                                     height="100%"
                                     style={{ border: 0 }}
-                                    src="https://maps.google.com/maps?q=45%20D%2C%20Amar%20Plaza%2C%20Hasanpur%20Main%20Road%2C%20I.P.%20Extension%2C%20Delhi%20-%2092&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                    src="https://maps.google.com/maps?q=39B%2C%20Arupara%2C%202nd%20by%20Lane%2C%20Jagacha%2C%20GIP%20Colony%2C%20Howrah-711112&t=&z=15&ie=UTF8&iwloc=&output=embed"
                                     allowFullScreen
                                     loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"

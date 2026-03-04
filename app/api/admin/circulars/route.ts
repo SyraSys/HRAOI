@@ -8,7 +8,7 @@ export async function GET() {
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const circulars = await prisma.circular.findMany({
-    orderBy: { date: "desc" },
+    orderBy: { uploadedAt: "desc" },
   });
   return NextResponse.json(circulars);
 }
@@ -20,7 +20,6 @@ export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
     const title = formData.get("title") as string;
-    const date = formData.get("date") as string;
     const file = formData.get("file") as File;
 
     if (!title || !file) {
@@ -30,14 +29,13 @@ export async function POST(req: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const uploadResult = await uploadFile(buffer, "circulars", "raw");
+    const uploadResult = await uploadFile(buffer, "circulars", "auto");
 
     const circular = await prisma.circular.create({
       data: {
         title,
         fileUrl: uploadResult.url,
         publicId: uploadResult.publicId,
-        date: date ? new Date(date) : new Date(),
       },
     });
 
@@ -57,7 +55,7 @@ export async function DELETE(req: NextRequest) {
     const circular = await prisma.circular.findUnique({ where: { id } });
     if (!circular) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-    await deleteFile(circular.publicId, "raw");
+    await deleteFile(circular.publicId, "auto");
     await prisma.circular.delete({ where: { id } });
 
     return NextResponse.json({ success: true });

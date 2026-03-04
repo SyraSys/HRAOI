@@ -278,194 +278,90 @@ export default function Home() {
           </div>
 
           {/* Leadership Cards - Full Width */}
-          <div className="space-y-8 max-w-6xl mx-auto">
+          <div className="space-y-6 max-w-6xl mx-auto">
             {/* National President */}
-            <FadeIn direction="left">
-              <div className="group relative bg-white/80 backdrop-blur-sm rounded-[2rem] p-6 md:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.1)] transition-all duration-500 overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary/10 to-indigo-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+            <div className="bg-white border border-gray-200 p-6 md:p-8">
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="w-48 h-48 flex-shrink-0">
+                  <img src="/images/sudhir.jpeg" alt="Mr. Sudhir Kumar" className="w-full h-full object-cover" />
+                </div>
 
-                <div className="relative flex flex-col md:flex-row items-center gap-8">
-                  {/* Hexagonal Photo */}
-                  <motion.div
-                    whileHover={{ scale: 1.05, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="relative flex-shrink-0"
-                  >
-                    <div className="w-40 h-44 md:w-48 md:h-52 relative">
-                      <div
-                        className="absolute inset-0 bg-white shadow-xl"
-                        style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
-                      ></div>
-                      <div
-                        className="absolute inset-1 bg-white overflow-hidden"
-                        style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
-                      >
-                        <img src="/images/sudhir.png" alt="Mr. Sudhir Kumar" className="w-full h-full object-cover" />
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  {/* Details */}
-                  <div className="flex-1 text-center md:text-left">
-                    <div className="inline-flex items-center gap-1.5 bg-gradient-to-r from-primary to-indigo-600 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
-                      National President
-                    </div>
-
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Mr. Sudhir Kumar</h3>
-
-                    <p className="text-gray-600 leading-relaxed mb-4">
-                      Senior human rights activist with over 30 years of dedicated experience in human rights protection and social justice. Under his visionary leadership, HRAOI has strengthened its mission to promote justice, equality, dignity, and humanitarian values.
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">30+ Years Experience</span>
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">Human Rights Advocate</span>
-                    </div>
+                <div className="flex-1 text-center md:text-left">
+                  <div className="bg-primary text-white px-4 py-1 inline-block text-xs font-bold uppercase mb-3">
+                    National President
                   </div>
+
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Mr. Sudhir Kumar</h3>
+
+                  <p className="text-gray-600 mb-3">
+                    Senior human rights activist with over 30 years of dedicated experience in human rights protection and social justice. Under his visionary leadership, HRAOI has strengthened its mission to promote justice, equality, dignity, and humanitarian values.
+                  </p>
                 </div>
               </div>
-            </FadeIn>
+            </div>
 
             {/* National Vice President */}
-            <FadeIn direction="right">
-              <div className="group relative bg-white/80 backdrop-blur-sm rounded-[2rem] p-6 md:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.1)] transition-all duration-500 overflow-hidden">
-                <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+            <div className="bg-white border border-gray-200 p-6 md:p-8">
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="w-48 h-48 flex-shrink-0">
+                  <img src="/images/surajkumar.jpeg" alt="Mr. Suraj Kumar" className="w-full h-full object-cover" />
+                </div>
 
-                <div className="relative flex flex-col md:flex-row items-center gap-8">
-                  {/* Hexagonal Photo */}
-                  <motion.div
-                    whileHover={{ scale: 1.05, rotate: -5 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="relative flex-shrink-0"
-                  >
-                    <div className="w-40 h-44 md:w-48 md:h-52 relative">
-                      <div
-                        className="absolute inset-0 bg-white shadow-xl"
-                        style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
-                      ></div>
-                      <div
-                        className="absolute inset-1 bg-white overflow-hidden"
-                        style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
-                      >
-                        <img src="/images/surajkuman.png" alt="Mr. Suraj Kumar" className="w-full h-full object-cover" />
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  {/* Details */}
-                  <div className="flex-1 text-center md:text-left">
-                    <div className="inline-flex items-center gap-1.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
-                      Vice President
-                    </div>
-
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Mr. Suraj Kumar</h3>
-
-                    <p className="text-gray-600 leading-relaxed mb-4">
-                      Committed human rights leader with years of experience in organizational leadership and grassroots engagement, playing a vital role in strengthening human rights awareness and justice advocacy across the country.
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                      <span className="px-3 py-1 bg-emerald-500/10 text-emerald-600 text-xs font-medium rounded-full">Leadership</span>
-                      <span className="px-3 py-1 bg-emerald-500/10 text-emerald-600 text-xs font-medium rounded-full">Grassroots Engagement</span>
-                    </div>
+                <div className="flex-1 text-center md:text-left">
+                  <div className="bg-emerald-600 text-white px-4 py-1 inline-block text-xs font-bold uppercase mb-3">
+                    Vice President
                   </div>
+
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Mr. Suraj Kumar</h3>
+
+                  <p className="text-gray-600 mb-3">
+                    Committed human rights leader with years of experience in organizational leadership and grassroots engagement, playing a vital role in strengthening human rights awareness and justice advocacy across the country.
+                  </p>
                 </div>
               </div>
-            </FadeIn>
+            </div>
 
             {/* National Vice General Secretary */}
-            <FadeIn direction="left">
-              <div className="group relative bg-white/80 backdrop-blur-sm rounded-[2rem] p-6 md:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.1)] transition-all duration-500 overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-amber-500/10 to-orange-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+            <div className="bg-white border border-gray-200 p-6 md:p-8">
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="w-48 h-48 flex-shrink-0">
+                  <img src="/images/AjarKumar.jpeg" alt="Mr. Ajay Kumar Das" className="w-full h-full object-cover" />
+                </div>
 
-                <div className="relative flex flex-col md:flex-row items-center gap-8">
-                  {/* Hexagonal Photo */}
-                  <motion.div
-                    whileHover={{ scale: 1.05, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="relative flex-shrink-0"
-                  >
-                    <div className="w-40 h-44 md:w-48 md:h-52 relative">
-                      <div
-                        className="absolute inset-0 bg-white shadow-xl"
-                        style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
-                      ></div>
-                      <div
-                        className="absolute inset-1 bg-white overflow-hidden"
-                        style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
-                      >
-                        <img src="/images/AjarKumar.png" alt="Mr. Ajay Kumar Das" className="w-full h-full object-cover" />
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  {/* Details */}
-                  <div className="flex-1 text-center md:text-left">
-                    <div className="inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
-                      Vice General Secretary
-                    </div>
-
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Mr. Ajay Kumar Das</h3>
-
-                    <p className="text-gray-600 leading-relaxed italic mb-4">
-                      "Committed to justice, dignity, and human rights for all."
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                      <span className="px-3 py-1 bg-amber-500/10 text-amber-600 text-xs font-medium rounded-full">Justice Advocate</span>
-                      <span className="px-3 py-1 bg-amber-500/10 text-amber-600 text-xs font-medium rounded-full">Human Dignity</span>
-                    </div>
+                <div className="flex-1 text-center md:text-left">
+                  <div className="bg-amber-600 text-white px-4 py-1 inline-block text-xs font-bold uppercase mb-3">
+                    Vice General Secretary
                   </div>
+
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Mr. Ajay Kumar Das</h3>
+
+                  <p className="text-gray-600 italic mb-3">
+                    "Committed to justice, dignity, and human rights for all."
+                  </p>
                 </div>
               </div>
-            </FadeIn>
+            </div>
 
             {/* National General Secretary */}
-            <FadeIn direction="right">
-              <div className="group relative bg-white/80 backdrop-blur-sm rounded-[2rem] p-6 md:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.1)] transition-all duration-500 overflow-hidden">
-                <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-secondary/10 to-rose-500/10 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+            <div className="bg-white border border-gray-200 p-6 md:p-8">
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="w-48 h-48 flex-shrink-0">
+                  <img src="/images/hasrat.jpeg" alt="Mr. Md. Hasrat Shah" className="w-full h-full object-cover" />
+                </div>
 
-                <div className="relative flex flex-col md:flex-row items-center gap-8">
-                  {/* Hexagonal Photo */}
-                  <motion.div
-                    whileHover={{ scale: 1.05, rotate: -5 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="relative flex-shrink-0"
-                  >
-                    <div className="w-40 h-44 md:w-48 md:h-52 relative">
-                      <div
-                        className="absolute inset-0 bg-white shadow-xl"
-                        style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
-                      ></div>
-                      <div
-                        className="absolute inset-1 bg-white overflow-hidden"
-                        style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
-                      >
-                        <img src="/images/hasrat.png" alt="Mr. Md. Hasrat Shah" className="w-full h-full object-cover" />
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  {/* Details */}
-                  <div className="flex-1 text-center md:text-left">
-                    <div className="inline-flex items-center gap-1.5 bg-gradient-to-r from-secondary to-rose-600 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
-                      General Secretary
-                    </div>
-
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Mr. Md. Hasrat Shah</h3>
-
-                    <p className="text-gray-600 leading-relaxed italic mb-4">
-                      "Human rights are not a privilege granted by power; they are a dignity inherent to every human life."
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                      <span className="px-3 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded-full">Human Rights</span>
-                      <span className="px-3 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded-full">Social Justice</span>
-                    </div>
+                <div className="flex-1 text-center md:text-left">
+                  <div className="bg-secondary text-white px-4 py-1 inline-block text-xs font-bold uppercase mb-3">
+                    General Secretary
                   </div>
+
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Mr. Md. Hasrat Shah</h3>
+
+                  <p className="text-gray-600 italic mb-3">
+                    "Human rights are not a privilege granted by power; they are a dignity inherent to every human life."
+                  </p>
                 </div>
               </div>
-            </FadeIn>
+            </div>
           </div>
         </div>
       </section>

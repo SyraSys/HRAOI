@@ -6,18 +6,17 @@ interface Member {
     id: string;
     name: string;
     fatherName: string;
-    address1: string;
-    address2: string | null;
-    city: string;
-    state: string;
-    district: string;
-    pincode: string;
-    phone: string;
+    parentsAddress: string;
+    permanentAddress: string;
+    aadharNumber: string;
+    vehicleNumber: string | null;
+    educationQualification: string;
     dob: string;
-    doj: string;
-    proposedPost: string;
-    area: string | null;
-    recommendationId: string | null;
+    bloodGroup: string;
+    phone: string;
+    profession: string;
+    familyDetails: string;
+    introducedBy: string | null;
     photoUrl: string | null;
     status: string;
     createdAt: string;
@@ -74,7 +73,7 @@ export default function AdminMembership() {
                                 )}
                                 <div className="flex-1">
                                     <h4 className="text-xl font-black text-[#1a1a5e]">{selected.name}</h4>
-                                    <p className="text-gray-500 text-sm">{selected.proposedPost}</p>
+                                    <p className="text-gray-500 text-sm">{selected.profession}</p>
                                     <span className={`inline-block mt-2 text-xs px-3 py-1 rounded-full font-semibold ${statusColors[selected.status]}`}>
                                         {selected.status.charAt(0).toUpperCase() + selected.status.slice(1)}
                                     </span>
@@ -87,19 +86,20 @@ export default function AdminMembership() {
                                     ["Father's Name", selected.fatherName],
                                     ["Phone", selected.phone],
                                     ["Date of Birth", selected.dob],
-                                    ["Date of Joining", selected.doj],
-                                    ["Address", `${selected.address1}${selected.address2 ? ", " + selected.address2 : ""}`],
-                                    ["City", selected.city],
-                                    ["State", selected.state],
-                                    ["District", selected.district],
-                                    ["Pincode", selected.pincode],
-                                    ["Area", selected.area || "—"],
-                                    ["Recommendation ID", selected.recommendationId || "—"],
+                                    ["Blood Group", selected.bloodGroup],
+                                    ["Aadhar Number", selected.aadharNumber],
+                                    ["Vehicle Number", selected.vehicleNumber || "—"],
+                                    ["Education", selected.educationQualification],
+                                    ["Profession", selected.profession],
+                                    ["Parents Address", selected.parentsAddress],
+                                    ["Permanent Address", selected.permanentAddress],
+                                    ["Family Details", selected.familyDetails],
+                                    ["Introduced By", selected.introducedBy || "—"],
                                     ["Applied On", new Date(selected.createdAt).toLocaleDateString("en-IN")],
                                 ].map(([label, value]) => (
-                                    <div key={label}>
+                                    <div key={label} className={label.includes("Address") || label === "Family Details" ? "col-span-2" : ""}>
                                         <p className="text-xs font-semibold text-gray-400 mb-0.5">{label}</p>
-                                        <p className="text-gray-800 font-medium">{value}</p>
+                                        <p className="text-gray-800 font-medium whitespace-pre-wrap">{value}</p>
                                     </div>
                                 ))}
                             </div>
@@ -163,7 +163,7 @@ export default function AdminMembership() {
                             <tr>
                                 <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Name</th>
                                 <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Phone</th>
-                                <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">State</th>
+                                <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Profession</th>
                                 <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Applied</th>
                                 <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
                                 <th className="text-right px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Action</th>
@@ -175,11 +175,11 @@ export default function AdminMembership() {
                                     <td className="px-6 py-4">
                                         <div>
                                             <p className="text-sm font-semibold text-gray-900">{member.name}</p>
-                                            <p className="text-xs text-gray-500">{member.proposedPost}</p>
+                                            <p className="text-xs text-gray-500">{member.phone}</p>
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-600">{member.phone}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-600">{member.state}</td>
+                                    <td className="px-6 py-4 text-sm text-gray-600 font-medium">{member.profession}</td>
                                     <td className="px-6 py-4 text-sm text-gray-500">
                                         {new Date(member.createdAt).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })}
                                     </td>

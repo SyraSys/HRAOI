@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 
 interface Photo {
     id: string;
@@ -131,9 +132,18 @@ export default function AdminGallery() {
                         <button
                             type="submit"
                             disabled={uploading}
-                            className="bg-[#242171] text-white px-10 py-3.5 rounded-lg text-sm font-bold hover:bg-[#1a1a5e] transition-colors disabled:opacity-60 whitespace-nowrap shadow-lg shadow-blue-900/10"
+                            className="bg-[#242171] text-white px-10 py-3.5 rounded-lg text-sm font-bold hover:bg-[#1a1a5e] transition-all disabled:opacity-60 whitespace-nowrap shadow-lg shadow-blue-900/10 flex items-center justify-center gap-2"
                         >
-                            {uploading ? "Uploading..." : "Upload Photo"}
+                            {uploading ? (
+                                <>
+                                    <motion.div
+                                        animate={{ rotate: 360 }}
+                                        transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                                        className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full"
+                                    ></motion.div>
+                                    Uploading...
+                                </>
+                            ) : "Upload Photo"}
                         </button>
                     </div>
                 </form>

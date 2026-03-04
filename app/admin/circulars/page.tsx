@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { getNormalizedFileUrl } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 interface FileItem {
     id: string;
     title: string;
     fileUrl: string;
-    date: string;
     uploadedAt: string;
 }
 
@@ -22,7 +23,6 @@ function AdminFileManager({ apiPath, label, icon, accept = ".pdf,image/*" }: Adm
     const [loading, setLoading] = useState(true);
     const [uploading, setUploading] = useState(false);
     const [title, setTitle] = useState("");
-    const [date, setDate] = useState("");
     const [file, setFile] = useState<File | null>(null);
     const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
     const fileRef = useRef<HTMLInputElement>(null);
@@ -44,7 +44,6 @@ function AdminFileManager({ apiPath, label, icon, accept = ".pdf,image/*" }: Adm
 
         const formData = new FormData();
         formData.append("title", title);
-        formData.append("date", date);
         formData.append("file", file);
 
         const res = await fetch(apiPath, { method: "POST", body: formData });
@@ -53,7 +52,6 @@ function AdminFileManager({ apiPath, label, icon, accept = ".pdf,image/*" }: Adm
         if (res.ok) {
             setMessage({ type: "success", text: `${label} uploaded successfully!` });
             setTitle("");
-            setDate("");
             setFile(null);
             if (fileRef.current) fileRef.current.value = "";
             fetchItems();
@@ -82,7 +80,7 @@ function AdminFileManager({ apiPath, label, icon, accept = ".pdf,image/*" }: Adm
                         {message.text}
                     </div>
                 )}
-                <form onSubmit={handleUpload} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <form onSubmit={handleUpload} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <input
                         type="text"
                         placeholder={`${label} title`}
@@ -90,12 +88,6 @@ function AdminFileManager({ apiPath, label, icon, accept = ".pdf,image/*" }: Adm
                         onChange={(e) => setTitle(e.target.value)}
                         required
                         className="px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#242171]"
-                    />
-                    <input
-                        type="date"
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
-                        className="px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#242171] text-gray-500"
                     />
                     <input
                         ref={fileRef}
@@ -108,9 +100,18 @@ function AdminFileManager({ apiPath, label, icon, accept = ".pdf,image/*" }: Adm
                     <button
                         type="submit"
                         disabled={uploading}
-                        className="bg-[#242171] text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-[#1a1a5e] transition-colors disabled:opacity-60"
+                        className="bg-[#242171] text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-[#1a1a5e] transition-all disabled:opacity-60 flex items-center justify-center gap-2"
                     >
-                        {uploading ? "Uploading..." : `Upload ${label}`}
+                        {uploading ? (
+                            <>
+                                <motion.div
+                                    animate={{ rotate: 360 }}
+                                    transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                                    className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full"
+                                ></motion.div>
+                                Uploading...
+                            </>
+                        ) : `Upload ${label}`}
                     </button>
                 </form>
             </div>
@@ -134,7 +135,6 @@ function AdminFileManager({ apiPath, label, icon, accept = ".pdf,image/*" }: Adm
                         <thead className="bg-gray-50">
                             <tr>
                                 <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Title</th>
-                                <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
                                 <th className="text-left px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">File</th>
                                 <th className="text-right px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Action</th>
                             </tr>
@@ -143,12 +143,9 @@ function AdminFileManager({ apiPath, label, icon, accept = ".pdf,image/*" }: Adm
                             {items.map((item) => (
                                 <tr key={item.id} className="hover:bg-gray-50 transition-colors">
                                     <td className="px-6 py-4 text-sm font-medium text-gray-900">{item.title}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-500">
-                                        {new Date(item.date).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })}
-                                    </td>
                                     <td className="px-6 py-4">
                                         <a
-                                            href={item.fileUrl}
+                                            href={getNormalizedFileUrl(item.fileUrl)}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-[#242171] text-sm font-semibold hover:underline"

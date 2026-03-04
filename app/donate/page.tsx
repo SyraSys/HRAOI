@@ -93,21 +93,10 @@ export default function Donate() {
                                             {/* Using a placeholder for the QR code */}
                                             <div className="absolute inset-0 bg-[#f8f9fa] flex items-center justify-center border-2 border-dashed border-gray-200">
                                                 <div className="text-center p-4">
-                                                    <div className="text-4xl mb-2">QR</div>
                                                     <div className="text-[10px] text-gray-400 font-mono break-all px-2">
                                                         UPI: {upiId}
                                                     </div>
                                                 </div>
-                                            </div>
-                                            {/* Mock QR pattern overlay for aesthetics */}
-                                            <div className="grid grid-cols-8 grid-rows-8 w-48 h-48 gap-1 opacity-20">
-                                                {Array.from({ length: 64 }).map((_, i) => (
-                                                    <div key={i} className={`bg-black ${Math.random() > 0.5 ? 'opacity-100' : 'opacity-0'}`}></div>
-                                                ))}
-                                            </div>
-                                            {/* Central icon or text */}
-                                            <div className="absolute bg-white p-2 rounded shadow-md">
-                                                <span className="text-blue-600 font-black text-xs">UPI</span>
                                             </div>
                                         </>
                                     )}

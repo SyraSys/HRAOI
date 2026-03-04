@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 export async function GET() {
   try {
     const orders = await prisma.order.findMany({
-      orderBy: { date: "desc" },
+      orderBy: { uploadedAt: "desc" },
     });
     return NextResponse.json(orders);
   } catch (error) {

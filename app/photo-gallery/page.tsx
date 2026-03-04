@@ -38,11 +38,11 @@ export default function PhotoGallery() {
 
     return (
         <div className="bg-white min-h-screen">
-            <div className="container mx-auto px-4 py-8">
+            <div className="container mx-auto px-4 py-6 lg:py-8">
 
                 {/* Breadcrumbs / Back Navigation */}
                 {selectedEvent && (
-                    <div className="mb-8">
+                    <div className="mb-6 lg:mb-8">
                         <button
                             onClick={() => setSelectedEvent(null)}
                             className="flex items-center gap-2 text-[#1a1a5e] font-bold hover:text-[#d93025] transition-colors"
@@ -54,38 +54,38 @@ export default function PhotoGallery() {
 
                 {/* Page Title & Description */}
                 {!selectedEvent && (
-                    <div className="mb-10">
-                        <h1 className="text-2xl font-bold text-[#1a1a5e] mb-2 inline-block relative px-1">
+                    <div className="mb-8 lg:mb-10">
+                        <h1 className="text-xl lg:text-2xl font-bold text-[#1a1a5e] mb-2 inline-block relative px-1">
                             Photo Gallery
                             <div className="absolute left-0 -bottom-1 w-1/2 h-1 bg-[#d93025]"></div>
                         </h1>
                     </div>
                 )}
 
-                <div className="flex flex-col lg:flex-row gap-8">
+                <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
 
 
                     {/* Main Gallery Content */}
                     <main className={`${selectedEvent ? "w-full" : "lg:w-full"}`}>
                         {loading ? (
-                            <div className="flex flex-col items-center justify-center py-24 text-gray-400">
-                                <div className="w-12 h-12 border-4 border-[#1a1a5e]/10 border-t-[#d93025] rounded-full animate-spin mb-4"></div>
+                            <div className="flex flex-col items-center justify-center py-16 lg:py-24 text-gray-400">
+                                <div className="w-10 h-10 lg:w-12 lg:h-12 border-4 border-[#1a1a5e]/10 border-t-[#d93025] rounded-full animate-spin mb-4"></div>
                                 <p className="font-medium">Loading our memories...</p>
                             </div>
                         ) : photos.length === 0 ? (
-                            <div className="text-center py-24 bg-white rounded-3xl border border-gray-100 shadow-sm">
-                                <div className="text-6xl mb-6">📸</div>
-                                <h3 className="text-xl font-bold text-[#1a1a5e] mb-2">No photos yet</h3>
-                                <p className="text-gray-500">We're currently gathering moments to share with you.</p>
+                            <div className="text-center py-16 lg:py-24 bg-white rounded-2xl lg:rounded-3xl border border-gray-100 shadow-sm">
+                                <div className="text-5xl lg:text-6xl mb-4 lg:mb-6">📸</div>
+                                <h3 className="text-lg lg:text-xl font-bold text-[#1a1a5e] mb-2">No photos yet</h3>
+                                <p className="text-sm lg:text-base text-gray-500">We're currently gathering moments to share with you.</p>
                             </div>
                         ) : !selectedEvent ? (
                             /* Events Grid View - Matched to User Image */
-                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
                                 {eventNames.map((name) => (
                                     <div
                                         key={name}
                                         onClick={() => setSelectedEvent(name)}
-                                        className="group cursor-pointer bg-[#1a1a5e] rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-[270px] flex flex-col"
+                                        className="group cursor-pointer bg-[#1a1a5e] rounded-lg lg:rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-[240px] lg:h-[270px] flex flex-col"
                                     >
                                         <div className="aspect-video overflow-hidden bg-gray-200">
                                             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -96,7 +96,7 @@ export default function PhotoGallery() {
                                             />
                                         </div>
                                         <div className="flex-1 flex items-center justify-center p-2 text-center">
-                                            <h3 className="text-white font-semibold text-base md:text-lg leading-tight tracking-wide group-hover:text-blue-300 transition-colors line-clamp-2">
+                                            <h3 className="text-white font-semibold text-sm md:text-base lg:text-lg leading-tight tracking-wide group-hover:text-blue-300 transition-colors line-clamp-2">
                                                 {name}
                                             </h3>
                                         </div>
@@ -105,13 +105,13 @@ export default function PhotoGallery() {
                             </div>
                         ) : (
                             /* Individual Event View */
-                            <div className="space-y-8">
+                            <div className="space-y-6 lg:space-y-8">
 
-                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
                                     {filteredPhotos.map((photo) => (
                                         <div
                                             key={photo.id}
-                                            className="group cursor-pointer relative aspect-video rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-300"
+                                            className="group cursor-pointer relative aspect-video rounded-lg lg:rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-300"
                                             onClick={() => setLightbox(photo)}
                                         >
                                             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -133,15 +133,15 @@ export default function PhotoGallery() {
             {/* Lightbox Modal */}
             {lightbox && (
                 <div
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 md:p-10 transition-all duration-300"
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-4 transition-all duration-300"
                     onClick={() => setLightbox(null)}
                 >
                     <button
-                        className="absolute top-6 right-6 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all z-50 border border-white/20 hover:scale-110 active:scale-95 shadow-xl"
+                        className="absolute top-4 right-4 lg:top-6 lg:right-6 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all z-50 border border-white/20 hover:scale-110 active:scale-95 shadow-xl"
                         onClick={() => setLightbox(null)}
                         aria-label="Close lightbox"
                     >
-                        <X size={24} />
+                        <X size={20} className="lg:w-6 lg:h-6" />
                     </button>
 
                     <div

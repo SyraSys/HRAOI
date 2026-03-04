@@ -33,18 +33,18 @@ export default function Enquiry() {
 
     return (
         <div className="bg-white min-h-screen">
-            <div className="container mx-auto px-4 py-8">
+            <div className="container mx-auto px-4 py-6 lg:py-8">
                 {/* Page Title */}
-                <div className="mb-12">
-                    <h2 className="text-2xl font-bold text-[#1a1a5e] inline-block relative px-1">
+                <div className="mb-8 lg:mb-12">
+                    <h2 className="text-xl lg:text-2xl font-bold text-[#1a1a5e] inline-block relative px-1">
                         Enquiry and Feedback
                         <div className="absolute left-0 -bottom-1 w-1/2 h-1 bg-[#d93025]"></div>
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
                     {/* Left Side: Form */}
-                    <div className="space-y-6">
+                    <div className="space-y-4 lg:space-y-6">
                         {status === "success" && (
                             <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm font-medium">
                                 ✓ Your enquiry has been submitted successfully! We will get back to you soon.
@@ -56,11 +56,11 @@ export default function Enquiry() {
                             </div>
                         )}
 
-                        <form className="space-y-4" onSubmit={handleSubmit}>
+                        <form className="space-y-3 lg:space-y-4" onSubmit={handleSubmit}>
                             <Stagger delay={0.2}>
                                 <StaggerItem>
                                     <div className="space-y-1">
-                                        <label className="block text-sm font-bold text-[#1a1a5e]">Your name<span className="text-[#d93025]">*</span></label>
+                                        <label className="block text-xs lg:text-sm font-bold text-[#1a1a5e]">Your name<span className="text-[#d93025]">*</span></label>
                                         <motion.input
                                             whileFocus={{ scale: 1.01, boxShadow: "0 0 0 2px rgba(36, 33, 113, 0.1)" }}
                                             type="text"
@@ -69,14 +69,14 @@ export default function Enquiry() {
                                             onChange={handleChange}
                                             placeholder="Enter your name..."
                                             required
-                                            className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
+                                            className="w-full px-3 lg:px-4 py-2 border border-gray-200 rounded-lg focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300 text-sm lg:text-base"
                                         />
                                     </div>
                                 </StaggerItem>
 
                                 <StaggerItem>
-                                    <div className="space-y-1 mt-4">
-                                        <label className="block text-sm font-bold text-[#1a1a5e]">Your email<span className="text-[#d93025]">*</span></label>
+                                    <div className="space-y-1 mt-3 lg:mt-4">
+                                        <label className="block text-xs lg:text-sm font-bold text-[#1a1a5e]">Your email<span className="text-[#d93025]">*</span></label>
                                         <motion.input
                                             whileFocus={{ scale: 1.01, boxShadow: "0 0 0 2px rgba(36, 33, 113, 0.1)" }}
                                             type="email"
@@ -85,14 +85,14 @@ export default function Enquiry() {
                                             onChange={handleChange}
                                             placeholder="Enter your email..."
                                             required
-                                            className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
+                                            className="w-full px-3 lg:px-4 py-2 border border-gray-200 rounded-lg focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300 text-sm lg:text-base"
                                         />
                                     </div>
                                 </StaggerItem>
 
                                 <StaggerItem>
-                                    <div className="space-y-1 mt-4">
-                                        <label className="block text-sm font-bold text-[#1a1a5e]">Subject<span className="text-[#d93025]">*</span></label>
+                                    <div className="space-y-1 mt-3 lg:mt-4">
+                                        <label className="block text-xs lg:text-sm font-bold text-[#1a1a5e]">Subject<span className="text-[#d93025]">*</span></label>
                                         <motion.input
                                             whileFocus={{ scale: 1.01, boxShadow: "0 0 0 2px rgba(36, 33, 113, 0.1)" }}
                                             type="text"
@@ -101,33 +101,33 @@ export default function Enquiry() {
                                             onChange={handleChange}
                                             placeholder="Your subject..."
                                             required
-                                            className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300"
+                                            className="w-full px-3 lg:px-4 py-2 border border-gray-200 rounded-lg focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all placeholder:text-gray-300 text-sm lg:text-base"
                                         />
                                     </div>
                                 </StaggerItem>
 
                                 <StaggerItem>
-                                    <div className="space-y-1 mt-4">
-                                        <label className="block text-sm font-bold text-[#1a1a5e]">Your message (optional)</label>
+                                    <div className="space-y-1 mt-3 lg:mt-4">
+                                        <label className="block text-xs lg:text-sm font-bold text-[#1a1a5e]">Your message (optional)</label>
                                         <motion.textarea
                                             whileFocus={{ scale: 1.01, boxShadow: "0 0 0 2px rgba(36, 33, 113, 0.1)" }}
-                                            rows={6}
+                                            rows={5}
                                             name="message"
                                             value={form.message}
                                             onChange={handleChange}
                                             placeholder="Your message..."
-                                            className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all resize-none placeholder:text-gray-300"
+                                            className="w-full px-3 lg:px-4 py-2 border border-gray-200 rounded-lg focus:border-[#242171] focus:ring-1 focus:ring-[#242171] outline-none transition-all resize-none placeholder:text-gray-300 text-sm lg:text-base"
                                         ></motion.textarea>
                                     </div>
                                 </StaggerItem>
 
                                 <StaggerItem>
-                                    <div className="mt-6">
+                                    <div className="mt-4 lg:mt-6">
                                         <Pressable>
                                             <button
                                                 type="submit"
                                                 disabled={status === "loading"}
-                                                className="bg-[#242171] text-white px-12 py-2 rounded-lg font-bold hover:bg-[#1a1a5e] transition-all uppercase tracking-widest text-sm shadow-md disabled:opacity-60"
+                                                className="bg-[#242171] text-white px-8 lg:px-12 py-2 rounded-lg font-bold hover:bg-[#1a1a5e] transition-all uppercase tracking-widest text-xs lg:text-sm shadow-md disabled:opacity-60"
                                             >
                                                 {status === "loading" ? (
                                                     <div className="flex items-center gap-2">
@@ -158,7 +158,7 @@ export default function Enquiry() {
                                     width="100%"
                                     height="100%"
                                     style={{ border: 0 }}
-                                    src="https://maps.google.com/maps?q=45%20D%2C%20Amar%20Plaza%2C%20Hasanpur%20Main%20Road%2C%20I.P.%20Extension%2C%20Delhi%20-%2092&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                    src="https://maps.google.com/maps?q=39B%2C%20Arupara%2C%202nd%20by%20Lane%2C%20Jagacha%2C%20GIP%20Colony%2C%20Howrah-711112&t=&z=15&ie=UTF8&iwloc=&output=embed"
                                     allowFullScreen
                                     loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"
@@ -171,7 +171,11 @@ export default function Enquiry() {
                                 <div className="space-y-4 text-xs font-semibold text-gray-600 leading-relaxed">
                                     <p className="flex gap-2">
                                         <span className="text-[#d93025]">📍</span>
-                                        Address: 45 D, Amar Plaza, Hasanpur Main Road, I.P. Extention, Delhi - 92
+                                        <span>
+                                            <strong>Administrative Office:</strong><br/>
+                                            39B, Arupara, 2nd by Lane, Jagacha,<br/>
+                                            GIP Colony, Howrah-711112
+                                        </span>
                                     </p>
                                     <p className="flex gap-2">
                                         <span className="text-blue-500">📞</span>

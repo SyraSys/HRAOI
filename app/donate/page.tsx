@@ -55,17 +55,17 @@ export default function Donate() {
 
     return (
         <div className="bg-white min-h-screen">
-            <div className="container mx-auto px-4 py-8">
+            <div className="container mx-auto px-4 py-6 lg:py-8">
                 {/* Page Title */}
-                <div className="mb-12">
-                    <h2 className="text-2xl font-bold text-[#1a1a5e] inline-block relative px-1">
+                <div className="mb-8 lg:mb-12">
+                    <h2 className="text-xl lg:text-2xl font-bold text-[#1a1a5e] inline-block relative px-1">
                         Help us
                         <div className="absolute left-0 -bottom-1 w-1/2 h-1 bg-[#d93025]"></div>
                     </h2>
                 </div>
 
                 {/* Donation Cards Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl">
 
                     {/* UPI Donation Card */}
                     <div className="flex flex-col rounded-sm overflow-hidden shadow-xl border border-gray-100">
@@ -77,10 +77,10 @@ export default function Donate() {
                         </div>
 
                         {/* Body */}
-                        <div className="bg-[#1a1a5e] flex-1 p-8 flex flex-col items-center justify-center space-y-8">
+                        <div className="bg-[#1a1a5e] flex-1 p-6 lg:p-8 flex flex-col items-center justify-center space-y-6 lg:space-y-8">
                             {/* QR Code Container */}
-                            <div className="bg-white p-4 rounded-lg shadow-inner">
-                                <div className="w-64 h-64 relative flex items-center justify-center">
+                            <div className="bg-white p-3 lg:p-4 rounded-lg shadow-inner">
+                                <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 relative flex items-center justify-center">
                                     {qrCodeUrl ? (
                                         <Image
                                             src={qrCodeUrl}
@@ -105,7 +105,7 @@ export default function Donate() {
 
                             {/* UPI Details */}
                             <div className="text-center space-y-2">
-                                <p className="text-white font-bold text-lg tracking-tight">
+                                <p className="text-white font-bold text-sm lg:text-lg tracking-tight">
                                     UPI ID: <span className="text-blue-300">{upiId}</span>
                                 </p>
                             </div>
@@ -115,33 +115,33 @@ export default function Donate() {
                     {/* Bank Transfer Card */}
                     <div className="flex flex-col rounded-sm overflow-hidden shadow-xl border border-gray-100">
                         {/* Header */}
-                        <div className="bg-[#d93025] py-3 px-6 text-center">
-                            <h3 className="text-white font-bold text-xl tracking-wider uppercase">
+                        <div className="bg-[#d93025] py-2 lg:py-3 px-4 lg:px-6 text-center">
+                            <h3 className="text-white font-bold text-base lg:text-xl tracking-wider uppercase">
                                 Donate via NEFT/RTGS
                             </h3>
                         </div>
 
                         {/* Body */}
-                        <div className="bg-[#1a1a5e] flex-1 p-12 flex flex-col items-center justify-center text-center space-y-6">
-                            <div className="space-y-4">
-                                <h4 className="text-white font-black text-2xl tracking-tight mb-6">
+                        <div className="bg-[#1a1a5e] flex-1 p-6 lg:p-12 flex flex-col items-center justify-center text-center space-y-4 lg:space-y-6">
+                            <div className="space-y-3 lg:space-y-4">
+                                <h4 className="text-white font-black text-lg lg:text-2xl tracking-tight mb-4 lg:mb-6">
                                     {accountName}
                                 </h4>
 
-                                <div className="space-y-3 text-lg">
+                                <div className="space-y-2 lg:space-y-3 text-sm lg:text-lg">
                                     <p className="text-blue-100">
-                                        <span className="text-white/60 font-medium block text-sm uppercase tracking-widest mb-1">Account Number</span>
-                                        <span className="font-bold text-white tracking-widest text-xl">{accountNumber}</span>
+                                        <span className="text-white/60 font-medium block text-xs lg:text-sm uppercase tracking-widest mb-1">Account Number</span>
+                                        <span className="font-bold text-white tracking-widest text-base lg:text-xl">{accountNumber}</span>
                                     </p>
 
                                     <p className="text-blue-100">
-                                        <span className="text-white/60 font-medium block text-sm uppercase tracking-widest mb-1">Bank & Branch</span>
-                                        <span className="font-semibold text-white">{bankName}</span>
+                                        <span className="text-white/60 font-medium block text-xs lg:text-sm uppercase tracking-widest mb-1">Bank & Branch</span>
+                                        <span className="font-semibold text-white text-sm lg:text-base">{bankName}</span>
                                     </p>
 
                                     <p className="text-blue-100">
-                                        <span className="text-white/60 font-medium block text-sm uppercase tracking-widest mb-1">IFSC Code</span>
-                                        <span className="font-bold text-blue-300 tracking-widest text-xl">{ifscCode}</span>
+                                        <span className="text-white/60 font-medium block text-xs lg:text-sm uppercase tracking-widest mb-1">IFSC Code</span>
+                                        <span className="font-bold text-blue-300 tracking-widest text-base lg:text-xl">{ifscCode}</span>
                                     </p>
                                 </div>
                             </div>
@@ -156,8 +156,8 @@ export default function Donate() {
                 </div>
 
                 {/* Optional Footer Message */}
-                <div className="mt-16 text-center max-w-2xl mx-auto">
-                    <p className="text-gray-500 italic text-sm leading-relaxed">
+                <div className="mt-10 lg:mt-16 text-center max-w-2xl mx-auto">
+                    <p className="text-gray-500 italic text-xs lg:text-sm leading-relaxed">
                         "Your contribution helps us protect and promote human rights across the nation. Every bit matters."
                     </p>
                 </div>

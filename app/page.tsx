@@ -103,7 +103,7 @@ export default function Home() {
   return (
     <div className="bg-white text-gray-800 font-sans">
       {/* Hero Slider Area */}
-      <section className="relative h-[260px] bg-gray-900 overflow-hidden">
+      <section className="relative h-[200px] sm:h-[240px] lg:h-[260px] bg-gray-900 overflow-hidden">
         {/* Slider Container */}
         <div className="relative w-full h-full flex items-center">
           <div
@@ -122,7 +122,7 @@ export default function Home() {
             {[...SLIDER_IMAGES, ...SLIDER_IMAGES, ...SLIDER_IMAGES].map((image, index) => (
               <div
                 key={index}
-                className="w-[380px] h-[260px] flex-shrink-0 select-none"
+                className="w-[280px] sm:w-[320px] lg:w-[380px] h-[200px] sm:h-[240px] lg:h-[260px] flex-shrink-0 select-none"
               >
                 <img
                   src={image}
@@ -149,19 +149,19 @@ export default function Home() {
       </section>
 
       {/* Search & Announcements Section */}
-      <section className="py-16 bg-gradient-to-b from-white to-gray-50/50">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-b from-white to-gray-50/50">
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {/* Member Search */}
           <FadeIn>
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.08)] border border-gray-100 h-full">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/80 backdrop-blur-sm p-6 lg:p-8 rounded-[1.5rem] lg:rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.08)] border border-gray-100 h-full">
+              <div className="flex items-center gap-2 lg:gap-3 mb-4 lg:mb-6">
+                <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <svg className="w-4 h-4 lg:w-5 lg:h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-gray-800">Member Search</h2>
+                  <h2 className="text-lg lg:text-xl font-bold text-gray-800">Member Search</h2>
                   <p className="text-xs text-gray-500 font-medium">Enter Member Number</p>
                 </div>
               </div>
@@ -173,29 +173,29 @@ export default function Home() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  className="flex-1 px-5 py-3 rounded-full border border-gray-200 bg-white/90 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-300 text-sm"
+                  className="flex-1 px-3 lg:px-5 py-2 lg:py-3 rounded-full border border-gray-200 bg-white/90 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/40 transition-all duration-300 text-sm"
                 />
                 <Pressable>
                   <button
                     onClick={handleSearch}
-                    className="bg-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-dark transition-all duration-300 shadow-[0_2px_12px_rgba(36,33,113,0.25)] hover:shadow-[0_4px_16px_rgba(36,33,113,0.35)]"
+                    className="bg-primary text-white px-4 lg:px-6 py-2 lg:py-3 rounded-full text-sm font-semibold hover:bg-primary-dark transition-all duration-300 shadow-[0_2px_12px_rgba(36,33,113,0.25)] hover:shadow-[0_4px_16px_rgba(36,33,113,0.35)]"
                   >
                     Search
                   </button>
                 </Pressable>
               </div>
 
-              <div className="mt-8 flex justify-center">
+              <div className="mt-6 lg:mt-8 flex justify-center">
                 <Link href="/membership">
                   <Pressable scale={1.03}>
-                    <button className="bg-gradient-to-r from-secondary to-red-500 text-white px-8 py-3.5 rounded-full font-bold shadow-[0_4px_16px_rgba(217,48,37,0.3)] hover:shadow-[0_6px_20px_rgba(217,48,37,0.4)] transition-all duration-300">
+                    <button className="bg-gradient-to-r from-secondary to-red-500 text-white px-6 lg:px-8 py-2.5 lg:py-3.5 rounded-full text-sm lg:text-base font-bold shadow-[0_4px_16px_rgba(217,48,37,0.3)] hover:shadow-[0_6px_20px_rgba(217,48,37,0.4)] transition-all duration-300">
                       Become a Member
                     </button>
                   </Pressable>
                 </Link>
               </div>
 
-              <div className="mt-8 bg-gradient-to-r from-primary/5 to-blue-50 text-primary/80 p-5 rounded-2xl text-xs leading-relaxed text-center border border-primary/10">
+              <div className="mt-6 lg:mt-8 bg-gradient-to-r from-primary/5 to-blue-50 text-primary/80 p-4 lg:p-5 rounded-xl lg:rounded-2xl text-xs leading-relaxed text-center border border-primary/10">
                 <span className="font-semibold">Notice:</span> Dear all Members of HRAOI, the renewal process is stated. Please contact your District President for any information or Delhi Office. You can also drop us a mail at <span className="font-medium">www.hraoi.in@gmail.com</span>
               </div>
             </div>
@@ -207,21 +207,21 @@ export default function Home() {
       </section>
 
       {/* HRAOI at a Glance Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-primary/5 relative overflow-hidden">
+      <section className="py-12 lg:py-20 bg-gradient-to-br from-gray-50 via-white to-primary/5 relative overflow-hidden">
         {/* Decorative background elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-secondary/10 to-primary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-5 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="text-center mb-10 lg:mb-14">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold uppercase tracking-wider mb-3 lg:mb-4">
+              <svg className="w-3 h-3 lg:w-4 lg:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
               Our Impact
             </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-3">HRAOI at a Glance</h2>
-            <p className="text-gray-500 max-w-md mx-auto">Making a difference across India through dedicated service and advocacy</p>
+            <h2 className="text-2xl lg:text-4xl font-bold text-gray-900 mb-2 lg:mb-3">HRAOI at a Glance</h2>
+            <p className="text-sm lg:text-base text-gray-500 max-w-md mx-auto px-4">Making a difference across India through dedicated service and advocacy</p>
           </div>
 
           <Stagger>
@@ -259,41 +259,41 @@ export default function Home() {
       </section>
 
       {/* Leadership Team Section */}
-      <section className="py-24 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden">
+      <section className="py-12 lg:py-24 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-20 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
 
         <div className="container mx-auto px-4 relative z-10">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-5 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="text-center mb-10 lg:mb-16">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold uppercase tracking-wider mb-3 lg:mb-4">
+              <svg className="w-3 h-3 lg:w-4 lg:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
               </svg>
               Our Leadership
             </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-3">Meet Our Team</h2>
-            <p className="text-gray-500 max-w-lg mx-auto">Dedicated leaders driving the mission of human rights and social justice across India</p>
+            <h2 className="text-2xl lg:text-4xl font-bold text-gray-900 mb-2 lg:mb-3">Meet Our Team</h2>
+            <p className="text-sm lg:text-base text-gray-500 max-w-lg mx-auto px-4">Dedicated leaders driving the mission of human rights and social justice across India</p>
           </div>
 
           {/* Leadership Cards - Full Width */}
-          <div className="space-y-6 max-w-6xl mx-auto">
+          <div className="space-y-4 lg:space-y-6 max-w-6xl mx-auto">
             {/* National President */}
-            <div className="bg-white border border-gray-200 p-6 md:p-8">
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="w-48 h-48 flex-shrink-0">
+            <div className="bg-white border border-gray-200 p-4 lg:p-6 xl:p-8">
+              <div className="flex flex-col md:flex-row items-center gap-4 lg:gap-6">
+                <div className="w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0">
                   <img src="/images/sudhir.jpeg" alt="Mr. Sudhir Kumar" className="w-full h-full object-cover" />
                 </div>
 
                 <div className="flex-1 text-center md:text-left">
-                  <div className="bg-primary text-white px-4 py-1 inline-block text-xs font-bold uppercase mb-3">
+                  <div className="bg-primary text-white px-3 lg:px-4 py-1 inline-block text-xs font-bold uppercase mb-2 lg:mb-3">
                     National President
                   </div>
 
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Mr. Sudhir Kumar</h3>
+                  <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2 lg:mb-3">Mr. Sudhir Kumar</h3>
 
-                  <p className="text-gray-600 mb-3">
+                  <p className="text-sm lg:text-base text-gray-600 mb-2 lg:mb-3">
                     Senior human rights activist with over 30 years of dedicated experience in human rights protection and social justice. Under his visionary leadership, HRAOI has strengthened its mission to promote justice, equality, dignity, and humanitarian values.
                   </p>
                 </div>
@@ -301,20 +301,20 @@ export default function Home() {
             </div>
 
             {/* National Vice President */}
-            <div className="bg-white border border-gray-200 p-6 md:p-8">
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="w-48 h-48 flex-shrink-0">
+            <div className="bg-white border border-gray-200 p-4 lg:p-6 xl:p-8">
+              <div className="flex flex-col md:flex-row items-center gap-4 lg:gap-6">
+                <div className="w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0">
                   <img src="/images/surajkumar.jpeg" alt="Mr. Suraj Kumar" className="w-full h-full object-cover" />
                 </div>
 
                 <div className="flex-1 text-center md:text-left">
-                  <div className="bg-emerald-600 text-white px-4 py-1 inline-block text-xs font-bold uppercase mb-3">
+                  <div className="bg-emerald-600 text-white px-3 lg:px-4 py-1 inline-block text-xs font-bold uppercase mb-2 lg:mb-3">
                     Vice President
                   </div>
 
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Mr. Suraj Kumar</h3>
+                  <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2 lg:mb-3">Mr. Suraj Kumar</h3>
 
-                  <p className="text-gray-600 mb-3">
+                  <p className="text-sm lg:text-base text-gray-600 mb-2 lg:mb-3">
                     Committed human rights leader with years of experience in organizational leadership and grassroots engagement, playing a vital role in strengthening human rights awareness and justice advocacy across the country.
                   </p>
                 </div>
@@ -322,20 +322,20 @@ export default function Home() {
             </div>
 
             {/* National Vice General Secretary */}
-            <div className="bg-white border border-gray-200 p-6 md:p-8">
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="w-48 h-48 flex-shrink-0">
+            <div className="bg-white border border-gray-200 p-4 lg:p-6 xl:p-8">
+              <div className="flex flex-col md:flex-row items-center gap-4 lg:gap-6">
+                <div className="w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0">
                   <img src="/images/AjarKumar.jpeg" alt="Mr. Ajay Kumar Das" className="w-full h-full object-cover" />
                 </div>
 
                 <div className="flex-1 text-center md:text-left">
-                  <div className="bg-amber-600 text-white px-4 py-1 inline-block text-xs font-bold uppercase mb-3">
+                  <div className="bg-amber-600 text-white px-3 lg:px-4 py-1 inline-block text-xs font-bold uppercase mb-2 lg:mb-3">
                     Vice General Secretary
                   </div>
 
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Mr. Ajay Kumar Das</h3>
+                  <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2 lg:mb-3">Mr. Ajay Kumar Das</h3>
 
-                  <p className="text-gray-600 italic mb-3">
+                  <p className="text-sm lg:text-base text-gray-600 italic mb-2 lg:mb-3">
                     "Committed to justice, dignity, and human rights for all."
                   </p>
                 </div>
@@ -343,20 +343,20 @@ export default function Home() {
             </div>
 
             {/* National General Secretary */}
-            <div className="bg-white border border-gray-200 p-6 md:p-8">
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="w-48 h-48 flex-shrink-0">
+            <div className="bg-white border border-gray-200 p-4 lg:p-6 xl:p-8">
+              <div className="flex flex-col md:flex-row items-center gap-4 lg:gap-6">
+                <div className="w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0">
                   <img src="/images/hasrat.jpeg" alt="Mr. Md. Hasrat Shah" className="w-full h-full object-cover" />
                 </div>
 
                 <div className="flex-1 text-center md:text-left">
-                  <div className="bg-secondary text-white px-4 py-1 inline-block text-xs font-bold uppercase mb-3">
+                  <div className="bg-secondary text-white px-3 lg:px-4 py-1 inline-block text-xs font-bold uppercase mb-2 lg:mb-3">
                     General Secretary
                   </div>
 
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Mr. Md. Hasrat Shah</h3>
+                  <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2 lg:mb-3">Mr. Md. Hasrat Shah</h3>
 
-                  <p className="text-gray-600 italic mb-3">
+                  <p className="text-sm lg:text-base text-gray-600 italic mb-2 lg:mb-3">
                     "Human rights are not a privilege granted by power; they are a dignity inherent to every human life."
                   </p>
                 </div>
@@ -381,12 +381,12 @@ export default function Home() {
 
 
       {/* Donate Section */}
-      <section className="py-20 bg-white overflow-visible">
+      <section className="py-10 lg:py-20 bg-white overflow-visible">
         <div className="container mx-auto px-4">
           <FadeIn>
             <div className="mx-auto relative">
               {/* Main Card with dark background */}
-              <div className="bg-gray-900 rounded-[2rem] shadow-[0_8px_40px_rgba(0,0,0,0.15)] ml-0 md:ml-32 lg:ml-40 relative">
+              <div className="bg-gray-900 rounded-xl lg:rounded-[2rem] shadow-[0_8px_40px_rgba(0,0,0,0.15)] ml-0 md:ml-32 lg:ml-40 relative">
                 <div className="flex flex-col md:flex-row items-center">
                   {/* Image - Positioned to overflow on the left, bottom aligned */}
                   <div className="relative md:absolute md:-left-1 lg:-left-2 md:bottom-0 z-10 p-6 md:p-0">
@@ -397,26 +397,26 @@ export default function Home() {
                       transition={{ duration: 0.8, ease: "easeOut" }}
                       src="/images/donate.png"
                       alt="Donate"
-                      className="w-64 md:w-72 lg:w-80 h-auto object-contain drop-shadow-2xl"
+                      className="w-48 sm:w-56 md:w-72 lg:w-80 h-auto object-contain drop-shadow-2xl"
                     />
                   </div>
 
                   {/* Content Side */}
-                  <div className="flex-1 p-10 md:p-12 md:pl-80 lg:pl-100 flex flex-col justify-center">
+                  <div className="flex-1 p-6 lg:p-10 xl:p-12 md:pl-60 lg:pl-80 xl:pl-100 flex flex-col justify-center">
                     {/* Large Impact Headline */}
-                    <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight mb-6 leading-[0.9]">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight mb-4 lg:mb-6 leading-[0.9]">
                       IMPACT
                     </h2>
 
                     {/* Description */}
-                    <p className="text-white/80 text-lg leading-relaxed mb-8">
+                    <p className="text-white/80 text-sm lg:text-lg leading-relaxed mb-6 lg:mb-8">
                       Your contribution helps us protect human rights, support victims, and create a more just society for everyone.
                     </p>
 
                     {/* Donate Button - Outlined Style */}
                     <Link href="/donate">
                       <Pressable scale={1.05}>
-                        <button className="group px-8 py-3.5 rounded-full font-bold text-base border-2 border-lime-400 text-lime-400 bg-transparent hover:bg-lime-400 hover:text-black transition-all duration-300 inline-flex items-center gap-3 w-fit">
+                        <button className="group px-6 lg:px-8 py-2.5 lg:py-3.5 rounded-full font-bold text-sm lg:text-base border-2 border-lime-400 text-lime-400 bg-transparent hover:bg-lime-400 hover:text-black transition-all duration-300 inline-flex items-center gap-2 lg:gap-3 w-fit">
                           <span>Donate Now</span>
                           <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -434,7 +434,7 @@ export default function Home() {
 
 
       {/* Mission Section */}
-      <section className="relative py-28 text-white overflow-hidden">
+      <section className="relative py-16 lg:py-28 text-white overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <img
@@ -449,8 +449,8 @@ export default function Home() {
           <FadeIn>
             <div className="max-w-5xl mx-auto">
               {/* Badge */}
-              <div className="flex justify-center mb-8">
-                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-5 py-2 rounded-full text-sm font-semibold uppercase tracking-wider">
+              <div className="flex justify-center mb-6 lg:mb-8">
+                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 lg:px-5 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold uppercase tracking-wider">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
                   </svg>
@@ -459,25 +459,25 @@ export default function Home() {
               </div>
 
               {/* Main Heading */}
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center mb-6 lg:mb-8 leading-tight">
                 Human Rights Association
                 <span className="block text-lime-400">of India</span>
               </h2>
 
               {/* Quote Mark */}
-              <div className="flex justify-center mb-6">
-                <svg className="w-12 h-12 text-white/20" fill="currentColor" viewBox="0 0 24 24">
+              <div className="flex justify-center mb-4 lg:mb-6">
+                <svg className="w-8 h-8 lg:w-12 lg:h-12 text-white/20" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
               </div>
 
               {/* Philosophy Text */}
               <blockquote className="text-center">
-                <p className="text-xl md:text-2xl leading-relaxed text-white/90 mb-8">
+                <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-white/90 mb-6 lg:mb-8">
                   HRAOI is based on the philosophy of <span className="text-lime-400 font-semibold">HUMAN RIGHTS</span>.
-                  <span className="block mt-4 text-white/70 italic">"Vasudhav Kutumbakum" — The whole world is family</span>
+                  <span className="block mt-3 lg:mt-4 text-white/70 italic">"Vasudhav Kutumbakum" — The whole world is family</span>
                 </p>
-                <p className="text-lg text-white/70 leading-relaxed max-w-3xl mx-auto">
+                <p className="text-sm md:text-base lg:text-lg text-white/70 leading-relaxed max-w-3xl mx-auto">
                   All human beings are born equal and free. Human rights are properly understood and interpreted all over the world. They are foreign to no culture and native to all nations. It is the universality of Human rights that gives them their strength and endorses them with the power to cross any border, climb any wall, defy any force.
                 </p>
               </blockquote>

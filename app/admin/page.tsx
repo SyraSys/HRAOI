@@ -47,10 +47,10 @@ export default function AdminDashboard() {
     ];
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-6 lg:space-y-8">
             {/* Welcome */}
-            <div className="bg-gradient-to-r from-[#1a1a5e] to-[#242171] rounded-2xl p-8 text-white">
-                <h2 className="text-2xl font-black mb-1">Welcome back, Admin 👋</h2>
+            <div className="bg-gradient-to-r from-[#1a1a5e] to-[#242171] rounded-2xl p-6 lg:p-8 text-white">
+                <h2 className="text-xl lg:text-2xl font-black mb-1">Welcome back, Admin 👋</h2>
                 <p className="text-blue-200 text-sm">
                     Human Rights Association of India — Admin Control Panel
                 </p>
@@ -60,13 +60,13 @@ export default function AdminDashboard() {
             {stats && (stats.newEnquiries > 0 || stats.pendingMemberships > 0) && (
                 <div className="flex flex-wrap gap-3">
                     {stats.newEnquiries > 0 && (
-                        <a href="/admin/enquiries" className="flex items-center gap-2 bg-yellow-50 border border-yellow-300 text-yellow-800 px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow-100 transition-colors">
+                        <a href="/admin/enquiries" className="flex items-center gap-2 bg-yellow-50 border border-yellow-300 text-yellow-800 px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold hover:bg-yellow-100 transition-colors">
                             <span className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></span>
                             {stats.newEnquiries} new enquir{stats.newEnquiries === 1 ? "y" : "ies"} pending
                         </a>
                     )}
                     {stats.pendingMemberships > 0 && (
-                        <a href="/admin/membership" className="flex items-center gap-2 bg-red-50 border border-red-300 text-red-800 px-4 py-2 rounded-full text-sm font-semibold hover:bg-red-100 transition-colors">
+                        <a href="/admin/membership" className="flex items-center gap-2 bg-red-50 border border-red-300 text-red-800 px-3 lg:px-4 py-1.5 lg:py-2 rounded-full text-xs lg:text-sm font-semibold hover:bg-red-100 transition-colors">
                             <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
                             {stats.pendingMemberships} membership application{stats.pendingMemberships === 1 ? "" : "s"} pending
                         </a>
@@ -75,15 +75,15 @@ export default function AdminDashboard() {
             )}
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 lg:gap-4">
                 {cards.map((card) => (
                     <a
                         key={card.label}
                         href={card.href}
-                        className={`${card.color} border rounded-xl p-5 hover:shadow-md transition-all group`}
+                        className={`${card.color} border rounded-xl p-4 lg:p-5 hover:shadow-md transition-all group`}
                     >
-                        <div className="text-2xl mb-3">{card.icon}</div>
-                        <div className={`text-3xl font-black ${card.textColor} mb-1`}>
+                        <div className="text-2xl mb-2 lg:mb-3">{card.icon}</div>
+                        <div className={`text-2xl lg:text-3xl font-black ${card.textColor} mb-1`}>
                             {stats ? card.value : "—"}
                         </div>
                         <div className="text-xs font-semibold text-gray-500 group-hover:text-gray-700 transition-colors">
@@ -94,9 +94,9 @@ export default function AdminDashboard() {
             </div>
 
             {/* Quick Links */}
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
-                <h3 className="font-bold text-[#1a1a5e] mb-4">Quick Actions</h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            <div className="bg-white rounded-xl border border-gray-200 p-4 lg:p-6">
+                <h3 className="font-bold text-[#1a1a5e] mb-3 lg:mb-4 text-sm lg:text-base">Quick Actions</h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2 lg:gap-3">
                     {[
                         { label: "Upload Photo", href: "/admin/gallery", icon: "📸" },
                         { label: "Add Circular", href: "/admin/circulars", icon: "📄" },
@@ -108,7 +108,7 @@ export default function AdminDashboard() {
                         <a
                             key={action.label}
                             href={action.href}
-                            className="flex items-center gap-3 px-4 py-3 bg-gray-50 hover:bg-[#242171] hover:text-white rounded-lg text-sm font-semibold text-gray-700 transition-all group"
+                            className="flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 bg-gray-50 hover:bg-[#242171] hover:text-white rounded-lg text-xs lg:text-sm font-semibold text-gray-700 transition-all group"
                         >
                             <span>{action.icon}</span>
                             {action.label}

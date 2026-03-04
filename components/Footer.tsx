@@ -1,26 +1,26 @@
 export default function Footer() {
     return (
-        <footer className="bg-primary text-white py-12">
-            <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
+        <footer className="bg-primary text-white py-8 lg:py-12">
+            <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
                 <div>
-                    <h3 className="text-xl font-bold mb-6 underline decoration-secondary underline-offset-8">About Us</h3>
-                    <p className="text-sm text-gray-300 leading-relaxed italic">
+                    <h3 className="text-lg lg:text-xl font-bold mb-4 lg:mb-6 underline decoration-secondary underline-offset-8">About Us</h3>
+                    <p className="text-xs lg:text-sm text-gray-300 leading-relaxed italic">
                         HRAOI is based on the philosophy of HUMAN RIGHTS. "Vasudhav Kutumbakum" (The whole world is family). All human beings are born equal and free.
                     </p>
                     <a href="/about-us" className="text-xs text-white/70 mt-2 block hover:text-white underline">Read more...</a>
                 </div>
                 <div>
-                    <h3 className="text-xl font-bold mb-6 underline decoration-secondary underline-offset-8">Contact Us</h3>
-                    <div className="text-sm text-gray-300 space-y-1">
+                    <h3 className="text-lg lg:text-xl font-bold mb-4 lg:mb-6 underline decoration-secondary underline-offset-8">Contact Us</h3>
+                    <div className="text-xs lg:text-sm text-gray-300 space-y-1">
                         <p>Address: Road, I.P. Extention, Delhi - 92</p>
                         <p>Phone: 9330977118, 9334246098, 6207394301</p>
                         <p>Email: hraoi.in@gmail.com</p>
                     </div>
                 </div>
-                <div>
-                    <h3 className="text-xl font-bold mb-6 underline decoration-secondary underline-offset-8">Visits</h3>
+                <div className="md:col-span-2 lg:col-span-1">
+                    <h3 className="text-lg lg:text-xl font-bold mb-4 lg:mb-6 underline decoration-secondary underline-offset-8">Visits</h3>
                     <div className="flex flex-col gap-4">
-                        <div className="flex gap-4">
+                        <div className="flex gap-3 lg:gap-4">
                             <a href="https://whatsapp.com/channel/0029VbC22xeJkK7AU8LU7z3W" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center hover:scale-110 transition-transform group">
                                 <img src="/icons/whatsapp.png" alt="WhatsApp" className="w-full h-full object-contain" />
                             </a>
@@ -46,7 +46,7 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="container mx-auto mt-3  pt-3 border-t border-white/10 text-center text-[14px] text-gray-400">
+            <div className="container mx-auto mt-6 lg:mt-3 px-4 pt-6 lg:pt-3 border-t border-white/10 text-center text-xs lg:text-[14px] text-gray-400">
                 Copyright © 2015 HRAOI.IN All Rights Reserved. Powered by <span className="text-secondary font-bold">Mr Javed.</span>
             </div>
         </footer>

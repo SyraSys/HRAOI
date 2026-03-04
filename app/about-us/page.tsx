@@ -6,20 +6,20 @@ import { motion } from "framer-motion";
 export default function AboutUs() {
     return (
         <div className="bg-white min-h-screen">
-            <div className="container mx-auto px-4 py-8">
+            <div className="container mx-auto px-4 py-6 lg:py-8">
                 {/* Page Title */}
 
 
-                <div className="flex flex-col lg:flex-row gap-12">
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
                     {/* Sidebar */}
-                    <aside className="lg:w-1/4 space-y-8">
+                    <aside className="lg:w-1/4 space-y-6 lg:space-y-8">
                         {/* Member Search */}
                         <MemberSearch />
 
                         {/* Human Rights Association of India */}
-                        <div className="bg-background-light-purple p-6 rounded-xl border border-purple-100">
-                            <h3 className="text-lg font-bold mb-4 uppercase tracking-tighter text-indigo-950">Human Rights Association of India</h3>
-                            <div className="space-y-4">
+                        <div className="bg-background-light-purple p-4 lg:p-6 rounded-xl border border-purple-100">
+                            <h3 className="text-base lg:text-lg font-bold mb-3 lg:mb-4 uppercase tracking-tighter text-indigo-950">Human Rights Association of India</h3>
+                            <div className="space-y-3 lg:space-y-4">
                                 {/* Hindi Text Mockup */}
                                 <p className="text-xs text-gray-600 leading-relaxed italic">
                                     सभी अध्यक्ष अपने अधीनस्थ राज्य/संभाग/जिला में आईकार्ड वितरण कार्यक्रम के माध्यम से सूचित करें।
@@ -31,7 +31,7 @@ export default function AboutUs() {
                         </div>
 
                         {/* Blue Banner Box */}
-                        <div className="bg-primary text-white p-6 rounded-xl text-center shadow-lg shadow-primary/20">
+                        <div className="bg-primary text-white p-4 lg:p-6 rounded-xl text-center shadow-lg shadow-primary/20">
                             <p className="text-xs leading-relaxed italic">
                                 ** Dear all Members of HRAOI, the renewal process is stated please contact your District President for any information Please contact Delhi Office, or you can drop us a mail at www.hraoi.in@gmail.com**
                             </p>
@@ -39,7 +39,7 @@ export default function AboutUs() {
 
                         {/* Torch/HRAOI Symbol */}
                         <div className="flex flex-col items-center py-4">
-                            <div className="w-32 h-64 flex items-center justify-center mb-4">
+                            <div className="w-24 h-48 lg:w-32 lg:h-64 flex items-center justify-center mb-4">
                                 <img src="/images/torch.jpeg" alt="HRAOI Torch" className="w-full h-full object-contain" />
                             </div>
 
@@ -48,9 +48,9 @@ export default function AboutUs() {
 
                     {/* Main Content */}
                     <main className="lg:w-2/3">
-                        <div className="mb-14">
-                            <h2 className="text-3xl font-extrabold text-primary-dark mb-4 tracking-tight">About Us</h2>
-                            <p className=" text-gray-700 leading-relaxed font-semibold">
+                        <div className="mb-10 lg:mb-14">
+                            <h2 className="text-2xl lg:text-3xl font-extrabold text-primary-dark mb-3 lg:mb-4 tracking-tight">About Us</h2>
+                            <p className="text-sm lg:text-base text-gray-700 leading-relaxed font-semibold">
                                 HRAOI is based on the philosophy of <span className="text-primary italic">HUMAN RIGHTS</span>.
                                 <span className="block mt-2 text-primary-dark">"Vasudhav Kutumbakum" (The whole world is family)</span>
                                 <span className="block text-gray-600 font-medium">All human beings are born equal and free.</span>
@@ -58,13 +58,13 @@ export default function AboutUs() {
                         </div>
 
                         <FadeIn>
-                            <div className="mb-14 p-10 bg-blue-100 rounded-2xl shadow-inner">
-                                <h2 className="text-2xl font-bold text-primary-dark inline-block relative px-1 mb-8 uppercase tracking-tight">
+                            <div className="mb-10 lg:mb-14 p-6 lg:p-10 bg-blue-100 rounded-xl lg:rounded-2xl shadow-inner">
+                                <h2 className="text-xl lg:text-2xl font-bold text-primary-dark inline-block relative px-1 mb-6 lg:mb-8 uppercase tracking-tight">
                                     What We Do
                                 </h2>
 
                                 <Stagger interval={0.08}>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-3">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-2 lg:gap-y-3">
                                         {[
                                             "Advocacy for human rights protection",
                                             "Legal aid and assistance",
@@ -74,9 +74,9 @@ export default function AboutUs() {
                                             "Policy recommendations to government",
                                         ].map((text, i) => (
                                             <StaggerItem key={i}>
-                                                <div className="flex items-start gap-4 group">
+                                                <div className="flex items-start gap-3 lg:gap-4 group">
                                                     <div className="mt-1.5 w-2 h-2 rounded-full bg-secondary flex-shrink-0 group-hover:scale-150 transition-transform"></div>
-                                                    <span className="text-gray-700 font-medium text-base tracking-tight">{text}</span>
+                                                    <span className="text-gray-700 font-medium text-sm lg:text-base tracking-tight">{text}</span>
                                                 </div>
                                             </StaggerItem>
                                         ))}
@@ -86,7 +86,7 @@ export default function AboutUs() {
                         </FadeIn>
 
                         {/* Mission, Vision, Values Section */}
-                        <div className="mb-14 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div className="mb-10 lg:mb-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                             {[
                                 {
                                     title: "MISSION",
@@ -124,14 +124,14 @@ export default function AboutUs() {
                                     bgColor: "bg-[#F8F5EC]"
                                 }
                             ].map((item, i) => (
-                                <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-lg transition-all duration-300">
-                                    <div className="flex items-center justify-center gap-3 mb-6">
-                                        <div className={`w-10 h-10 ${item.bgColor || 'bg-gray-50'} rounded-[10px] flex items-center justify-center`}>
+                                <div key={i} className="bg-white p-6 lg:p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-lg transition-all duration-300">
+                                    <div className="flex items-center justify-center gap-2 lg:gap-3 mb-4 lg:mb-6">
+                                        <div className={`w-8 h-8 lg:w-10 lg:h-10 ${item.bgColor || 'bg-gray-50'} rounded-[10px] flex items-center justify-center`}>
                                             {item.icon}
                                         </div>
-                                        <h3 className="text-lg font-bold text-gray-800 tracking-wide">{item.title}</h3>
+                                        <h3 className="text-base lg:text-lg font-bold text-gray-800 tracking-wide">{item.title}</h3>
                                     </div>
-                                    <p className="text-gray-600 leading-relaxed">
+                                    <p className="text-sm lg:text-base text-gray-600 leading-relaxed">
                                         {item.text}
                                     </p>
                                 </div>
@@ -139,36 +139,36 @@ export default function AboutUs() {
                         </div>
 
                         {/* Our Leadership Section */}
-                        <div className="mb-14">
-                            <h2 className="text-2xl font-bold text-primary-dark inline-block relative px-1 mb-10 uppercase tracking-tight">
+                        <div className="mb-10 lg:mb-14">
+                            <h2 className="text-xl lg:text-2xl font-bold text-primary-dark inline-block relative px-1 mb-8 lg:mb-10 uppercase tracking-tight">
                                 Our Leadership
                                 <div className="absolute left-0 -bottom-1 w-full h-1 bg-secondary/80"></div>
                             </h2>
 
-                            <div className="space-y-12">
+                            <div className="space-y-8 lg:space-y-12">
                                 {/* President */}
-                                <div className="flex flex-col md:flex-row items-center md:items-start gap-8 bg-gray-50/30 p-8 rounded-2xl border border-gray-100">
-                                    <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-lg border-2 border-primary/20 flex-shrink-0">
+                                <div className="flex flex-col md:flex-row items-center md:items-start gap-6 lg:gap-8 bg-gray-50/30 p-6 lg:p-8 rounded-xl lg:rounded-2xl border border-gray-100">
+                                    <div className="w-32 h-32 lg:w-48 lg:h-48 rounded-xl lg:rounded-2xl overflow-hidden shadow-lg border-2 border-primary/20 flex-shrink-0">
                                         <img src="/images/sudhir.jpeg" alt="Mr. Sudhir Kumar" className="w-full h-full object-cover" />
                                     </div>
                                     <div className="text-center md:text-left">
-                                        <h3 className="text-2xl font-bold text-gray-900 mb-1">Mr. Sudhir Kumar</h3>
-                                        <p className="text-primary font-bold mb-4 uppercase tracking-wider text-sm">National President</p>
-                                        <p className="text-gray-600 leading-relaxed italic">
+                                        <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-1">Mr. Sudhir Kumar</h3>
+                                        <p className="text-primary font-bold mb-3 lg:mb-4 uppercase tracking-wider text-xs lg:text-sm">National President</p>
+                                        <p className="text-sm lg:text-base text-gray-600 leading-relaxed italic">
                                             Mr. Sudhir Kumar is a senior human rights activist with over 30 years of dedicated experience in human rights protection and social justice. Under his visionary leadership, HRAOI has strengthened its mission to promote justice, equality, dignity, and humanitarian values.
                                         </p>
                                     </div>
                                 </div>
 
                                 {/* Vice President */}
-                                <div className="flex flex-col md:flex-row-reverse items-center md:items-start gap-8 bg-gray-50/30 p-8 rounded-2xl border border-gray-100">
-                                    <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-lg border-2 border-primary/20 flex-shrink-0">
+                                <div className="flex flex-col md:flex-row-reverse items-center md:items-start gap-6 lg:gap-8 bg-gray-50/30 p-6 lg:p-8 rounded-xl lg:rounded-2xl border border-gray-100">
+                                    <div className="w-32 h-32 lg:w-48 lg:h-48 rounded-xl lg:rounded-2xl overflow-hidden shadow-lg border-2 border-primary/20 flex-shrink-0">
                                         <img src="/images/surajkumar.jpeg" alt="Mr. Suraj Kumar" className="w-full h-full object-cover" />
                                     </div>
                                     <div className="text-center md:text-right">
-                                        <h3 className="text-2xl font-bold text-gray-900 mb-1">Mr. Suraj Kumar</h3>
-                                        <p className="text-secondary font-bold mb-4 uppercase tracking-wider text-sm">National Vice President</p>
-                                        <p className="text-gray-600 leading-relaxed italic">
+                                        <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-1">Mr. Suraj Kumar</h3>
+                                        <p className="text-secondary font-bold mb-3 lg:mb-4 uppercase tracking-wider text-xs lg:text-sm">National Vice President</p>
+                                        <p className="text-sm lg:text-base text-gray-600 leading-relaxed italic">
                                             Mr. Suraj Kumar is a committed human rights leader with years of experience in organizational leadership and grassroots engagement, playing a vital role in strengthening human rights awareness and justice advocacy across the country.
                                         </p>
                                     </div>
@@ -188,14 +188,14 @@ export default function AboutUs() {
                         </div> */}
 
                         {/* Our History Section */}
-                        <div className="mt-12 space-y-8">
+                        <div className="mt-10 lg:mt-12 space-y-6 lg:space-y-8">
                             <div>
-                                <h2 className="text-2xl font-bold text-primary-dark inline-block relative px-1 mb-8">
+                                <h2 className="text-xl lg:text-2xl font-bold text-primary-dark inline-block relative px-1 mb-6 lg:mb-8">
                                     Our History
                                     <div className="absolute left-0 -bottom-1 w-1/2 h-1 bg-secondary"></div>
                                 </h2>
 
-                                <div className="space-y-6 text-gray-700 leading-relaxed text-sm">
+                                <div className="space-y-4 lg:space-y-6 text-gray-700 leading-relaxed text-sm">
                                     <p>
                                         The Human Rights Association of India (HRAOI) was founded with a singular purpose: to be the voice of the voiceless and the defender of the defenseless. Over the years, we have grown into one of India's most respected human rights organizations.
                                     </p>
@@ -204,7 +204,7 @@ export default function AboutUs() {
                                         Our journey began with a small group of dedicated activists who believed in the power of collective action. Today, we have expanded our reach across all 28 states and 8 union territories, with thousands of active members working at the grassroots level.
                                     </p>
 
-                                    <div className="bg-background-blue-muted p-8 rounded-2xl border-l-4 border-primary">
+                                    <div className="bg-background-blue-muted p-6 lg:p-8 rounded-xl lg:rounded-2xl border-l-4 border-primary">
                                         <p className="italic">
                                             Registered under NITI Aayog, HRAOI operates with complete transparency and accountability. We are recognized for our work in addressing human rights violations, providing legal aid, and conducting awareness programs across communities.
                                         </p>
@@ -214,9 +214,9 @@ export default function AboutUs() {
                         </div>
 
                         {/* Join Our Mission CTA */}
-                        <div className="mt-10 bg-background-light-blue p-4 rounded-3xl border border-blue-100 text-center shadow-sm">
-                            <h3 className="text-2xl font-bold text-primary-dark mb-4 tracking-tight">Join Our Mission</h3>
-                            <p className="text-x text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+                        <div className="mt-8 lg:mt-10 bg-background-light-blue p-6 lg:p-4 rounded-2xl lg:rounded-3xl border border-blue-100 text-center shadow-sm">
+                            <h3 className="text-xl lg:text-2xl font-bold text-primary-dark mb-3 lg:mb-4 tracking-tight">Join Our Mission</h3>
+                            <p className="text-sm lg:text-x text-gray-700 mb-6 lg:mb-8 max-w-2xl mx-auto leading-relaxed">
                                 Become a member and be part of the movement to protect human rights.
                             </p>
                             <Link href="/membership">

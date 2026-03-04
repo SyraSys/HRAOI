@@ -4,6 +4,9 @@ things should be asked in during the meeting.
 QR code for the donation
 posters for the website 
 
+add donation page in admin panel.
+add enquiries part to reply in email .
+and membership form to view it in details in different page . 
 
 sudhir - A.1BR/HR/9947/005
 shampa - WB/HR/2431/01

@@ -130,14 +130,14 @@ export default function Enquiry() {
                                                 className="bg-[#242171] text-white px-12 py-2 rounded-lg font-bold hover:bg-[#1a1a5e] transition-all uppercase tracking-widest text-sm shadow-md disabled:opacity-60"
                                             >
                                                 {status === "loading" ? (
-                                                    <motion.div
-                                                        animate={{ rotate: 360 }}
-                                                        transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-                                                        className="flex items-center gap-2"
-                                                    >
-                                                        <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full"></div>
+                                                    <div className="flex items-center gap-2">
+                                                        <motion.div
+                                                            animate={{ rotate: 360 }}
+                                                            transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                                                            className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full"
+                                                        ></motion.div>
                                                         Sending...
-                                                    </motion.div>
+                                                    </div>
                                                 ) : "Send"}
                                             </button>
                                         </Pressable>

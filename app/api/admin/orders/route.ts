@@ -8,7 +8,7 @@ export async function GET() {
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const orders = await prisma.order.findMany({
-    orderBy: { date: "desc" },
+    orderBy: { uploadedAt: "desc" },
   });
   return NextResponse.json(orders);
 }
@@ -20,7 +20,6 @@ export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
     const title = formData.get("title") as string;
-    const date = formData.get("date") as string;
     const file = formData.get("file") as File;
 
     if (!title || !file) {
@@ -30,14 +29,13 @@ export async function POST(req: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const uploadResult = await uploadFile(buffer, "orders", "raw");
+    const uploadResult = await uploadFile(buffer, "orders", "auto");
 
     const order = await prisma.order.create({
       data: {
         title,
         fileUrl: uploadResult.url,
         publicId: uploadResult.publicId,
-        date: date ? new Date(date) : new Date(),
       },
     });
 
@@ -57,7 +55,7 @@ export async function DELETE(req: NextRequest) {
     const order = await prisma.order.findUnique({ where: { id } });
     if (!order) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-    await deleteFile(order.publicId, "raw");
+    await deleteFile(order.publicId, "auto");
     await prisma.order.delete({ where: { id } });
 
     return NextResponse.json({ success: true });

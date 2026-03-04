@@ -23,6 +23,7 @@ export async function POST(req: NextRequest) {
     const formData = await req.formData();
     const certificateNumber = formData.get("certificateNumber") as string;
     const file = formData.get("file") as File;
+    const idCardFile = formData.get("idCard") as File | null;
 
     if (!certificateNumber || !file) {
       return NextResponse.json(
@@ -43,16 +44,30 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
+    // Upload Certificate
+    const certificateBytes = await file.arrayBuffer();
+    const certificateBuffer = Buffer.from(certificateBytes);
+    const certUploadResult = await uploadFile(certificateBuffer, "certificates", "auto");
 
-    const uploadResult = await uploadFile(buffer, "certificates", "auto");
+    // Upload ID Card if provided
+    let idCardUrl = null;
+    let idCardPublicId = null;
+
+    if (idCardFile && idCardFile.size > 0) {
+      const idCardBytes = await idCardFile.arrayBuffer();
+      const idCardBuffer = Buffer.from(idCardBytes);
+      const idCardUploadResult = await uploadFile(idCardBuffer, "certificates", "auto");
+      idCardUrl = idCardUploadResult.url;
+      idCardPublicId = idCardUploadResult.publicId;
+    }
 
     const certificate = await prisma.certificate.create({
       data: {
         certificateNumber,
-        fileUrl: uploadResult.url,
-        publicId: uploadResult.publicId,
+        fileUrl: certUploadResult.url,
+        publicId: certUploadResult.publicId,
+        idCardUrl,
+        idCardPublicId,
       },
     });
 
@@ -77,7 +92,14 @@ export async function DELETE(req: NextRequest) {
     if (!certificate)
       return NextResponse.json({ error: "Not found" }, { status: 404 });
 
+    // Delete Certificate from Cloudinary
     await deleteFile(certificate.publicId, "auto");
+    
+    // Delete ID Card from Cloudinary if it exists
+    if (certificate.idCardPublicId) {
+      await deleteFile(certificate.idCardPublicId, "auto");
+    }
+
     await prisma.certificate.delete({ where: { id } });
 
     return NextResponse.json({ success: true });

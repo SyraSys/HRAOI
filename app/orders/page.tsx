@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react";
 import MemberSearch from "@/components/MemberSearch";
+import { getNormalizedFileUrl } from "@/lib/utils";
 
 type Order = {
     id: string;
     title: string;
     fileUrl: string;
-    date: string;
 };
 
 const bgColors = [
@@ -64,7 +64,7 @@ export default function Orders() {
                                 {orders.map((order, i) => (
                                     <a
                                         key={order.id}
-                                        href={order.fileUrl}
+                                        href={getNormalizedFileUrl(order.fileUrl)}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className={`${bgColors[i % bgColors.length]} p-8 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer flex flex-col items-center justify-center text-center min-h-[100px] border border-black/5 group`}

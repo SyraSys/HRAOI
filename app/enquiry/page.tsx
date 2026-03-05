@@ -179,7 +179,7 @@ export default function Enquiry() {
                                     </p>
                                     <p className="flex gap-2">
                                         <span className="text-blue-500">📞</span>
-                                        Phone: 011- 32405800
+                                        Phone: +91 9330977118
                                     </p>
                                     <ul className="space-y-1">
                                         <li className="flex gap-2 text-blue-600 hover:text-[#242171] cursor-pointer">

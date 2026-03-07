@@ -188,9 +188,11 @@ export default function Home() {
               <div className="mt-6 lg:mt-8 flex justify-center">
                 <Link href="/membership">
                   <Pressable scale={1.03}>
-                    <button className="bg-gradient-to-r from-secondary to-red-500 text-white px-6 lg:px-8 py-2.5 lg:py-3.5 rounded-full text-sm lg:text-base font-bold shadow-[0_4px_16px_rgba(217,48,37,0.3)] hover:shadow-[0_6px_20px_rgba(217,48,37,0.4)] transition-all duration-300">
-                      Become a Member
-                    </button>
+                    <img
+                      src="/images/online-membership.png"
+                      alt="Online Membership"
+                      className="h-14 lg:h-16 w-auto cursor-pointer transition-all duration-300"
+                    />
                   </Pressable>
                 </Link>
               </div>

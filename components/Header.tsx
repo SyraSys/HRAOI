@@ -14,6 +14,7 @@ export default function Header() {
     const navItems = [
         { name: 'HOME', path: '/' },
         { name: 'ABOUT US', path: '/about-us' },
+        { name: 'LEADERSHIP', path: '/leadership' },
         { name: 'PHOTO GALLERY', path: '/photo-gallery' },
         { name: 'CIRCULARS', path: '/circulars' },
         { name: 'ORDERS', path: '/orders' },
@@ -79,7 +80,7 @@ export default function Header() {
             <div className="lg:hidden sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
                 <div className="container mx-auto px-4 py-3 flex items-center justify-between">
                     <Link href="/" className="text-lg font-bold text-primary-dark">HRAOI</Link>
-                    
+
                     {/* Hamburger Button */}
                     <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -111,11 +112,10 @@ export default function Header() {
                                                 <Link
                                                     href={item.path}
                                                     onClick={() => setMobileMenuOpen(false)}
-                                                    className={`block px-4 py-3 rounded-lg font-semibold text-sm transition-colors ${
-                                                        isActive 
-                                                            ? 'bg-primary text-white' 
+                                                    className={`block px-4 py-3 rounded-lg font-semibold text-sm transition-colors ${isActive
+                                                            ? 'bg-primary text-white'
                                                             : 'text-gray-700 hover:bg-gray-100'
-                                                    }`}
+                                                        }`}
                                                 >
                                                     {item.name}
                                                 </Link>

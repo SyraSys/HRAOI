@@ -141,9 +141,11 @@ export default function DonationAdmin() {
                                     onChange={handleFileUpload}
                                     className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                                 />
-                                <div className="mt-4 p-2 border rounded-lg inline-block w-40 h-40 relative">
-                                    <Image src={formData.qrCodeUrl} alt="QR Code" fill className="rounded object-contain p-1" />
-                                </div>
+                                {formData.qrCodeUrl && (
+                                    <div className="mt-4 p-2 border rounded-lg inline-block w-40 h-40 relative">
+                                        <Image src={formData.qrCodeUrl} alt="QR Code" fill className="rounded object-contain p-1" />
+                                    </div>
+                                )}
                             </div>
                         </div>
 

@@ -49,11 +49,12 @@ export const Pressable = ({ children, className = "", scale = 1.03 }: { children
 );
 
 // Stagger Container
-export const Stagger = ({ children, delay = 0.1, interval = 0.05 }: { children: ReactNode, delay?: number, interval?: number }) => (
+export const Stagger = ({ children, delay = 0.1, interval = 0.05, className = "" }: { children: ReactNode, delay?: number, interval?: number, className?: string }) => (
     <motion.div
         initial="initial"
         whileInView="animate"
         viewport={{ once: true }}
+        className={className}
         variants={{
             animate: {
                 transition: {

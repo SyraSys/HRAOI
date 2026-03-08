@@ -101,3 +101,14 @@ model DonationDetails {
   ifscCode      String
   updatedAt     DateTime @updatedAt
 }
+
+model Leadership {
+  id          String   @id @default(cuid())
+  name        String
+  designation String
+  bio         String
+  photoUrl    String
+  publicId    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

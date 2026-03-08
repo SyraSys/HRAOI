@@ -12,7 +12,7 @@ export default function Footer() {
                 <div>
                     <h3 className="text-lg lg:text-xl font-bold mb-4 lg:mb-6 underline decoration-secondary underline-offset-8">Contact Us</h3>
                     <div className="text-xs lg:text-sm text-gray-300 space-y-1">
-                        <p>Address: Road, I.P. Extention, Delhi - 92</p>
+                        <p>Administrative Office: 39B, Arupara, 2nd by Lane, Jagacha, GIP Colony, Howrah-711112</p>
                         <p>Phone: 9330977118, 9334246098, 6207394301</p>
                         <p>Email: hraoi.in@gmail.com</p>
                     </div>

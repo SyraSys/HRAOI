@@ -364,6 +364,48 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
+            {/* West Bengal State President */}
+            <div className="bg-white border border-gray-200 p-4 lg:p-6 xl:p-8">
+              <div className="flex flex-col md:flex-row items-center gap-4 lg:gap-6">
+                <div className="w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0">
+                  <img src="/images/NasiruddinSardar.png" alt="Mr. Md. Nasiruddin Sardar" className="w-full h-full object-cover" />
+                </div>
+
+                <div className="flex-1 text-center md:text-left">
+                  <div className="bg-violet-700 text-white px-3 lg:px-4 py-1 inline-block text-xs font-bold uppercase mb-2 lg:mb-3">
+                    West Bengal State President
+                  </div>
+
+                  <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2 lg:mb-3">Mr. Md. Nasiruddin Sardar</h3>
+
+                  <p className="text-sm lg:text-base text-gray-600 mb-2 lg:mb-3">
+                    Mr. Md. Nasiruddin Sardar is the West Bengal State President of the Human Rights Association of India. He is dedicated to promoting human rights, justice, and social welfare, working actively to support and protect the rights of all people in society.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Women Cell President */}
+            <div className="bg-white border border-gray-200 p-4 lg:p-6 xl:p-8">
+              <div className="flex flex-col md:flex-row items-center gap-4 lg:gap-6">
+                <div className="w-32 h-32 lg:w-48 lg:h-48 flex-shrink-0">
+                  <img src="/images/ChampaKumar.png" alt="Mrs. Champa Kumari" className="w-full h-full object-cover" />
+                </div>
+
+                <div className="flex-1 text-center md:text-left">
+                  <div className="bg-pink-600 text-white px-3 lg:px-4 py-1 inline-block text-xs font-bold uppercase mb-2 lg:mb-3">
+                    Women Cell President – JHR–BR–WB
+                  </div>
+
+                  <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2 lg:mb-3">Mrs. Champa Kumari</h3>
+
+                  <p className="text-sm lg:text-base text-gray-600 mb-2 lg:mb-3">
+                    Mrs. Champa Kumari is the Women Cell President (JHR–BR–WB Women Cell) of the Human Rights Association of India (HRAOI). She is actively working for women's empowerment, human rights awareness, and social welfare. Through her dedication and leadership, she continues to support and promote the rights, dignity, and safety of women in society.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

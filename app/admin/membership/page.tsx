@@ -109,21 +109,21 @@ export default function AdminMembership() {
                             <div className="flex gap-3 pt-2 border-t border-gray-100">
                                 <button
                                     onClick={() => updateStatus(selected.id, "approved")}
-                                    className="flex-1 bg-green-500 text-white py-2.5 rounded-lg font-bold text-sm hover:bg-green-600 transition-colors disabled:opacity-50"
+                                    className="flex-1 bg-green-500 text-white py-2.5 cursor-pointer rounded-lg font-bold text-sm hover:bg-green-600 transition-colors disabled:opacity-50"
                                     disabled={selected.status === "approved"}
                                 >
                                     ✓ Approve
                                 </button>
                                 <button
                                     onClick={() => updateStatus(selected.id, "rejected")}
-                                    className="flex-1 bg-red-500 text-white py-2.5 rounded-lg font-bold text-sm hover:bg-red-600 transition-colors disabled:opacity-50"
+                                    className="flex-1 bg-red-500 text-white py-2.5 cursor-pointer rounded-lg font-bold text-sm hover:bg-red-600 transition-colors disabled:opacity-50"
                                     disabled={selected.status === "rejected"}
                                 >
                                     ✕ Reject
                                 </button>
                                 <button
                                     onClick={() => updateStatus(selected.id, "pending")}
-                                    className="flex-1 bg-yellow-400 text-yellow-900 py-2.5 rounded-lg font-bold text-sm hover:bg-yellow-500 transition-colors disabled:opacity-50"
+                                    className="flex-1 bg-yellow-400 text-yellow-900 py-2.5 cursor-pointer rounded-lg font-bold text-sm hover:bg-yellow-500 transition-colors disabled:opacity-50"
                                     disabled={selected.status === "pending"}
                                 >
                                     ↺ Pending
@@ -192,7 +192,7 @@ export default function AdminMembership() {
                                     <td className="px-6 py-4 text-right space-x-4">
                                         <button
                                             onClick={() => setSelected(member)}
-                                            className="text-gray-500 text-sm font-semibold hover:underline"
+                                            className="text-gray-500 text-sm cursor-pointer font-semibold hover:underline"
                                         >
                                             Quick View
                                         </button>

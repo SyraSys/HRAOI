@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { uploadFile, deleteFile } from "@/lib/cloudinary";
+import { uploadFile, deleteFile } from "@/lib/blob";
 
 export async function GET() {
   const session = await auth();
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
     // Upload Certificate
     const certificateBytes = await file.arrayBuffer();
     const certificateBuffer = Buffer.from(certificateBytes);
-    const certUploadResult = await uploadFile(certificateBuffer, "certificates", "auto");
+    const certUploadResult = await uploadFile(certificateBuffer, file.name, "certificates");
 
     // Upload ID Card if provided
     let idCardUrl = null;
@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
     if (idCardFile && idCardFile.size > 0) {
       const idCardBytes = await idCardFile.arrayBuffer();
       const idCardBuffer = Buffer.from(idCardBytes);
-      const idCardUploadResult = await uploadFile(idCardBuffer, "certificates", "auto");
+      const idCardUploadResult = await uploadFile(idCardBuffer, idCardFile.name, "certificates");
       idCardUrl = idCardUploadResult.url;
       idCardPublicId = idCardUploadResult.publicId;
     }
@@ -92,12 +92,12 @@ export async function DELETE(req: NextRequest) {
     if (!certificate)
       return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-    // Delete Certificate from Cloudinary
-    await deleteFile(certificate.publicId, "auto");
+    // Delete Certificate from Vercel Blob
+    await deleteFile(certificate.publicId);
     
-    // Delete ID Card from Cloudinary if it exists
+    // Delete ID Card from Vercel Blob if it exists
     if (certificate.idCardPublicId) {
-      await deleteFile(certificate.idCardPublicId, "auto");
+      await deleteFile(certificate.idCardPublicId);
     }
 
     await prisma.certificate.delete({ where: { id } });

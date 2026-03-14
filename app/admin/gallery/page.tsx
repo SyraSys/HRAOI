@@ -132,7 +132,7 @@ export default function AdminGallery() {
                         <button
                             type="submit"
                             disabled={uploading}
-                            className="bg-[#242171] text-white px-10 py-3.5 rounded-lg text-sm font-bold hover:bg-[#1a1a5e] transition-all disabled:opacity-60 whitespace-nowrap shadow-lg shadow-blue-900/10 flex items-center justify-center gap-2"
+                            className="bg-[#242171] text-white px-10 py-3.5 cursor-pointer rounded-lg text-sm font-bold hover:bg-[#1a1a5e] transition-all disabled:opacity-60 whitespace-nowrap shadow-lg shadow-blue-900/10 flex items-center justify-center gap-2"
                         >
                             {uploading ? (
                                 <>
@@ -178,7 +178,7 @@ export default function AdminGallery() {
                                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 p-2">
                                     <button
                                         onClick={() => handleDelete(photo.id)}
-                                        className="bg-red-500 text-white text-xs px-4 py-2 rounded-lg font-semibold hover:bg-red-600 transition-colors shadow-lg"
+                                        className="bg-red-500 text-white text-xs px-4 py-2 cursor-pointer rounded-lg font-semibold hover:bg-red-600 transition-colors shadow-lg"
                                     >
                                         Delete Photo
                                     </button>

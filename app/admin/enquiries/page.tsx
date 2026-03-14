@@ -115,7 +115,7 @@ export default function AdminEnquiries() {
                                                     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${enquiry.email}&su=${subject}`;
                                                     window.open(gmailUrl, "_blank");
                                                 }}
-                                                className="bg-[#242171] text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-[#1a1a5e] transition-all flex items-center gap-2 shadow-md"
+                                                className="bg-[#242171] text-white px-5 py-2 cursor-pointer rounded-lg text-sm font-bold hover:bg-[#1a1a5e] transition-all flex items-center gap-2 shadow-md"
                                             >
                                                 <span>✉️</span> Reply via Gmail
                                             </button>
@@ -126,7 +126,7 @@ export default function AdminEnquiries() {
                                                     <button
                                                         key={s}
                                                         onClick={() => updateStatus(enquiry.id, s)}
-                                                        className={`text-xs px-3 py-1.5 rounded-lg font-semibold transition-colors ${enquiry.status === s ? statusColors[s] + " ring-2 ring-offset-1 ring-current" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
+                                                        className={`text-xs px-3 py-1.5 cursor-pointer rounded-lg font-semibold transition-colors ${enquiry.status === s ? statusColors[s] + " ring-2 ring-offset-1 ring-current" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
                                                     >
                                                         {s.charAt(0).toUpperCase() + s.slice(1)}
                                                     </button>

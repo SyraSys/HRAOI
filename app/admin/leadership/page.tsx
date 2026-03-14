@@ -209,7 +209,7 @@ export default function AdminLeadership() {
                             <button
                                 type="submit"
                                 disabled={saving}
-                                className="bg-[#242171] text-white px-8 py-3.5 rounded-xl text-sm font-bold hover:bg-[#1a1a5e] transition-all disabled:opacity-60 shadow-lg shadow-blue-900/10 flex items-center gap-2"
+                                className="bg-[#242171] text-white px-8 py-3.5 cursor-pointer rounded-xl text-sm font-bold hover:bg-[#1a1a5e] transition-all disabled:opacity-60 shadow-lg shadow-blue-900/10 flex items-center gap-2"
                             >
                                 {saving ? (
                                     <>
@@ -224,7 +224,7 @@ export default function AdminLeadership() {
                                 <button
                                     type="button"
                                     onClick={resetForm}
-                                    className="bg-gray-100 text-gray-600 px-8 py-3.5 rounded-xl text-sm font-bold hover:bg-gray-200 transition-all"
+                                    className="bg-gray-100 text-gray-600 px-8 py-3.5 cursor-pointer rounded-xl text-sm font-bold hover:bg-gray-200 transition-all"
                                 >
                                     Cancel
                                 </button>
@@ -285,13 +285,13 @@ export default function AdminLeadership() {
                                         <div className="flex gap-2 pt-2 border-t border-gray-50">
                                             <button
                                                 onClick={() => handleEdit(entry)}
-                                                className="flex-1 bg-blue-50 text-[#242171] text-xs font-bold py-3 rounded-lg hover:bg-[#242171] hover:text-white transition-all uppercase tracking-widest"
+                                                className="flex-1 bg-blue-50 text-[#242171] text-xs cursor-pointer font-bold py-3 rounded-lg hover:bg-[#242171] hover:text-white transition-all uppercase tracking-widest"
                                             >
                                                 Edit
                                             </button>
                                             <button
                                                 onClick={() => handleDelete(entry.id)}
-                                                className="bg-red-50 text-red-600 px-4 py-3 rounded-lg hover:bg-red-600 hover:text-white transition-all"
+                                                className="bg-red-50 text-red-600 px-4 py-3 cursor-pointer rounded-lg hover:bg-red-600 hover:text-white transition-all"
                                             >
                                                 <span className="text-sm">🗑</span>
                                             </button>

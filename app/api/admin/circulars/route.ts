@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { uploadFile, deleteFile } from "@/lib/cloudinary";
+import { uploadFile, deleteFile } from "@/lib/blob";
 
 export async function GET() {
   const session = await auth();
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const uploadResult = await uploadFile(buffer, "circulars", "auto");
+    const uploadResult = await uploadFile(buffer, file.name, "circulars");
 
     const circular = await prisma.circular.create({
       data: {
@@ -55,7 +55,7 @@ export async function DELETE(req: NextRequest) {
     const circular = await prisma.circular.findUnique({ where: { id } });
     if (!circular) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-    await deleteFile(circular.publicId, "auto");
+    await deleteFile(circular.publicId);
     await prisma.circular.delete({ where: { id } });
 
     return NextResponse.json({ success: true });

@@ -27,3 +27,5 @@ akhtar - WB/HR/2719/07
 ajaykumar - WB/HR/5085/53
 abid - WB/HR/0410/02
 
+add vercel blob for admin panel images
+for static images  hostinger file system

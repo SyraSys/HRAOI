@@ -144,7 +144,7 @@ export default function AdminCertificatesPage() {
           <button
             type="submit"
             disabled={uploading}
-            className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 disabled:bg-gray-400 flex items-center justify-center gap-2 transition-all"
+            className="bg-primary text-white px-6 py-3 cursor-pointer rounded-lg hover:bg-primary/90 disabled:bg-gray-400 flex items-center justify-center gap-2 transition-all"
           >
             {uploading ? (
               <>
@@ -213,7 +213,7 @@ export default function AdminCertificatesPage() {
                   </div>
                   <button
                     onClick={() => handleDelete(cert.id)}
-                    className="text-red-600 hover:text-red-800 p-2 border border-red-100 rounded-md hover:bg-red-50 transition-colors"
+                    className="text-red-600 hover:text-red-800 p-2 cursor-pointer border border-red-100 rounded-md hover:bg-red-50 transition-colors"
                   >
                     <Trash2 className="w-5 h-5" />
                   </button>

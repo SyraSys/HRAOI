@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
-import { uploadFile } from "@/lib/cloudinary";
+import { uploadFile } from "@/lib/blob";
 
 export async function POST(req: NextRequest) {
   const session = await auth();
@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
     const buffer = Buffer.from(bytes);
 
     // Using "donation" folder for QR codes
-    const uploadResult = await uploadFile(buffer, "donation", "image");
+    const uploadResult = await uploadFile(buffer, file.name, "donation");
 
     return NextResponse.json({
       secure_url: uploadResult.url,

@@ -117,7 +117,7 @@ export default function AdminAnnouncements() {
                         <button
                             type="submit"
                             disabled={saving}
-                            className="bg-[#242171] text-white px-10 py-3.5 rounded-lg text-sm font-bold hover:bg-[#1a1a5e] transition-colors disabled:opacity-60 shadow-lg shadow-blue-900/10"
+                            className="bg-[#242171] text-white px-10 py-3.5 cursor-pointer rounded-lg text-sm font-bold hover:bg-[#1a1a5e] transition-colors disabled:opacity-60 shadow-lg shadow-blue-900/10"
                         >
                             {saving ? "Saving..." : "Post Announcement"}
                         </button>
@@ -159,7 +159,7 @@ export default function AdminAnnouncements() {
                                         <td className="px-4 py-4 text-right">
                                             <button
                                                 onClick={() => handleDelete(item.id)}
-                                                className="text-red-500 hover:text-red-700 text-xs font-bold uppercase tracking-wider"
+                                                className="text-red-500 hover:text-red-700 cursor-pointer text-xs font-bold uppercase tracking-wider"
                                             >
                                                 Delete
                                             </button>

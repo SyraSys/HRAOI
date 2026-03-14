@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { uploadFile } from "@/lib/cloudinary";
+import { uploadFile } from "@/lib/blob";
 
 export async function POST(req: NextRequest) {
   try {
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
       const bytes = await photoFile.arrayBuffer();
       const buffer = Buffer.from(bytes);
 
-      const uploadResult = await uploadFile(buffer, "membership", "image");
+      const uploadResult = await uploadFile(buffer, photoFile.name, "membership");
 
       photoUrl = uploadResult.url;
     }

@@ -203,7 +203,7 @@ export default function DonationAdmin() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full md:w-auto px-8 py-3 bg-[#1a1a5e] text-white font-bold rounded-xl hover:bg-[#242171] transition-all disabled:opacity-50"
+                            className="w-full md:w-auto px-8 py-3 bg-[#1a1a5e] text-white cursor-pointer font-bold rounded-xl hover:bg-[#242171] transition-all disabled:opacity-50"
                         >
                             {loading ? "Updating..." : "Update Donation Details"}
                         </button>

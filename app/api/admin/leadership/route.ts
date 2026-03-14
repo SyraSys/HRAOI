@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { uploadFile, deleteFile } from "@/lib/cloudinary";
+import { uploadFile, deleteFile } from "@/lib/blob";
 
 export async function GET() {
   const session = await auth();
@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const uploadResult = await uploadFile(buffer, "leadership", "image");
+    const uploadResult = await uploadFile(buffer, file.name, "leadership");
 
     const entry = await prisma.leadership.create({
       data: {
@@ -77,13 +77,13 @@ export async function PATCH(req: NextRequest) {
     if (file && file.size > 0) {
       // Delete old photo
       if (existing.publicId) {
-        await deleteFile(existing.publicId, "image");
+        await deleteFile(existing.publicId);
       }
 
       // Upload new photo
       const bytes = await file.arrayBuffer();
       const buffer = Buffer.from(bytes);
-      const uploadResult = await uploadFile(buffer, "leadership", "image");
+      const uploadResult = await uploadFile(buffer, file.name, "leadership");
       data.photoUrl = uploadResult.url;
       data.publicId = uploadResult.publicId;
     }
@@ -110,7 +110,7 @@ export async function DELETE(req: NextRequest) {
     if (!entry) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
     if (entry.publicId) {
-      await deleteFile(entry.publicId, "image");
+      await deleteFile(entry.publicId);
     }
     await prisma.leadership.delete({ where: { id } });
 

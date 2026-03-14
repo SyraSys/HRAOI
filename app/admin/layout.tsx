@@ -53,7 +53,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         {/* Close button for mobile */}
                         <button
                             onClick={() => setMobileMenuOpen(false)}
-                            className="lg:hidden p-1 hover:bg-white/10 rounded transition-colors"
+                            className="lg:hidden p-1 hover:bg-white/10 cursor-pointer rounded transition-colors"
                             aria-label="Close menu"
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <div className="px-3 py-4 border-t border-white/10">
                     <button
                         onClick={() => signOut({ callbackUrl: "/admin/login" })}
-                        className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-red-300 hover:bg-red-500/20 transition-all"
+                        className="w-full flex items-center gap-3 px-4 py-3 cursor-pointer rounded-lg text-sm font-medium text-red-300 hover:bg-red-500/20 transition-all"
                     >
                         <span>🚪</span>
                         Logout
@@ -108,7 +108,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                             {/* Mobile Menu Button */}
                             <button
                                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                                className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                                className="lg:hidden p-2 hover:bg-gray-100 cursor-pointer rounded-lg transition-colors"
                                 aria-label="Toggle menu"
                             >
                                 <svg className="w-6 h-6 text-[#1a1a5e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

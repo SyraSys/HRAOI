@@ -18,7 +18,6 @@ async function main() {
 
   console.log(`✅ Admin created: ${admin.email}`);
   console.log(`   Password: ${password}`);
-  console.log(`   ⚠️  Change this password after first login!`);
 }
 
 main()
